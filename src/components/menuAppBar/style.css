@@ -1,0 +1,10 @@
+.MenuAppBar {
+    background-color: #000000;
+    background: #000000;
+    width: 100%;
+    position: relative;
+}
+
+.MenuAppBar__email {
+    padding-right: 40px;
+}
