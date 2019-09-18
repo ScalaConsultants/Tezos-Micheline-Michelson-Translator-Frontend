@@ -3,6 +3,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import './App.css';
 import Routes from "./router/routes";
 import MenuAppBar from "./components/menuAppBar/MenuAppBar";
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import theme from "./theme/theme";
 import ReactGA from 'react-ga';
 
 // Initializing Google Analytics
@@ -11,12 +13,14 @@ ReactGA.pageview(window.location.pathname + window.location.search);
 
 const App = () => {
   return (
-    <div className="App">
-      <Router>
-        <MenuAppBar />
-        <Routes />
-      </Router>
-    </div>
+    <MuiThemeProvider theme={theme}>
+      <div className="App">
+        <Router>
+          <MenuAppBar />
+          <Routes />
+        </Router>
+      </div>
+    </MuiThemeProvider>
   );
 };
 
