@@ -7,9 +7,21 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import './style.css';
+import ScalacLogo from "./ScalacLogo";
+import {createStyles, makeStyles} from "@material-ui/core";
+
+const useStyles = makeStyles(
+  createStyles({
+    description: {
+      '@media (max-width: 550px)': {
+        display: 'none'
+      }
+    }
+  })
+);
 
 const ButtonAppBar = (props: any) => {
+  const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
 
   const menuItems = [
@@ -31,7 +43,7 @@ const ButtonAppBar = (props: any) => {
   };
 
   return (
-      <AppBar position="static" className="MenuAppBar">
+      <AppBar position="static">
         <Toolbar>
           <IconButton
           aria-owns={anchorEl ? 'simple-menu' : undefined}
@@ -42,7 +54,7 @@ const ButtonAppBar = (props: any) => {
           </IconButton>
           <div className="MenuSpace">
           </div>
-          <Button color="inherit" onClick={() => goTo('/')}>Micheline / Michelson Translator v0.01</Button>
+          <Button color="inherit" onClick={() => goTo('/')}><span className={classes.description}>Micheline / Michelson Translator v0.01</span></Button>
           <Menu
             id="simple-menu"
             anchorEl={anchorEl}
@@ -53,6 +65,7 @@ const ButtonAppBar = (props: any) => {
               return <MenuItem onClick={() => goTo(item.route)} key={key}>{item.name}</MenuItem>
             })}
           </Menu>
+          <ScalacLogo/>
         </Toolbar>
       </AppBar>
     );
