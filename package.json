@@ -12,9 +12,13 @@
     "@types/react-dom": "^16.8.5",
     "@types/react-router-dom": "^4.3.4",
     "chart.js": "^2.8.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
     "react": "^16.8.6",
     "react-chartjs-2": "^2.7.6",
     "react-dom": "^16.8.6",
+    "react-ga": "^2.6.0",
     "react-redux": "^7.1.0",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
@@ -24,10 +28,7 @@
     "redux-react-hook": "^3.3.2",
     "redux-saga": "^1.0.5",
     "typescript": "3.5.3",
-    "util": "^0.12.1",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.14.3"
+    "util": "^0.12.1"
   },
   "scripts": {
     "start": "react-scripts start",
