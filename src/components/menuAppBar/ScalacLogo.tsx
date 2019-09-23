@@ -9,7 +9,7 @@ const useStyles = makeStyles(
       textAlign: 'center',
       fontSize: '10px',
       fontWeight: 'bold',
-      position: 'fixed',
+      position: 'absolute',
       right: '10px',
       width: '200px',
       '& img': {
