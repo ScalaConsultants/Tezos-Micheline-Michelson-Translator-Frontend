@@ -5,12 +5,15 @@
   "dependencies": {
     "@material-ui/core": "^4.3.0",
     "@material-ui/icons": "^4.2.1",
+    "@types/antd": "^1.0.0",
     "@types/jest": "^24.0.15",
     "@types/material-ui": "^0.21.6",
     "@types/node": "^12.6.8",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.5",
     "@types/react-router-dom": "^4.3.4",
+    "@types/styled-components": "^4.1.19",
+    "antd": "^3.23.3",
     "chart.js": "^2.8.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
@@ -27,6 +30,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-react-hook": "^3.3.2",
     "redux-saga": "^1.0.5",
+    "styled-components": "^4.3.2",
     "typescript": "3.5.3",
     "util": "^0.12.1"
   },

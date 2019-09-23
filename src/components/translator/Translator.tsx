@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 import DeleteIcon from '@material-ui/icons/Delete';
 import {TranslatorState} from "../../store/reducers/translator";
+import HighlightedTextarea from "../highlightedTextArea/highlightedTextArea";
 
 interface IState {
   pending: boolean,
@@ -43,7 +44,7 @@ const Translator = () => {
   };
 
   const translate = () => {
-    console.log("Translating...");
+    console.log("Translating..." + micheline);
 
     if(currentMode === 'michelinemichelson') {
       dispatch({
@@ -103,16 +104,11 @@ const Translator = () => {
             </Fab>
           </Grid>
           <Grid item xs={12} lg={12}>
-            <TextField
-              id="outlined-multiline-static"
+            <HighlightedTextarea
               label="Micheline"
-              multiline
-              rows="20"
               value={translator.micheline}
-              onChange={(e) => {reduxSetMicheline(e.target.value)}}
+              onChange={reduxSetMicheline}
               className="Textfield"
-              margin="normal"
-              variant="outlined"
             />
           </Grid>
         </Grid>
