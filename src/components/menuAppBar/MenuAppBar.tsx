@@ -1,74 +1,30 @@
 import React, {useState} from 'react';
 import {withRouter} from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 import ScalacLogo from "./ScalacLogo";
-import {createStyles, makeStyles} from "@material-ui/core";
+import "./style.scss";
+import Title from "./Title";
 
-const useStyles = makeStyles(
-  createStyles({
-    description: {
-      '@media (max-width: 550px)': {
-        display: 'none'
-      }
-    }
-  })
-);
 
-const ButtonAppBar = (props: any) => {
-  const classes = useStyles();
-  const [anchorEl, setAnchorEl] = useState(null);
-
+const MenuAppBar = (props: any) => {
   const menuItems = [
     { name: 'Home', route: '/'},
     { name: 'Translation', route: '/translation'}
   ];
 
   const goTo = (route: string) => {
-    handleClose();
     props.history.push(route);
   };
 
-  const handleClick = (event: any) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
   return (
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-          aria-owns={anchorEl ? 'simple-menu' : undefined}
-          aria-haspopup="true"
-          color="inherit"
-          onClick={handleClick}>
-            <MenuIcon/>
-          </IconButton>
-          <div className="MenuSpace">
-          </div>
-          <Button color="inherit" onClick={() => goTo('/')}><span className={classes.description}>Micheline / Michelson Translator v0.01</span></Button>
-          <Menu
-            id="simple-menu"
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            {menuItems.map((item, key) => {
-              return <MenuItem onClick={() => goTo(item.route)} key={key}>{item.name}</MenuItem>
-            })}
-          </Menu>
-          <ScalacLogo/>
-        </Toolbar>
-      </AppBar>
+      <div className="AppBar">
+        <img className="AppBar__scalac" src="scalac.svg" alt="" />
+        <Title />
+        <img className="AppBar__scalac-transparent" src="scalac-transparent.svg" alt="" />
+        <button onClick={() => goTo('/translation')}><img src="Dashboard.svg" alt="" /> Translate</button>
+        <button onClick={() => goTo('/translation')}><img src="Mail.svg" alt="" /> Contact</button>
+        <button onClick={() => goTo('/translation')}><img src="Info.svg" alt="" /> Info</button>
+      </div>
     );
 };
 
-export default withRouter(ButtonAppBar);
+export default withRouter(MenuAppBar);

@@ -1,0 +1,77 @@
+.AppBar {
+    background-color: #C91C00;
+    height: 40px;
+    position: relative;
+    padding: 10px;
+    text-align: right;
+
+    button {
+        height: 40px;
+        border: 0;
+        outline: none;
+        cursor: pointer;
+        background: transparent;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 14px;
+        align-items: center;
+        text-align: center;
+        letter-spacing: 0.15px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+
+        &:hover {
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
+            box-shadow: 0px 4px 20px rgba(201, 0, 0, 0.14);
+            border-radius: 4px;
+        }
+    }
+
+    &__scalac {
+        position: absolute;
+        left: 50px;
+    }
+
+    &__scalac-transparent {
+        position: absolute;
+        left: 350px;
+        top: 0;
+    }
+}
+
+.Title {
+    position: absolute;
+    top: 5px;
+    left: 140px;
+    color: #ffffff;
+    &__l1 {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 19px;
+        letter-spacing: 0.15px;
+    }
+
+    &__l2 {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 14.8px;
+        line-height: 17px;
+        letter-spacing: 0.15px;
+        color: #FF6868;
+    }
+
+    &__l3 {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 8.8px;
+        line-height: 18px;
+        letter-spacing: 0.15px;
+        color: #FF6868;
+    }
+}
