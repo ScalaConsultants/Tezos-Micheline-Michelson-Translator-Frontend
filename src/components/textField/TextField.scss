@@ -1,0 +1,21 @@
+.TextField {
+    display: inline-block;
+    width: 50%;
+    align-items: center;
+    vertical-align: top;
+    resize: none;
+    box-sizing: border-box;
+    color: #a0a0a0;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: 0.15px;
+
+    textarea {
+        border: 0;
+        width: 100%;
+        background: transparent;
+    }
+}

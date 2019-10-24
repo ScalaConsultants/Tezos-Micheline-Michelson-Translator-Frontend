@@ -35,7 +35,7 @@ export function* doFetchMichelsonToMichelineTranslation(action: any) {
 
   if (response.status === 200)
   {
-    yield put(translatorActions.TranslatorSetMicheline(response.status, response.text));
+    yield put(translatorActions.TranslatorSetMicheline(response.status, JSON.stringify(JSON.parse(response.text), undefined, 2)));
   }
   else {
     yield put(translatorActions.TranslatorSetError(response.text));

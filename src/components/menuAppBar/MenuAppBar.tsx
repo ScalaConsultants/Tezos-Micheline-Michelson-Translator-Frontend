@@ -1,16 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {withRouter} from 'react-router-dom';
-import ScalacLogo from "./ScalacLogo";
 import "./style.scss";
 import Title from "./Title";
 
 
 const MenuAppBar = (props: any) => {
-  const menuItems = [
-    { name: 'Home', route: '/'},
-    { name: 'Translation', route: '/translation'}
-  ];
-
   const goTo = (route: string) => {
     props.history.push(route);
   };
