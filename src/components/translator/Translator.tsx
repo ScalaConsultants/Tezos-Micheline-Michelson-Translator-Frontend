@@ -17,19 +17,15 @@ const Translator = () => {
   const [michelson, setMichelson] = useState(translator.michelson);
 
   const translate = (currentMode: TranslatorTypes.Modes, value: string) => {
-    if(currentMode === TranslatorTypes.Modes.MICHELINEMICHELSON && value.trim().length) {
-      dispatch({
-        type: TranslatorActions.TRANSLATOR_FETCH_MICHELINE_TO_MICHELSON,
-        payload: value
-      });
-    }
+    let action = null;
+    if(currentMode === TranslatorTypes.Modes.MICHELINEMICHELSON && value.trim().length) action = TranslatorActions.TRANSLATOR_FETCH_MICHELINE_TO_MICHELSON;
+    else if(currentMode === TranslatorTypes.Modes.MICHELSONMICHELINE && value.trim().length) action = TranslatorActions.TRANSLATOR_FETCH_MICHELSON_TO_MICHELINE;
+    if(!action) return;
 
-    else if(currentMode === TranslatorTypes.Modes.MICHELSONMICHELINE && value.trim().length) {
-      dispatch({
-        type: TranslatorActions.TRANSLATOR_FETCH_MICHELSON_TO_MICHELINE,
-        payload: value
-      });
-    }
+    dispatch({
+      type: action,
+      payload: value
+    });
   };
 
   useEffect(() => {
