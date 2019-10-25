@@ -9,14 +9,18 @@ const MenuAppBar = (props: any) => {
     props.history.push(route);
   };
 
+  const goScalac = () => {
+    window.open("https://scalac.io", "_blank");
+  };
+
   return (
       <div className="AppBar">
-        <img className="AppBar__scalac" src="scalac.svg" alt="" />
+        <img className="AppBar__scalac" src="scalac.svg" alt="" onClick={() => goScalac()} />
         <Title />
-        <img className="AppBar__scalac-transparent" src="scalac-transparent.svg" alt="" />
-        <button onClick={() => goTo('/translation')}><img src="Dashboard.svg" alt="" /> Translate</button>
-        <button onClick={() => goTo('/translation')}><img src="Mail.svg" alt="" /> Contact</button>
-        <button onClick={() => goTo('/translation')}><img src="Info.svg" alt="" /> Info</button>
+        <img className="AppBar__scalac-transparent" src="scalac-transparent.svg" title="Go to Scalac homepage" alt="Go to Scalac homepage" />
+        <button onClick={() => goTo('/')}><img src="dashboard.svg" alt="" /> Translate</button>
+        <button onClick={() => goTo('/')}><img src="mail.svg" alt="" /> Contact</button>
+        <button onClick={() => goTo('/')}><img src="info.svg" alt="" /> Info</button>
       </div>
     );
 };
