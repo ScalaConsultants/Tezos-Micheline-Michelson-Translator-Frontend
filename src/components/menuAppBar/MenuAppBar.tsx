@@ -21,7 +21,7 @@ const MenuAppBar = (props: any) => {
         <Title />
         <img className="AppBar__scalac-transparent" src="scalac-transparent.svg" alt="" />
         <button onClick={() => goTo('/translation')}><img src="Dashboard.svg" alt="" /> Translate</button>
-        <button onClick={() => goTo('/translation')}><img src="Mail.svg" alt="" /> Contact</button>
+        <button onClick={() => goTo('/contact')}><img src="Mail.svg" alt="" /> Contact</button>
         <button onClick={() => goTo('/translation')}><img src="Info.svg" alt="" /> Info</button>
       </div>
     );
