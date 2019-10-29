@@ -1,0 +1,14 @@
+.contact-form {
+    .contact-form_line {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .contact-form_button {
+        font-size: 16px;
+        margin-top: 15px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

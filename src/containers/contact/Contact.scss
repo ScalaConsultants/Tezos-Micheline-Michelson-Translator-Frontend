@@ -1,0 +1,15 @@
+.contact-page {
+    .container_full {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+    }
+
+    .sub-container_contact-form {
+        width: 66%;
+    }
+
+    .sub-container_contact-info {
+        width: 33%;
+    }
+}

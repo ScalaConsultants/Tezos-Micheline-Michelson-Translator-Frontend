@@ -19,7 +19,7 @@ const MenuAppBar = (props: any) => {
         <Title />
         <img className="AppBar__scalac-transparent" src="scalac-transparent.svg" title="Go to Scalac homepage" alt="Go to Scalac homepage" />
         <button onClick={() => goTo('/')}><img src="dashboard.svg" alt="" /> Translate</button>
-        <button onClick={() => goTo('/')}><img src="mail.svg" alt="" /> Contact</button>
+        <button onClick={() => goTo('/contact')}><img src="mail.svg" alt="" /> Contact</button>
         <button onClick={() => goTo('/')}><img src="info.svg" alt="" /> Info</button>
       </div>
     );
