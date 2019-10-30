@@ -1,6 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import "./style.scss";
+import "./MenuAppBar.scss";
 import Title from "./Title";
 
 
@@ -18,7 +18,7 @@ const MenuAppBar = (props: any) => {
         <img className="AppBar__scalac" src="scalac.svg" alt="" onClick={() => goScalac()} />
         <Title />
         <img className="AppBar__scalac-transparent" src="scalac-transparent.svg" title="Go to Scalac homepage" alt="Go to Scalac homepage" />
-        <button onClick={() => goTo('/')}><img src="dashboard.svg" alt="" /> Translate</button>
+        <button onClick={() => goTo('/')}><img src="dashboard.svg" alt="" /> Convert</button>
         <button onClick={() => goTo('/contact')}><img src="mail.svg" alt="" /> Contact</button>
         <button onClick={() => goTo('/')}><img src="info.svg" alt="" /> Info</button>
       </div>

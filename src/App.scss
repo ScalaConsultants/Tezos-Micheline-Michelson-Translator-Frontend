@@ -2,19 +2,11 @@
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  /* border: 2px solid black; */
   padding: 10px;
-  //text-align: center;
 }
 
 .App {
-  //text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+ min-width: 350px;
 }
 
 .App-header {
@@ -28,10 +20,6 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
 .Textfield {
   width: 90%;
 }
@@ -41,14 +29,4 @@
   font-size: 20px;
   font-weight: bold;
   padding-top: 8px;
-  /*padding: 5px;*/
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

@@ -1,0 +1,38 @@
+.Title {
+    position: absolute;
+    top: 5px;
+    left: 20vw;
+    color: #ffffff;
+    &__l1 {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 19px;
+        letter-spacing: 0.15px;
+    }
+
+    &__l2 {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 14.8px;
+        line-height: 17px;
+        letter-spacing: 0.15px;
+        color: #FF6868;
+    }
+
+    &__l3 {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 8.8px;
+        line-height: 18px;
+        letter-spacing: 0.15px;
+        color: #FF6868;
+    }
+
+    @media screen and (max-width: 500px) {
+        display: none;
+    }
+}

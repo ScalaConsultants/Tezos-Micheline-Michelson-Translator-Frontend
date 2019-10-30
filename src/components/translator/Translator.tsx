@@ -84,16 +84,14 @@ const Translator = () => {
           value={translator.micheline}
           onValueChange={(val: string) => {reduxSetMicheline(val)}}
           onClick={() => switchMode(TranslatorTypes.Modes.MICHELINEMICHELSON)}
+          clearClick={() => reduxSetMicheline('')}
         />
         <TextField
           value={translator.michelson}
           onValueChange={(val: string) => {reduxSetMichelson(val)}}
           onClick={() => switchMode(TranslatorTypes.Modes.MICHELSONMICHELINE)}
+          clearClick={() => reduxSetMichelson('')}
         />
-      </div>
-      <div className="Translator__buttons-area">
-        <img src="delete.svg" alt="Clear input" onClick={() => reduxSetMicheline('')} />
-        <img src="delete.svg" alt="Clear input" onClick={() => reduxSetMichelson('')} />
       </div>
       {translator.error ? <div className="Translator__error-area">{translator.error}</div> : null}
     </div>
