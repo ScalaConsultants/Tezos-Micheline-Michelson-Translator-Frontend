@@ -4,7 +4,7 @@ import Translator from "../../components/translator/Translator";
 const Translation = () => {
   return (
     <div>
-      <h1>Translator</h1>
+      <h1>Converter</h1>
       <Translator/>
     </div>
   );

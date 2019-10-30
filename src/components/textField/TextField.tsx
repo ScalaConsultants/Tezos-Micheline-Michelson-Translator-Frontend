@@ -1,16 +1,19 @@
 import React, {ChangeEvent, useEffect, useRef} from 'react';
 import "./TextField.scss";
+import DeleteButton from "../deleteButton/DeleteButton";
 
 type Props = {
   value: string,
   onValueChange: Function,
-  onClick: Function
+  onClick: Function,
+  clearClick: Function
 }
 
 const TextField = ({
   value,
   onValueChange,
-  onClick
+  onClick,
+  clearClick
 }: Props) => {
 
   const textField: any = useRef(null);
@@ -31,6 +34,7 @@ const TextField = ({
 
   return (
     <div className="TextField">
+      <DeleteButton handleClick={() => clearClick()} />
       <textarea
         ref={textField}
         value={value}
