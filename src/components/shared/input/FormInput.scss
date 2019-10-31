@@ -1,10 +1,46 @@
 .form-input {
+
     .form-input_input {
         display: block;
         min-width: 200px;
+        border: none;
+        border-bottom: solid 2px #C91C00;
+        font-size: 16px;
+        padding-bottom: 10px;
+        caret-color: #C91C00;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .form-input_label {
+        text-align: left;
+        color: #C91C00;
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+
+    .form-input_validation-marker {
+        border-radius: 100%;
+        border: 2px solid black;
+        opacity: 0.6;
+        width: 8px;
+        height: 8px;
+        position: relative;
+        bottom: 30px;
+        left: 85%;
+
+        &.valid {
+            background: black;
+        }
     }
 
     .form-input_error {
-        color: red;
+        height: 20px;
+        text-align: left;
+        opacity: 0.6;
+        font-size: 12px;
+        margin-top: -10px;
     }
 }

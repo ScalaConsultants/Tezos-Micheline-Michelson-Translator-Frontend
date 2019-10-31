@@ -8,8 +8,8 @@ import './ContactForm.scss';
 const validationSchema = Yup.object().shape({
     name: Yup.string(),
     group: Yup.string(),
-    phone: Yup.number().integer("It's a wrong phone number!"),
-    email: Yup.string().required("Email is required.").email("It's a wrong email address!"),
+    phone: Yup.number().integer("It's a wrong phone number!").min(8, "This phone number is too short."),
+    email: Yup.string().required("Email is required.").email("It's a wrong email address."),
     message: Yup.string().required("Message is required.").min(10, "Message is too short."),
 });
 
@@ -92,7 +92,7 @@ const ContactForm = () => {
                                 </div>
                                 <div className="contact-form_line">
                                     <FormInput
-                                        label="Message"
+                                        label="How we can help you?"
                                         type="text"
                                         name="message"
                                         onChange={handleChange}
@@ -100,6 +100,7 @@ const ContactForm = () => {
                                         value={values.message}
                                         errors={errors.message}
                                         touched={touched.message}
+                                        className="contact-form_message"
                                     />
                                 </div>
                                 <button type="submit" disabled={isSubmitting} className="contact-form_button">
