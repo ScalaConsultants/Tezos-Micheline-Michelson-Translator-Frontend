@@ -9,22 +9,24 @@ const FormInput = ({
     onBlur,
     value,
     errors,
-    touched
+    touched,
+    className,
 }: any) => (
-        <div className="form-input">
-            <label className="form-input_label">{label}</label>
+        <div className={`form-input ${className}`}>
+            <p className="form-input_label" onClick={() => console.log(touched)}>{label}</p>
             <input
                 name={name}
                 type={type}
                 onChange={onChange}
                 onBlur={onBlur}
+                placeholder={label}
                 value={value}
                 className="form-input_input"
             />
-            {errors && touched ? (
-                <div className="form-input_error">
-                    {errors}
-                </div>) : null}
+            <div className={`form-input_validation-marker ${touched && !errors && 'valid'}`}></div>
+            <div className="form-input_error">
+                {errors && touched && errors}
+            </div>
         </div>
     );
 
