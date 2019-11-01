@@ -1,11 +1,13 @@
-import {createStore, combineReducers, applyMiddleware} from "redux";
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import {composeWithDevTools} from "redux-devtools-extension";
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-import {translator} from './reducers/translator';
+import { translator } from './reducers/translator';
+import { library } from './reducers/library';
 
 const rootReducer = combineReducers({
-  translator: translator
+  translator,
+  library,
 });
 
 export default function configureStore() {
@@ -14,7 +16,7 @@ export default function configureStore() {
   const middleWareEnhancer = applyMiddleware(...middlewares);
 
   return {
-    ...createStore(rootReducer,  composeWithDevTools(middleWareEnhancer)),
-    runSaga: sagaMiddleware.run
-  }
+    ...createStore(rootReducer, composeWithDevTools(middleWareEnhancer)),
+    runSaga: sagaMiddleware.run,
+  };
 }

@@ -1,4 +1,7 @@
+import * as TranslatorTypes from "../../components/translator/Translator.types";
+
 import {
+  TRANSLATOR_SET_MODE,
   TRANSLATOR_SET_MICHELINE,
   TRANSLATOR_SET_MICHELSON,
   TRANSLATOR_FLUSH_TRANSLATION,
@@ -6,6 +9,7 @@ import {
 } from '../actions/translator'
 
 export type TranslatorState = {
+  mode: TranslatorTypes.Modes,
   michelson: string,
   micheline: string,
   error: string
@@ -13,11 +17,13 @@ export type TranslatorState = {
 
 export type TranslatorAction = {
   type: string,
+  mode: TranslatorTypes.Modes,
   translation: string,
   error? : any
 }
 
 const initState: TranslatorState = {
+  mode: TranslatorTypes.Modes.MICHELINEMICHELSON,
   michelson: '',
   micheline: '',
   error: ''
@@ -25,22 +31,24 @@ const initState: TranslatorState = {
 
 export const translator = (state: TranslatorState = initState, action: TranslatorAction) => {
     switch (action.type) {
+      case TRANSLATOR_SET_MODE:
+        return {
+          ...state,
+          mode: action.mode,
+        };
       case TRANSLATOR_SET_MICHELSON:
         return {
+          ...state,
           michelson: action.translation,
-          micheline: state.micheline,
-          error: ''
         };
       case TRANSLATOR_SET_MICHELINE:
         return {
-          michelson: state.michelson,
+          ...state,
           micheline: action.translation,
-          error: ''
         };
       case TRANSLATOR_SET_ERROR:
         return {
-          michelson: state.michelson,
-          micheline: state.micheline,
+          ...state,
           error: action.error
         };
       case TRANSLATOR_FLUSH_TRANSLATION:
