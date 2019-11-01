@@ -9,22 +9,30 @@ const mapState = (state: TranslatorTypes.IState) => ({
   translator: state.translator
 });
 
+export const translate = (currentMode: TranslatorTypes.Modes, value: string, dispatch: Function) => {
+  let action = null;
+  if(currentMode === TranslatorTypes.Modes.MICHELINEMICHELSON && value.trim().length) action = TranslatorActions.TRANSLATOR_FETCH_MICHELINE_TO_MICHELSON;
+  else if(currentMode === TranslatorTypes.Modes.MICHELSONMICHELINE && value.trim().length) action = TranslatorActions.TRANSLATOR_FETCH_MICHELSON_TO_MICHELINE;
+  if(!action) return;
+
+  dispatch({
+    type: action,
+    payload: value
+  });
+};
+
 const Translator = () => {
   const dispatch = useDispatch();
   const { translator } = useMappedState(mapState);
-  const [currentMode, setCurrentMode] = useState(TranslatorTypes.Modes.MICHELINEMICHELSON);
+  // const [currentMode, setCurrentMode] = useState(TranslatorTypes.Modes.MICHELINEMICHELSON);
   const [micheline, setMicheline] = useState(translator.micheline);
   const [michelson, setMichelson] = useState(translator.michelson);
 
-  const translate = (currentMode: TranslatorTypes.Modes, value: string) => {
-    let action = null;
-    if(currentMode === TranslatorTypes.Modes.MICHELINEMICHELSON && value.trim().length) action = TranslatorActions.TRANSLATOR_FETCH_MICHELINE_TO_MICHELSON;
-    else if(currentMode === TranslatorTypes.Modes.MICHELSONMICHELINE && value.trim().length) action = TranslatorActions.TRANSLATOR_FETCH_MICHELSON_TO_MICHELINE;
-    if(!action) return;
 
+  const setCurrentMode = (mode: TranslatorTypes.Modes) => {
     dispatch({
-      type: action,
-      payload: value
+      type: TranslatorActions.TRANSLATOR_SET_MODE,
+      mode: mode
     });
   };
 
@@ -39,8 +47,8 @@ const Translator = () => {
   const switchMode = (value?: TranslatorTypes.Modes) => {
     if(value) setCurrentMode(value);
     else {
-      if (currentMode === TranslatorTypes.Modes.MICHELINEMICHELSON) setCurrentMode(TranslatorTypes.Modes.MICHELSONMICHELINE);
-      else if (currentMode === TranslatorTypes.Modes.MICHELSONMICHELINE) setCurrentMode(TranslatorTypes.Modes.MICHELINEMICHELSON);
+      if (translator.mode === TranslatorTypes.Modes.MICHELINEMICHELSON) setCurrentMode(TranslatorTypes.Modes.MICHELSONMICHELINE);
+      else if (translator.mode === TranslatorTypes.Modes.MICHELSONMICHELINE) setCurrentMode(TranslatorTypes.Modes.MICHELINEMICHELSON);
     }
   };
 
@@ -52,7 +60,7 @@ const Translator = () => {
       translation: value
     });
 
-    translate(currentMode, value);
+    translate(translator.mode, value, dispatch);
   };
 
   const reduxSetMichelson = (value: string) => {
@@ -63,7 +71,7 @@ const Translator = () => {
       translation: value
     });
 
-    translate(currentMode, value);
+    translate(translator.mode, value, dispatch);
   };
 
   const getValue = (mode: TranslatorTypes.Modes) => {
@@ -75,9 +83,9 @@ const Translator = () => {
   return (
     <div className="Translator">
       <div className="Translator__header">
-        <button className={currentMode === TranslatorTypes.Modes.MICHELINEMICHELSON ? 'Translator__header-selected' : ''} onClick={() => switchMode(TranslatorTypes.Modes.MICHELINEMICHELSON)}>Micheline</button>
-        <img src="arrows.svg" alt="" className="Translator__header__translate-button" onClick={() => translate(currentMode, getValue(currentMode))} />
-        <button className={currentMode === TranslatorTypes.Modes.MICHELSONMICHELINE ? 'Translator__header-selected' : ''} onClick={() => switchMode(TranslatorTypes.Modes.MICHELSONMICHELINE)}>Michelson</button>
+        <button className={translator.mode === TranslatorTypes.Modes.MICHELINEMICHELSON ? 'Translator__header-selected' : ''} onClick={() => switchMode(TranslatorTypes.Modes.MICHELINEMICHELSON)}>Micheline</button>
+        <img src="arrows.svg" alt="" className="Translator__header__translate-button" onClick={() => translate(translator.mode, getValue(translator.mode), dispatch)} />
+        <button className={translator.mode === TranslatorTypes.Modes.MICHELSONMICHELINE ? 'Translator__header-selected' : ''} onClick={() => switchMode(TranslatorTypes.Modes.MICHELSONMICHELINE)}>Michelson</button>
       </div>
       <div className="Translator__translator-area">
         <TextField
