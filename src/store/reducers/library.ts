@@ -20,7 +20,7 @@ const initState: LibraryState = [];
 export const library = (state: LibraryState = initState, action: LibraryAction) => {
     switch (action.type) {
       case LIBRARY_SET:
-        return action.payload
+        return action.payload;
       case LIBRARY_FLUSH:
         return initState;
       default:
