@@ -1,0 +1,62 @@
+.add-translation {
+    .add-translation_code-displays {
+        display: flex;
+        justify-content: space-between;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+
+        .form-code-display {
+            width: 45%;
+            
+            .form-code-display_value {
+                max-height: 200px;
+            }
+        }
+
+        @media screen and (max-width: 500px) { 
+        display: block;
+
+        .form-code-display { 
+            width: 100%;
+        }
+        }
+    }
+
+    .add-translation_fields-line {
+        display: flex;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: space-between;
+
+        .form-input {
+            width: 45%;
+        }
+
+        @media screen and (max-width: 500px) {  
+            display: block;
+
+            .form-input {
+                width: 100%;
+            }
+        }
+    }
+
+    .form-textarea {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+    }
+
+    .add-translation_buttons {
+        display: flex;
+        width: 220px;
+        justify-content: space-between;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 24px;
+        margin-bottom: 16px;
+    }
+}

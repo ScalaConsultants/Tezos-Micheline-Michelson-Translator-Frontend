@@ -1,0 +1,35 @@
+.form-textarea {
+
+   .form-textarea_input {
+       resize: none;
+       width: calc(100% - 30px);
+       border: 1px solid #787878;
+       border-radius: 3px;
+       min-height: 50px;
+       padding: 15px;
+       font-size: 16px;
+       line-height: 24px;
+       color: rgba(0, 0, 0, 0.87);
+
+       &:focus {
+           border-color: #C91C00;
+       }
+   }
+
+   .form-textarea_label {
+    color: #C91C00;
+    position: relative;
+    background: white;
+    width: 100px;
+    top: 10px;
+    left: 20px;
+    text-align: center;
+   }
+
+   .form-textarea_error {
+    height: 20px;
+    text-align: left;
+    opacity: 0.6;
+    font-size: 12px;
+   }
+}
