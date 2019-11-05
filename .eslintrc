@@ -1,0 +1,22 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "extends": [
+    "airbnb",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "indent": ["error", 2],
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }]
+  }
+}

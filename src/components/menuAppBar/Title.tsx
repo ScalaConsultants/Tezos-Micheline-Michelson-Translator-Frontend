@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Title.scss";
+import './Title.scss';
 
 const Title = () => {
   return (
