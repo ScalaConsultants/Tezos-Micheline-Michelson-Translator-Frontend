@@ -9,7 +9,7 @@ const Translation = () => {
 
   return (
     <div>
-      <h1 onClick={() => setModal(true)}>Converter</h1>
+      <h1>Converter</h1>
       <Translator />
       <h1>Library</h1>
       <Library />
