@@ -3,13 +3,13 @@ import FormTextarea from '../shared/textarea/FormTextarea';
 import FormInput from '../shared/input/FormInput';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import * as TranslatorTypes from "../translator/Translator.types";
+import { IState } from "../../store/translator/types";
 import { useMappedState } from 'redux-react-hook';
 import FormCodeDisplay from '../shared/formCodeDisplay/FormCodeDisplay';
 import FormButton from '../shared/formButton/FormButton';
 import './AddTranslation.scss';
 
-const mapState = (state: TranslatorTypes.IState) => ({
+const mapState = (state: IState) => ({
     translator: state.translator
 });
 
