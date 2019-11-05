@@ -1,5 +1,5 @@
 import { put, call } from 'redux-saga/effects';
-import * as libraryActions from '../actions/library';
+import * as libraryActions from './actions';
 
 export function* doLibraryFetch() {
   const response = yield call(libraryFetchRequest);
@@ -16,13 +16,9 @@ const libraryFetchRequest = () => {
 
   return fetch(process.env.REACT_APP_API_URL + '/v1/translations', options)
     .then(async response => {
-      return { status: response.status, json: await response.json() }
+      return { status: response.status, json: await response.json() };
     })
     .catch(error => {
-      throw(error)
-    })
+      throw error;
+    });
 };
-
-
-
-

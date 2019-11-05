@@ -1,9 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router } from 'react-router-dom';
 import './App.scss';
-import Routes from "./router/routes";
-import MenuAppBar from "./components/menuAppBar/MenuAppBar";
 import ReactGA from 'react-ga';
+import Routes from './router/routes';
+import MenuAppBar from './components/menuAppBar/MenuAppBar';
 
 // Initializing Google Analytics
 ReactGA.initialize('UA-47834691-1');

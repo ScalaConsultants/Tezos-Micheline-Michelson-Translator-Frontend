@@ -1,13 +1,12 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
-
-import { translator } from './reducers/translator';
-import { library } from './reducers/library';
+import { translatorReducer } from './translator/reducer';
+import { libraryReducer } from './library/reducer';
 
 const rootReducer = combineReducers({
-  translator,
-  library,
+  translator: translatorReducer,
+  library: libraryReducer,
 });
 
 export default function configureStore() {

@@ -1,17 +1,12 @@
 import React from 'react';
-import "./DeleteButton.scss";
+import './DeleteButton.scss';
 
 type Props = {
-  handleClick: Function
-}
+  handleClick: Function;
+};
 
-const DeleteButton = ({
-  handleClick
-}: Props) => {
-
-
-
-    return (
+const DeleteButton = ({ handleClick }: Props) => {
+  return (
     <div className="DeleteButton">
       <img src="delete.svg" alt="Clear input" onClick={() => handleClick()} />
     </div>

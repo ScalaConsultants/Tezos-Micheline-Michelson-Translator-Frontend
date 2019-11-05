@@ -1,19 +1,14 @@
 import React from 'react';
-import "./LibraryItem.scss";
-import {LibraryItem as LibraryItemType}  from "../../store/reducers/library";
+import './LibraryItem.scss';
+import { LibraryItem as LibraryItemType } from '../../store/library/types';
 
 type Props = {
-  selectMicheline: Function,
-  selectMichelson: Function,
-  data: LibraryItemType
-}
+  selectMicheline: Function;
+  selectMichelson: Function;
+  data: LibraryItemType;
+};
 
-const LibraryItem = ({
-  selectMicheline,
-  selectMichelson,
-  data
-}: Props) => {
-
+const LibraryItem = ({ selectMicheline, selectMichelson, data }: Props) => {
   return (
     <div className="LibraryItem">
       <div className="LibraryItem__info-area-wrapper">
@@ -33,7 +28,10 @@ const LibraryItem = ({
       <div className="LibraryItem__info-area-wrapper">
         <div className="LibraryItem__description-wrapper">
           <div className="LibraryItem__description-wrapper--label">Description</div>
-          <div className="LibraryItem__description-wrapper--content">some description ewr ewwer wer werwer wer wer werwer werwe rwe rewr wer werwe rwe rewrewr ewr ew ewrewrwer rew rwerwe rwerwerwerwe rwerwerwe rweewrwe wrwe we rwe werew rwe </div>
+          <div className="LibraryItem__description-wrapper--content">
+            some description ewr ewwer wer werwer wer wer werwer werwe rwe rewr wer werwe rwe rewrewr ewr ew ewrewrwer
+            rew rwerwe rwerwerwerwe rwerwerwe rweewrwe wrwe we rwe werew rwe{' '}
+          </div>
         </div>
       </div>
       <div className="LibraryItem__wrapper2" onClick={() => selectMicheline(data.source)}>
