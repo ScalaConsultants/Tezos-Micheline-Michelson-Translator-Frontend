@@ -1,0 +1,23 @@
+.form-code-display {
+    .form-code-display_value {
+        border: 1px solid #787878;
+        border-radius: 3px;
+        padding: 15px;
+
+        pre {
+            overflow-y: auto;
+            height: inherit;
+            max-height: inherit;
+        }
+    }
+
+    .form-code-display_type {
+        color: #C91C00;
+        position: relative;
+        background: white;
+        width: 100px;
+        top: 10px;
+        left: 20px;
+        text-align: center;
+    }
+}
