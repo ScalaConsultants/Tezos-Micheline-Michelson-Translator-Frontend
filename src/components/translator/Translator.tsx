@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useMappedState } from 'redux-react-hook';
-import * as TranslatorTypes from '../../store/translator/types';
-import './Translator.scss';
-import TextField from '../textField/TextField';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useMappedState } from "redux-react-hook";
+import * as TranslatorTypes from "../../store/translator/types";
+import "./Translator.scss";
+import TextField from "../textField/TextField";
 
 const mapState = (state: TranslatorTypes.IState) => ({
   translator: state.translator,
@@ -31,7 +31,7 @@ const Translator = () => {
   const setCurrentMode = (mode: TranslatorTypes.Modes) => {
     dispatch({
       type: TranslatorTypes.TRANSLATOR_SET_MODE,
-      mode: mode,
+      mode,
     });
   };
 
@@ -45,12 +45,10 @@ const Translator = () => {
 
   const switchMode = (value?: TranslatorTypes.Modes) => {
     if (value) setCurrentMode(value);
-    else {
-      if (translator.mode === TranslatorTypes.Modes.MICHELINEMICHELSON)
-        setCurrentMode(TranslatorTypes.Modes.MICHELSONMICHELINE);
-      else if (translator.mode === TranslatorTypes.Modes.MICHELSONMICHELINE)
-        setCurrentMode(TranslatorTypes.Modes.MICHELINEMICHELSON);
-    }
+    else if (translator.mode === TranslatorTypes.Modes.MICHELINEMICHELSON)
+      setCurrentMode(TranslatorTypes.Modes.MICHELSONMICHELINE);
+    else if (translator.mode === TranslatorTypes.Modes.MICHELSONMICHELINE)
+      setCurrentMode(TranslatorTypes.Modes.MICHELINEMICHELSON);
   };
 
   const reduxSetMicheline = (value: string) => {
@@ -77,15 +75,15 @@ const Translator = () => {
 
   const getValue = (mode: TranslatorTypes.Modes) => {
     if (mode === TranslatorTypes.Modes.MICHELINEMICHELSON) return micheline;
-    else if (mode === TranslatorTypes.Modes.MICHELSONMICHELINE) return michelson;
-    else return '';
+    if (mode === TranslatorTypes.Modes.MICHELSONMICHELINE) return michelson;
+    return "";
   };
 
   return (
     <div className="Translator">
       <div className="Translator__header">
         <button
-          className={translator.mode === TranslatorTypes.Modes.MICHELINEMICHELSON ? 'Translator__header-selected' : ''}
+          className={translator.mode === TranslatorTypes.Modes.MICHELINEMICHELSON ? "Translator__header-selected" : ""}
           onClick={() => switchMode(TranslatorTypes.Modes.MICHELINEMICHELSON)}
         >
           Micheline
@@ -97,7 +95,7 @@ const Translator = () => {
           onClick={() => translate(translator.mode, getValue(translator.mode), dispatch)}
         />
         <button
-          className={translator.mode === TranslatorTypes.Modes.MICHELSONMICHELINE ? 'Translator__header-selected' : ''}
+          className={translator.mode === TranslatorTypes.Modes.MICHELSONMICHELINE ? "Translator__header-selected" : ""}
           onClick={() => switchMode(TranslatorTypes.Modes.MICHELSONMICHELINE)}
         >
           Michelson
@@ -110,7 +108,7 @@ const Translator = () => {
             reduxSetMicheline(val);
           }}
           onClick={() => switchMode(TranslatorTypes.Modes.MICHELINEMICHELSON)}
-          clearClick={() => reduxSetMicheline('')}
+          clearClick={() => reduxSetMicheline("")}
         />
         <TextField
           value={translator.michelson}
@@ -118,7 +116,7 @@ const Translator = () => {
             reduxSetMichelson(val);
           }}
           onClick={() => switchMode(TranslatorTypes.Modes.MICHELSONMICHELINE)}
-          clearClick={() => reduxSetMichelson('')}
+          clearClick={() => reduxSetMichelson("")}
         />
       </div>
       {translator.error ? <div className="Translator__error-area">{translator.error}</div> : null}

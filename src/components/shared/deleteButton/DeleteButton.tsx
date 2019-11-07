@@ -1,5 +1,5 @@
-import React from 'react';
-import './DeleteButton.scss';
+import React from "react";
+import "./DeleteButton.scss";
 
 type Props = {
   handleClick: Function;

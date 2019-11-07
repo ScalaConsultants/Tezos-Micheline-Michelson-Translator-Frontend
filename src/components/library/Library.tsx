@@ -1,10 +1,10 @@
-import React from 'react';
-import { useDispatch, useMappedState } from 'redux-react-hook';
-import './Library.scss';
-import LibraryItem from './LibraryItem';
-import * as LibraryTypes from '../../store/library/types';
-import { translate } from '../translator/Translator';
-import * as TranslatorTypes from '../../store/translator/types';
+import React from "react";
+import { useDispatch, useMappedState } from "redux-react-hook";
+import "./Library.scss";
+import LibraryItem from "./LibraryItem";
+import * as LibraryTypes from "../../store/library/types";
+import { translate } from "../translator/Translator";
+import * as TranslatorTypes from "../../store/translator/types";
 
 const mapState = (state: LibraryTypes.IState) => ({
   library: state.library,

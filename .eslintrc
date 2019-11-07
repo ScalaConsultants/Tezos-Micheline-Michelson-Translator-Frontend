@@ -1,5 +1,5 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "env": {
     "browser": true,
     "node": true
@@ -12,11 +12,22 @@
     }
   },
   "extends": [
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
     "airbnb",
-    "plugin:prettier/recommended"
+    "prettier"
   ],
   "rules": {
-    "indent": ["error", 2],
-    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }]
+    "indent": ["error", 2, {"SwitchCase": 1}],
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "jsx-a11y/interactive-supports-focus": "warn",
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "[iI]gnored", "ignoreRestSiblings": true }],
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/interface-name-prefix": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "react/button-has-type": "off",
+    "no-param-reassign": "off"
   }
 }

@@ -1,44 +1,38 @@
-import * as TranslatorTypes from './types';
+import * as TranslatorTypes from "./types";
 
-import {
-  TRANSLATOR_SET_MODE,
-  TRANSLATOR_SET_MICHELINE,
-  TRANSLATOR_SET_MICHELSON,
-  TRANSLATOR_FLUSH_TRANSLATION,
-  TRANSLATOR_SET_ERROR,
-} from './types';
-import { TranslatorAction, TranslatorState } from './types';
-
-const translatorInitState: TranslatorState = {
+const translatorInitState: TranslatorTypes.TranslatorState = {
   mode: TranslatorTypes.Modes.MICHELINEMICHELSON,
-  michelson: '',
-  micheline: '',
-  error: '',
+  michelson: "",
+  micheline: "",
+  error: "",
 };
 
-export const translatorReducer = (state: TranslatorState = translatorInitState, action: TranslatorAction) => {
+export const translatorReducer = (
+  state: TranslatorTypes.TranslatorState = translatorInitState,
+  action: TranslatorTypes.TranslatorAction,
+): TranslatorTypes.TranslatorState => {
   switch (action.type) {
-    case TRANSLATOR_SET_MODE:
+    case TranslatorTypes.TRANSLATOR_SET_MODE:
       return {
         ...state,
         mode: action.mode,
       };
-    case TRANSLATOR_SET_MICHELSON:
+    case TranslatorTypes.TRANSLATOR_SET_MICHELSON:
       return {
         ...state,
         michelson: action.translation,
       };
-    case TRANSLATOR_SET_MICHELINE:
+    case TranslatorTypes.TRANSLATOR_SET_MICHELINE:
       return {
         ...state,
         micheline: action.translation,
       };
-    case TRANSLATOR_SET_ERROR:
+    case TranslatorTypes.TRANSLATOR_SET_ERROR:
       return {
         ...state,
-        error: action.error,
+        error: action.error ? action.error : "",
       };
-    case TRANSLATOR_FLUSH_TRANSLATION:
+    case TranslatorTypes.TRANSLATOR_FLUSH_TRANSLATION:
       return translatorInitState;
     default:
       return state;

@@ -1,15 +1,15 @@
-import React from 'react';
-import { Route } from 'react-router';
-import Translation from '../containers/translation/Translation';
-import Contact from '../containers/contact/Contact';
+import React from "react";
+import { Route } from "react-router";
+import Translation from "../containers/translation/Translation";
+import Contact from "../containers/contact/Contact";
+import LibraryList from "../components/admin/libraryList/LibraryList";
 
 export default () => {
-  let routes = (
+  return (
     <div className="Main">
       <Route exact path="/" component={Translation} />
-      <Route exact path="/contact" component={Contact} />
+      <Route path="/contact" component={Contact} />
+      <Route path="/admin/library" component={LibraryList} />
     </div>
   );
-
-  return routes;
 };

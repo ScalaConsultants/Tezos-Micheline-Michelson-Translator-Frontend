@@ -1,6 +1,6 @@
-import React from 'react';
-import Translator from '../../components/translator/Translator';
-import Library from '../../components/library/Library';
+import React from "react";
+import Translator from "../../components/translator/Translator";
+import Library from "../../components/library/Library";
 
 const Translation = () => {
   return (

@@ -1,22 +1,22 @@
-import React from 'react';
-import { Formik } from 'formik';
-import FormInput from '../shared/input/FormInput';
-import { formValues } from './formTypes';
-import * as Yup from 'yup';
-import './ContactForm.scss';
+import React from "react";
+import { Formik } from "formik";
+import * as Yup from "yup";
+import FormInput from "../shared/input/FormInput";
+import { formValues } from "./formTypes";
+import "./ContactForm.scss";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string(),
   group: Yup.string(),
   phone: Yup.number()
     .integer("It's a wrong phone number!")
-    .min(8, 'This phone number is too short.'),
+    .min(8, "This phone number is too short."),
   email: Yup.string()
-    .required('Email is required.')
+    .required("Email is required.")
     .email("It's a wrong email address."),
   message: Yup.string()
-    .required('Message is required.')
-    .min(10, 'Message is too short.'),
+    .required("Message is required.")
+    .min(10, "Message is too short."),
 });
 
 const ContactForm = () => {
@@ -31,11 +31,11 @@ const ContactForm = () => {
       <h2>Send message</h2>
       <Formik
         initialValues={{
-          name: '',
-          group: '',
-          phone: '',
-          email: '',
-          message: '',
+          name: "",
+          group: "",
+          phone: "",
+          email: "",
+          message: "",
         }}
         validationSchema={validationSchema}
         onSubmit={submitForm}

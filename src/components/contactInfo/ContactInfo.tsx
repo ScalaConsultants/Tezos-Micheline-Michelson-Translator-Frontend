@@ -1,5 +1,5 @@
-import React from 'react';
-import './ContactInfo.scss';
+import React from "react";
+import "./ContactInfo.scss";
 
 const ContactInfo = () => (
   <div className="contact-info">

@@ -1,27 +1,17 @@
-import { put, call } from 'redux-saga/effects';
-import * as translatorActions from './actions';
-import * as translatorTypes from './types';
+import { put, call } from "redux-saga/effects";
+import * as translatorActions from "./actions";
+import * as translatorTypes from "./types";
 
-export function* doFetchMichelineToMichelsonTranslation(action: translatorTypes.ITranslatorFetchMichelineToMichelson) {
-  const response = yield call(fetchMichelineToMichelsonTranslationRequest, action.payload);
-
-  if (response.status === 200) {
-    yield put(translatorActions.TranslatorSetMichelson(response.status, response.text));
-  } else {
-    yield put(translatorActions.TranslatorSetError(response.text));
-  }
-}
-
-const fetchMichelineToMichelsonTranslationRequest = (payload: string) => {
-  let options = {
-    method: 'POST',
+const fetchMichelsonToMichelineTranslationRequest = (payload: string) => {
+  const options = {
+    method: "POST",
     headers: {
-      'Content-Type': 'text/plain',
+      "Content-Type": "text/plain",
     },
     body: payload,
   };
 
-  return fetch(process.env.REACT_APP_API_URL + '/v1/translate/from/micheline/to/michelson', options)
+  return fetch(`${process.env.REACT_APP_API_URL}/v1/translate/from/michelson/to/micheline`, options)
     .then(async response => {
       return { status: response.status, text: await response.text() };
     })
@@ -45,16 +35,16 @@ export function* doFetchMichelsonToMichelineTranslation(action: translatorTypes.
   }
 }
 
-const fetchMichelsonToMichelineTranslationRequest = (payload: string) => {
-  let options = {
-    method: 'POST',
+const fetchMichelineToMichelsonTranslationRequest = (payload: string) => {
+  const options = {
+    method: "POST",
     headers: {
-      'Content-Type': 'text/plain',
+      "Content-Type": "text/plain",
     },
     body: payload,
   };
 
-  return fetch(process.env.REACT_APP_API_URL + '/v1/translate/from/michelson/to/micheline', options)
+  return fetch(`${process.env.REACT_APP_API_URL}/v1/translate/from/micheline/to/michelson`, options)
     .then(async response => {
       return { status: response.status, text: await response.text() };
     })
@@ -62,3 +52,13 @@ const fetchMichelsonToMichelineTranslationRequest = (payload: string) => {
       throw error;
     });
 };
+
+export function* doFetchMichelineToMichelsonTranslation(action: translatorTypes.ITranslatorFetchMichelineToMichelson) {
+  const response = yield call(fetchMichelineToMichelsonTranslationRequest, action.payload);
+
+  if (response.status === 200) {
+    yield put(translatorActions.TranslatorSetMichelson(response.status, response.text));
+  } else {
+    yield put(translatorActions.TranslatorSetError(response.text));
+  }
+}
