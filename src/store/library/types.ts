@@ -3,9 +3,9 @@ export type LibraryItem = {
   translation: string;
 };
 
-export const LIBRARY_FETCH = 'LIBRARY_FETCH';
-export const LIBRARY_SET = 'LIBRARY_SET';
-export const LIBRARY_FLUSH = 'LIBRARY_FLUSH';
+export const LIBRARY_FETCH = "LIBRARY_FETCH";
+export const LIBRARY_SET = "LIBRARY_SET";
+export const LIBRARY_FLUSH = "LIBRARY_FLUSH";
 
 export type LibraryState = LibraryItem[];
 
@@ -17,7 +17,7 @@ export type LibraryAction = {
 export interface IState {
   pending: boolean;
   library: LibraryState;
-  error?: any;
+  error?: string;
 }
 
 export interface ILibraryFetch {

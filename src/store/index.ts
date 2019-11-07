@@ -1,8 +1,8 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import createSagaMiddleware from 'redux-saga';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { translatorReducer } from './translator/reducer';
-import { libraryReducer } from './library/reducer';
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import createSagaMiddleware from "redux-saga";
+import { composeWithDevTools } from "redux-devtools-extension";
+import { translatorReducer } from "./translator/reducer";
+import { libraryReducer } from "./library/reducer";
 
 const rootReducer = combineReducers({
   translator: translatorReducer,

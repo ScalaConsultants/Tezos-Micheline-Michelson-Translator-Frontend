@@ -1,7 +1,7 @@
-import React from 'react';
-import ContactForm from '../../components/contactForm/ContactForm';
-import ContactInfo from '../../components/contactInfo/ContactInfo';
-import './Contact.scss';
+import React from "react";
+import ContactForm from "../../components/contactForm/ContactForm";
+import ContactInfo from "../../components/contactInfo/ContactInfo";
+import "./Contact.scss";
 
 const Contact = () => {
   return (

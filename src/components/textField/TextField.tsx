@@ -1,6 +1,6 @@
-import React, { ChangeEvent, useEffect, useRef } from 'react';
-import './TextField.scss';
-import DeleteButton from '../shared/deleteButton/DeleteButton';
+import React, { ChangeEvent, useEffect, useRef } from "react";
+import "./TextField.scss";
+import DeleteButton from "../shared/deleteButton/DeleteButton";
 
 type Props = {
   value: string;
@@ -10,16 +10,16 @@ type Props = {
 };
 
 const TextField = ({ value, onValueChange, onClick, clearClick }: Props) => {
-  const textField: any = useRef(null);
-
-  useEffect(() => {
-    AutoGrowTextArea(textField.current);
-  }, [value]);
+  const textFieldRef: any = useRef(null);
 
   const AutoGrowTextArea = (textField: HTMLElement) => {
-    textField.style.height = 'auto';
-    textField.style.height = textField.scrollHeight + 'px';
+    textField.style.height = "auto";
+    textField.style.height = `${textField.scrollHeight}px`;
   };
+
+  useEffect(() => {
+    AutoGrowTextArea(textFieldRef.current);
+  }, [value]);
 
   const onChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     onValueChange(e.target.value);
@@ -30,7 +30,7 @@ const TextField = ({ value, onValueChange, onClick, clearClick }: Props) => {
     <div className="TextField">
       <DeleteButton handleClick={() => clearClick()} />
       <textarea
-        ref={textField}
+        ref={textFieldRef}
         value={value}
         onChange={e => {
           onChange(e);

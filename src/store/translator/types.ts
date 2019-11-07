@@ -1,10 +1,10 @@
-export const TRANSLATOR_SET_MODE = 'TRANSLATOR_SET_MODE';
-export const TRANSLATOR_FETCH_MICHELSON_TO_MICHELINE = 'TRANSLATOR_FETCH_MICHELSON_TO_MICHELINE';
-export const TRANSLATOR_FETCH_MICHELINE_TO_MICHELSON = 'TRANSLATOR_FETCH_MICHELINE_TO_MICHELSON';
-export const TRANSLATOR_SET_MICHELINE = 'TRANSLATOR_SET_MICHELINE';
-export const TRANSLATOR_SET_MICHELSON = 'TRANSLATOR_SET_MICHELSON';
-export const TRANSLATOR_SET_ERROR = 'TRANSLATOR_SE_ERROR';
-export const TRANSLATOR_FLUSH_TRANSLATION = 'TRANSLATOR_FLUSH_TRANSLATION';
+export const TRANSLATOR_SET_MODE = "TRANSLATOR_SET_MODE";
+export const TRANSLATOR_FETCH_MICHELSON_TO_MICHELINE = "TRANSLATOR_FETCH_MICHELSON_TO_MICHELINE";
+export const TRANSLATOR_FETCH_MICHELINE_TO_MICHELSON = "TRANSLATOR_FETCH_MICHELINE_TO_MICHELSON";
+export const TRANSLATOR_SET_MICHELINE = "TRANSLATOR_SET_MICHELINE";
+export const TRANSLATOR_SET_MICHELSON = "TRANSLATOR_SET_MICHELSON";
+export const TRANSLATOR_SET_ERROR = "TRANSLATOR_SE_ERROR";
+export const TRANSLATOR_FLUSH_TRANSLATION = "TRANSLATOR_FLUSH_TRANSLATION";
 
 export type TranslatorState = {
   mode: Modes;
@@ -17,18 +17,18 @@ export type TranslatorAction = {
   type: string;
   mode: Modes;
   translation: string;
-  error?: any;
+  error?: string;
 };
 
 export enum Modes {
-  MICHELINEMICHELSON = 'michelinemichelson',
-  MICHELSONMICHELINE = 'michelsonmicheline',
+  MICHELINEMICHELSON = "michelinemichelson",
+  MICHELSONMICHELINE = "michelsonmicheline",
 }
 
 export interface IState {
   pending: boolean;
   translator: TranslatorState;
-  error?: any;
+  error?: string;
 }
 
 export interface ITranslatorSetMode {

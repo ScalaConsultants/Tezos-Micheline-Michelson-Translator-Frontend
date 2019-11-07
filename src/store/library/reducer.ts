@@ -1,13 +1,15 @@
-import * as libraryTypes from './types';
-import { LibraryAction, LibraryState } from './types';
+import * as LibraryTypes from "./types";
 
-const libraryInitState: LibraryState = [];
+const libraryInitState: LibraryTypes.LibraryState = [];
 
-export const libraryReducer = (state: LibraryState = libraryInitState, action: LibraryAction) => {
+export const libraryReducer = (
+  state: LibraryTypes.LibraryState = libraryInitState,
+  action: LibraryTypes.LibraryAction,
+) => {
   switch (action.type) {
-    case libraryTypes.LIBRARY_SET:
+    case LibraryTypes.LIBRARY_SET:
       return action.payload;
-    case libraryTypes.LIBRARY_FLUSH:
+    case LibraryTypes.LIBRARY_FLUSH:
       return libraryInitState;
     default:
       return state;
