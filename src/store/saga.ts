@@ -4,6 +4,8 @@ import * as libraryActions from "./library/actions";
 import * as libraryTypes from "./library/types";
 import * as translatorSagas from "./translator/sagas";
 import * as librarySagas from "./library/sagas";
+import * as messageTypes from "./message/types";
+import * as messageSagas from "./message/sagas";
 
 export function* startup(): any {
   yield fork(getData);
@@ -24,4 +26,6 @@ export default function* root() {
     translatorSagas.doFetchMichelsonToMichelineTranslation,
   );
   yield takeEvery(libraryTypes.LIBRARY_FETCH, librarySagas.doLibraryFetch);
+  // yield takeEvery(messageTypes.MESSAGE_SET, messageSagas.doMessageSet);
+  yield takeEvery(messageTypes.MESSAGE_SEND, messageSagas.doMessageSend);
 }

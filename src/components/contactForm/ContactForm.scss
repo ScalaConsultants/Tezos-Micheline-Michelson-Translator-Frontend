@@ -3,7 +3,7 @@
         display: flex;
         justify-content: space-between;
 
-        @media screen and (max-width: 500px) { 
+        @media screen and (max-width: 500px) {
             display: block;
         }
     }
@@ -18,7 +18,7 @@
         height: 40px;
         width: 100px;
         text-transform: uppercase;
-        display: block;
+        display: inline-block;
 
         &:hover {
             cursor: pointer;
@@ -51,7 +51,26 @@
         .form-input_validation-marker {
             left: calc(92% + 3px);
 
-            @media screen and (max-width: 500px) { 
+            @media screen and (max-width: 500px) {
+                left: 85%;
+            }
+        }
+    }
+
+    .contact-form_name {
+        width: 100%;
+
+        .form-input_input {
+            width: 45%;
+            @media screen and (max-width: 500px) {
+                width: 95%;
+            }
+        }
+
+        .form-input_validation-marker {
+            left: calc(42% + 3px);
+
+            @media screen and (max-width: 500px) {
                 left: 85%;
             }
         }
