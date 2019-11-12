@@ -11,7 +11,6 @@ const FormTextarea = ({ label, placeholder, name, type, onChange, onBlur, value,
       onChange={onChange}
       onBlur={onBlur}
       value={value}
-      onClick={() => console.log(onBlur)}
     />
     <div className="form-textarea_error">{errors && touched && errors}</div>
   </div>
