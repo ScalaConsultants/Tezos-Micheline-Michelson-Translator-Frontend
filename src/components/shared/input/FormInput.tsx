@@ -3,7 +3,7 @@ import "./FormInput.scss";
 
 const FormInput = ({ label, name, type, onChange, onBlur, value, errors, touched, className }: any) => (
   <div className={`form-input ${className}`}>
-    <p className="form-input_label" onClick={() => console.log(touched)}>
+    <p className="form-input_label">
       {label}
     </p>
     <input

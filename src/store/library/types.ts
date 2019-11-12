@@ -1,3 +1,5 @@
+import { authState } from '../authentication/types';
+
 export type LibraryItem = {
   source: string;
   translation: string;
@@ -17,6 +19,7 @@ export type LibraryAction = {
 export interface IState {
   pending: boolean;
   library: LibraryState;
+  auth: authState;
   error?: string;
 }
 
