@@ -8,18 +8,18 @@
 
         .form-code-display {
             width: 45%;
-            
+
             .form-code-display_value {
                 max-height: 200px;
             }
         }
 
-        @media screen and (max-width: 500px) { 
-        display: block;
+        @media screen and (max-width: 500px) {
+            display: block;
 
-        .form-code-display { 
-            width: 100%;
-        }
+            .form-code-display {
+                width: 100%;
+            }
         }
     }
 
@@ -34,7 +34,7 @@
             width: 45%;
         }
 
-        @media screen and (max-width: 500px) {  
+        @media screen and (max-width: 500px) {
             display: block;
 
             .form-input {

@@ -1,7 +1,6 @@
-export interface formValues {
+export interface FormValues {
   name: string;
-  group: string;
   phone: string;
   email: string;
-  message: string;
+  content: string;
 }

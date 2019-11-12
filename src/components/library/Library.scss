@@ -66,23 +66,4 @@
       }
     }
   }
-
-  &__translator-area {
-    background: linear-gradient(to right, #ffffff 50%, #f5f5f5 50%);
-    text-align: center;
-    display: flex;
-    flex-wrap: wrap;
-
-    @media screen and (max-width: 500px) {
-      background: none;
-    }
-  }
-
-  &__error-area {
-    font-weight: bold;
-    color: #FF0000;
-    box-sizing: border-box;
-    padding: 20px;
-    word-wrap: break-word;
-  }
 }

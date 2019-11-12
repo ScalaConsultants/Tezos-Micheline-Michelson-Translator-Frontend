@@ -3,11 +3,13 @@ import createSagaMiddleware from "redux-saga";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { translatorReducer } from "./translator/reducer";
 import { libraryReducer } from "./library/reducer";
+import { messageReducer } from "./message/reducer";
 import { authenticationReducer } from './authentication/reducer';
 
 const rootReducer = combineReducers({
   translator: translatorReducer,
   library: libraryReducer,
+  message: messageReducer,
   auth: authenticationReducer,
 });
 

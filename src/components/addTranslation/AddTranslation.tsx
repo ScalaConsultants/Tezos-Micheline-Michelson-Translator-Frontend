@@ -1,10 +1,10 @@
 import React from "react";
-import FormTextarea from "../shared/textarea/FormTextarea";
-import FormInput from "../shared/input/FormInput";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { IState } from "../../store/translator/types";
 import { useMappedState } from "redux-react-hook";
+import FormTextarea from "../shared/textarea/FormTextarea";
+import FormInput from "../shared/input/FormInput";
+import { IState } from "../../store/translator/types";
 import FormCodeDisplay from "../shared/formCodeDisplay/FormCodeDisplay";
 import FormButton from "../shared/formButton/FormButton";
 import "./AddTranslation.scss";
@@ -56,9 +56,9 @@ const AddTranslation = ({ setShowModal }: any) => {
                 name="author"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.name}
-                errors={errors.name}
-                touched={touched.name}
+                value={values.author}
+                errors={errors.author}
+                touched={touched.author}
               />
             </div>
             <FormTextarea

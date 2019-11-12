@@ -5,6 +5,8 @@ import * as libraryTypes from "./library/types";
 import * as authActions from "./authentication/actions";
 import * as translatorSagas from "./translator/sagas";
 import * as librarySagas from "./library/sagas";
+import * as messageTypes from "./message/types";
+import * as messageSagas from "./message/sagas";
 import { getLoginToken } from '../components/login/sessionHandler';
 
 export function* startup(): any {
@@ -34,4 +36,6 @@ export default function* root() {
     translatorSagas.doFetchMichelsonToMichelineTranslation,
   );
   yield takeEvery(libraryTypes.LIBRARY_FETCH, librarySagas.doLibraryFetch);
+  // yield takeEvery(messageTypes.MESSAGE_SET, messageSagas.doMessageSet);
+  yield takeEvery(messageTypes.MESSAGE_SEND, messageSagas.doMessageSend);
 }

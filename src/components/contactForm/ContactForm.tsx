@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useEffect} from "react";
+import { useDispatch, useMappedState } from "redux-react-hook";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import FormInput from "../shared/input/FormInput";
-import { formValues } from "./formTypes";
+import { FormValues } from "./formTypes";
 import "./ContactForm.scss";
+import * as MessageTypes from "../../store/message/types";
+import Alert from "../shared/alert/Alert";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string(),
@@ -14,16 +17,47 @@ const validationSchema = Yup.object().shape({
   email: Yup.string()
     .required("Email is required.")
     .email("It's a wrong email address."),
-  message: Yup.string()
+  content: Yup.string()
     .required("Message is required.")
     .min(10, "Message is too short."),
 });
 
+const mapState = (state: MessageTypes.IMessageGlobalState) => ({
+  message: state.message,
+});
+
 const ContactForm = () => {
-  const submitForm = (values: formValues, { setSubmitting }: any) => {
+  const dispatch = useDispatch();
+  const { message } = useMappedState(mapState);
+
+  const submitForm = (values: FormValues, { setSubmitting }: any) => {
     setSubmitting(true);
-    // TODO connect with API
+
+    dispatch({
+      type: MessageTypes.MESSAGE_SET,
+      message: values,
+    });
+
+    dispatch({
+      type: MessageTypes.MESSAGE_SEND,
+      message: values,
+    });
+
     setSubmitting(false);
+  };
+
+  useEffect(() => {
+    dispatch({
+      type: MessageTypes.MESSAGE_SET_ERROR,
+      isError: null,
+    });
+  }, [dispatch]);
+
+  const saveForm = (values: FormValues) => {
+    dispatch({
+      type: MessageTypes.MESSAGE_SET,
+      message: values,
+    });
   };
 
   return (
@@ -31,14 +65,14 @@ const ContactForm = () => {
       <h2>Send message</h2>
       <Formik
         initialValues={{
-          name: "",
-          group: "",
-          phone: "",
-          email: "",
-          message: "",
+          name: message.name,
+          phone: message.phone,
+          email: message.email,
+          content: message.content,
         }}
         validationSchema={validationSchema}
         onSubmit={submitForm}
+        validate={saveForm}
       >
         {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
           <form onSubmit={handleSubmit} noValidate>
@@ -52,16 +86,7 @@ const ContactForm = () => {
                 value={values.name}
                 errors={errors.name}
                 touched={touched.name}
-              />
-              <FormInput
-                label="Group"
-                type="text"
-                name="group"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.group}
-                errors={errors.group}
-                touched={touched.group}
+                className="contact-form_name"
               />
             </div>
             <div className="contact-form_line">
@@ -90,18 +115,19 @@ const ContactForm = () => {
               <FormInput
                 label="How we can help you?"
                 type="text"
-                name="message"
+                name="content"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.message}
-                errors={errors.message}
-                touched={touched.message}
+                value={values.content}
+                errors={errors.content}
+                touched={touched.content}
                 className="contact-form_message"
               />
             </div>
             <button type="submit" disabled={isSubmitting} className="contact-form_button">
               Submit
             </button>
+            {message.isError === false ? <Alert type="success" message="Message sent." /> : null}
           </form>
         )}
       </Formik>
