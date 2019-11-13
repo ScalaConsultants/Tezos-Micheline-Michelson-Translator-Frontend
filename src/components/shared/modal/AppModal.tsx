@@ -1,7 +1,8 @@
 import React from "react";
 import "./AppModal.scss";
+import { AppModalProps } from './types';
 
-const AppModal = ({ showModal, setShowModal, children }: any) =>
+const AppModal = ({ showModal, setShowModal, children }: AppModalProps) =>
   showModal ? (
     <div className="app-modal" onClick={() => setShowModal(false)}>
       <div className="app-modal_content">

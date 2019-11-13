@@ -8,8 +8,9 @@ import { useMappedState, useDispatch } from "redux-react-hook";
 import * as authTypes from '../../store/authentication/types';
 import './Login.scss';
 import { Redirect } from 'react-router-dom';
+import { IState, FormValues } from './types';
 
-const mapState = (state: any) => ({
+const mapState = (state: IState) => ({
     auth: state.auth,
 });
 
@@ -18,7 +19,7 @@ const validationSchema = Yup.object().shape({
     password: Yup.string(),
 });
 
-const setLoggedIn = (dispatch: any, value: boolean) => {
+const setLoggedIn = (dispatch: Function, value: boolean) => {
     dispatch({
         type: authTypes.AUTHENTICATION_SET_AUTH,
         payload: value,
@@ -29,7 +30,7 @@ const Login = () => {
     const { auth } = useMappedState(mapState);
     const dispatch = useDispatch();
 
-    const submitForm = (values: any) => {
+    const submitForm = (values: FormValues) => {
         //if call to backend is succesfull, we should get a token to store in the localStorage
         const token = '';
         setLoginToken(token);
