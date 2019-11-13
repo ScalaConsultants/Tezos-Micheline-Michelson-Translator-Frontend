@@ -1,7 +1,8 @@
 import React from "react";
 import "./FormInput.scss";
+import { FormInputProps } from "./types";
 
-const FormInput = ({ label, name, type, onChange, onBlur, value, errors, touched, className }: any) => (
+const FormInput = ({ label, name, type, onChange, onBlur, value, errors, touched, className }: FormInputProps) => (
   <div className={`form-input ${className}`}>
     <p className="form-input_label">
       {label}
