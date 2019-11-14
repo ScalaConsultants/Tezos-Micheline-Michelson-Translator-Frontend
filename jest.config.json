@@ -1,0 +1,9 @@
+{
+    "testRegex": "((\\.|/*.)(spec))\\.js?$",
+    "setupFilesAfterEnv": [
+        "<rootDir>/jest.setup.js"
+    ],
+    "transformIgnorePatterns": [
+        "<rootDir>/node_modules/"
+    ]
+}

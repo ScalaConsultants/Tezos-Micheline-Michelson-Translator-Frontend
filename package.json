@@ -42,7 +42,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest --config ./jest.config.json",
     "eject": "react-scripts eject",
     "format": "prettier --write \"**/*.+(ts|tsx|json|css|md)\"",
     "eslint": "eslint '**/*s.ts' '**/*.tsx' --fix"
@@ -64,7 +64,10 @@
   },
   "devDependencies": {
     "@types/yup": "^0.26.24",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
     "eslint": "^6.6.0",
-    "eslint-config-airbnb": "^17.1.1"
+    "eslint-config-airbnb": "^17.1.1",
+    "jest": "^24.9.0"
   }
 }
