@@ -3,7 +3,7 @@ import { useDispatch, useMappedState } from "redux-react-hook";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import FormInput from "../shared/input/FormInput";
-import { FormValues } from "./formTypes";
+import { FormValues, FormikSubmitting } from "./types";
 import "./ContactForm.scss";
 import * as MessageTypes from "../../store/message/types";
 import Alert from "../shared/alert/Alert";
@@ -30,7 +30,7 @@ const ContactForm = () => {
   const dispatch = useDispatch();
   const { message } = useMappedState(mapState);
 
-  const submitForm = (values: FormValues, { setSubmitting }: any) => {
+  const submitForm = (values: FormValues, { setSubmitting }: FormikSubmitting) => {
     setSubmitting(true);
 
     dispatch({

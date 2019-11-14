@@ -7,6 +7,7 @@ import FormInput from "../shared/input/FormInput";
 import { IState } from "../../store/translator/types";
 import FormCodeDisplay from "../shared/formCodeDisplay/FormCodeDisplay";
 import FormButton from "../shared/formButton/FormButton";
+import { AddTranslationState, FormValues } from "./types";
 import "./AddTranslation.scss";
 
 const mapState = (state: IState) => ({
@@ -19,10 +20,10 @@ const validationSchema = Yup.object().shape({
   description: Yup.string(),
 });
 
-const AddTranslation = ({ setShowModal }: any) => {
+const AddTranslation = ({ setShowModal }: AddTranslationState) => {
   const { translator } = useMappedState(mapState);
 
-  const submitForm = (values: any) => {
+  const submitForm = (values: FormValues) => {
     setShowModal(false);
   };
 

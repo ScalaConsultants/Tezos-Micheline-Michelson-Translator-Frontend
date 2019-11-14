@@ -1,7 +1,18 @@
 import React from "react";
 import "./FormTextarea.scss";
+import { FormInputProps } from "./types";
 
-const FormTextarea = ({ label, placeholder, name, type, onChange, onBlur, value, errors, touched, className }: any) => (
+const FormTextarea = ({
+  label,
+  placeholder,
+  name,
+  onChange,
+  onBlur,
+  value,
+  errors,
+  touched,
+  className,
+}: FormInputProps) => (
   <div className={`form-textarea ${className}`}>
     <div className="form-textarea_label">{label}</div>
     <textarea
