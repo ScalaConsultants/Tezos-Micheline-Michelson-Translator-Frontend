@@ -1,5 +1,7 @@
+@import "../../scss/vars";
+
 .AppBar {
-    background-color: #C91C00;
+    background-color: $background-color-red;
     height: 40px;
     position: relative;
     padding: 10px;
@@ -20,11 +22,11 @@
         text-align: center;
         letter-spacing: 0.15px;
         text-transform: uppercase;
-        color: #FFFFFF;
+        color: $text-white;
 
         &:hover {
-            background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
-            box-shadow: 0px 4px 20px rgba(201, 0, 0, 0.14);
+            background: $app-bar-button-background-color;
+            box-shadow: $app-bar-button-box-shadow;
             border-radius: 4px;
         }
     }

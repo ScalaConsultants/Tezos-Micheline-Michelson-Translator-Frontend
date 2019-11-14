@@ -1,14 +1,16 @@
+@import "../../../scss/vars";
+
 .Alert {
   margin: 10px;
-  color: #1b9309;
+  color: $green;
   font-weight: bold;
 
   &__success {
-    color: #1b9309;
+    color: $green;
   }
 
   &__error {
-    color: #C91C01;
+    color: $green;
   }
 
 }

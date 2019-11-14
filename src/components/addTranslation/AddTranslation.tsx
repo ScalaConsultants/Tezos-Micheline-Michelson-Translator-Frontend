@@ -27,7 +27,7 @@ const AddTranslation = ({ setShowModal }: any) => {
   };
 
   return (
-    <div className="add-translation">
+    <div className="AddTranslation">
       <Formik
         initialValues={{
           name: "",

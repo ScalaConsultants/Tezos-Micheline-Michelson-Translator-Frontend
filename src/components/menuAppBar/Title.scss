@@ -1,8 +1,10 @@
+@import "../../scss/vars";
+
 .Title {
     position: absolute;
     top: 5px;
     left: 20vw;
-    color: #ffffff;
+    color: $text-white;
     &__l1 {
         font-family: Roboto;
         font-style: normal;
@@ -19,7 +21,7 @@
         font-size: 14.8px;
         line-height: 17px;
         letter-spacing: 0.15px;
-        color: #FF6868;
+        color: $text-red2;
     }
 
     &__l3 {
@@ -29,7 +31,7 @@
         font-size: 8.8px;
         line-height: 18px;
         letter-spacing: 0.15px;
-        color: #FF6868;
+        color: $text-red2;
     }
 
     @media screen and (max-width: 500px) {

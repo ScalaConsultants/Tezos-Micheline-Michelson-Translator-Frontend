@@ -1,23 +1,25 @@
+@import "../../../scss/vars";
+
 .form-textarea {
 
    .form-textarea_input {
        resize: none;
        width: calc(100% - 30px);
-       border: 1px solid #787878;
+       border: 1px solid $border-grey3;
        border-radius: 3px;
        min-height: 50px;
        padding: 15px;
        font-size: 16px;
        line-height: 24px;
-       color: rgba(0, 0, 0, 0.87);
+       color: $textarea-text;
 
        &:focus {
-           border-color: #C91C00;
+           border-color: $border-red;
        }
    }
 
    .form-textarea_label {
-    color: #C91C00;
+    color: $text-red;
     position: relative;
     background: white;
     width: 100px;

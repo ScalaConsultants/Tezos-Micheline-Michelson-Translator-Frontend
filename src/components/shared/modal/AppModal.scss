@@ -1,9 +1,11 @@
+@import "../../../scss/vars";
+
 .app-modal {
     position: fixed;
     display: table;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.6);
+    background: $modal-background;
     left: 0;
     top: 0;
 
@@ -13,7 +15,7 @@
 
         .app-modal_children {
             background: white;
-            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.12), 0px 0px 2px rgba(0, 0, 0, 0.14);
+            box-shadow: $modal-box-shadow;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;

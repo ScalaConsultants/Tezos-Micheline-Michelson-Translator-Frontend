@@ -1,3 +1,5 @@
+@import "../../../scss/vars";
+
 .DeleteButton {
     display: inline-block;
     width: 100%;
@@ -5,7 +7,7 @@
     vertical-align: top;
     resize: none;
     box-sizing: border-box;
-    color: #a0a0a0;
+    color: $text-grey1;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;

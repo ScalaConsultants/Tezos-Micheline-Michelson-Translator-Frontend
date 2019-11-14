@@ -1,4 +1,4 @@
-import { authState } from '../authentication/types';
+import { authState } from "../authentication/types";
 
 export type LibraryItem = {
   source: string;

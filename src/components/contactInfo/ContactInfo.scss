@@ -1,10 +1,12 @@
-.contact-info {
+@import "../../scss/vars";
+
+.ContactInfo {
     width: 100%;
     .contact-info_container {
         width: 100%;
         margin-left: auto;
         margin-right: auto;
-        box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.14);
+        box-shadow: $box-shadow;
 
     .contact-info_img {
         width: 100%;

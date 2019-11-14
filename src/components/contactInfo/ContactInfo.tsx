@@ -2,7 +2,7 @@ import React from "react";
 import "./ContactInfo.scss";
 
 const ContactInfo = () => (
-  <div className="contact-info">
+  <div className="ContactInfo">
     <h2>Contact info</h2>
     <div className="contact-info_container">
       <img className="contact-info_img" alt="" />

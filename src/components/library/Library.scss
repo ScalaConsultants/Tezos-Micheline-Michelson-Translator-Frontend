@@ -1,7 +1,9 @@
+@import "../../scss/vars";
+
 .Library {
   &__header {
-    color: #ffffff;
-    background: #787878;
+    color: $text-white;
+    background: $background-color-grey-3;
     border-radius: 3px 3px 0 0;
     padding: 10px;
     height: 30px;
@@ -21,7 +23,7 @@
     button {
       background: transparent;
       border: 0;
-      border-bottom: 2px solid #787878;
+      border-bottom: 2px solid $border-grey3;
       padding: 11px;
       font-family: Roboto;
       font-style: normal;
@@ -38,7 +40,7 @@
 
       &:hover {
         cursor: pointer;
-        border-bottom: 2px solid #ffffff;
+        border-bottom: 2px solid $border-white;
       }
     }
 
@@ -47,7 +49,7 @@
     }
 
     &-selected {
-        border-bottom: 2px solid #ff0000 !important;
+        border-bottom: 2px solid $border-red !important;
     }
 
     &__translate-button {

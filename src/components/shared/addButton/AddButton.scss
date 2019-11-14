@@ -1,10 +1,12 @@
+@import "../../../scss/vars";
+
 .AddButton {
     display: inline-flex;
     align-items: center;
     vertical-align: middle;
     resize: none;
     box-sizing: border-box;
-    color: #a0a0a0;
+    color: $text-grey1;
 
     img {
         width: 40px;

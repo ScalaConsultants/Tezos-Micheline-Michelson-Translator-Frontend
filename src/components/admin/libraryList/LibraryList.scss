@@ -1,6 +1,8 @@
+@import "../../../scss/vars";
+
 .LibraryList {
   &__header {
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.12), 0px 0px 2px rgba(0, 0, 0, 0.14);
+    box-shadow: $box-shadow;
     border-radius: 3px;
     padding: 10px;
     height: 30px;
@@ -28,7 +30,7 @@
     button {
       background: transparent;
       border: 0;
-      border-bottom: 2px solid #787878;
+      border-bottom: 2px solid $border-grey3;
       padding: 11px;
       font-family: Roboto;
       font-style: normal;
@@ -40,12 +42,12 @@
       text-align: center;
       letter-spacing: 0.15px;
       text-transform: uppercase;
-      color: #FFFFFF;
+      color: $text-white;
       outline: 0;
 
       &:hover {
         cursor: pointer;
-        border-bottom: 2px solid #ffffff;
+        border-bottom: 2px solid $border-white;
       }
     }
 
@@ -54,7 +56,7 @@
     }
 
     &-selected {
-        border-bottom: 2px solid #ff0000 !important;
+        border-bottom: 2px solid $border-red !important;
     }
 
     &__translate-button {

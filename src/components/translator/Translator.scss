@@ -1,11 +1,13 @@
+@import "../../scss/vars";
+
 .Translator {
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.12), 0px 0px 2px rgba(0, 0, 0, 0.14);
+  box-shadow: $box-shadow;
   border-radius: 3px;
   height: auto;
 
   &__header {
-    color: #ffffff;
-    background: #787878;
+    color: $text-white;
+    background: $background-color-grey-3;
     border-radius: 3px 3px 0 0;
     padding: 10px;
     height: 30px;
@@ -25,7 +27,7 @@
     button {
       background: transparent;
       border: 0;
-      border-bottom: 2px solid #787878;
+      border-bottom: 2px solid $border-grey3;
       padding: 11px;
       font-family: Roboto;
       font-style: normal;
@@ -37,12 +39,12 @@
       text-align: center;
       letter-spacing: 0.15px;
       text-transform: uppercase;
-      color: #FFFFFF;
+      color: $text-white;
       outline: 0;
 
       &:hover {
         cursor: pointer;
-        border-bottom: 2px solid #ffffff;
+        border-bottom: 2px solid $border-white;
       }
     }
 
@@ -51,7 +53,7 @@
     }
 
     &-selected {
-        border-bottom: 2px solid #ff0000 !important;
+        border-bottom: 2px solid $border-red !important;
     }
 
     &__translate-button {
@@ -72,7 +74,7 @@
   }
 
   &__translator-area {
-    background: linear-gradient(to right, #ffffff 50%, #f5f5f5 50%);
+    background: linear-gradient(to right, $white 50%, $grey-light 50%);
     text-align: center;
     display: flex;
     flex-wrap: wrap;
@@ -84,7 +86,7 @@
 
   &__error-area {
     font-weight: bold;
-    color: #FF0000;
+    color: $text-red1;
     box-sizing: border-box;
     padding: 20px;
     word-wrap: break-word;

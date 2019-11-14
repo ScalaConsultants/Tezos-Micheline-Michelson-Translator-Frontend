@@ -1,3 +1,5 @@
+@import "scss/vars";
+
 .Main {
   width: 90%;
   margin-left: auto;
@@ -9,15 +11,15 @@
  min-width: 350px;
 }
 
-.App-header {
-  background-color: #282c34;
+.App__header {
+  background-color: $background-color;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: $text-white;
 }
 
 .Textfield {
