@@ -5,7 +5,8 @@
   "dependencies": {
     "@material-ui/core": "^4.3.0",
     "@material-ui/icons": "^4.2.1",
-    "@types/jest": "^24.0.15",
+    "@types/enzyme": "^3.10.3",
+    "@types/jest": "^24.0.23",
     "@types/material-ui": "^0.21.6",
     "@types/node": "^12.6.8",
     "@types/react": "^16.8.23",
@@ -15,6 +16,8 @@
     "@typescript-eslint/parser": "^2.6.1",
     "babel-eslint": "^10.0.3",
     "chart.js": "^2.8.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
     "eslint-config-prettier": "^6.5.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
@@ -42,7 +45,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest --config ./jest.config.json",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier --write \"**/*.+(ts|tsx|json|css|md)\"",
     "eslint": "eslint '**/*s.ts' '**/*.tsx' --fix"
@@ -64,10 +67,10 @@
   },
   "devDependencies": {
     "@types/yup": "^0.26.24",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme-to-json": "^3.4.3",
     "eslint": "^6.6.0",
     "eslint-config-airbnb": "^17.1.1",
-    "jest": "^24.9.0"
+    "eslint-plugin-jest": "^23.0.3",
+    "ts-jest": "^24.1.0"
   }
 }

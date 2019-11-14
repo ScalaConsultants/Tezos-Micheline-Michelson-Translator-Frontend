@@ -15,7 +15,8 @@
     "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended",
     "airbnb",
-    "prettier"
+    "prettier",
+    "plugin:jest/recommended"
   ],
   "rules": {
     "indent": ["error", 2, {"SwitchCase": 1}],
