@@ -1,4 +1,4 @@
-export type FormInputProps = {
+export type FormTextareaProps = {
     label: string,
     name: string,
     placeholder?: string,

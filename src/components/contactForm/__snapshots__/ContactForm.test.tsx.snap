@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactForm matches snapshot 1`] = `
+"<ContactForm setShowModal={[Function: setShowModal]}>
+  <div className=\\"contact-form\\">
+    <h2>
+      Send message
+    </h2>
+    <Formik initialValues={{...}} validationSchema={{...}} onSubmit={[Function: submitForm]} validate={[Function: saveForm]} validateOnChange={true} validateOnBlur={true} isInitialValid={false} enableReinitialize={false}>
+      <form onSubmit={[Function]} noValidate={true}>
+        <div className=\\"contact-form_line\\">
+          <FormInput label=\\"Name\\" type=\\"text\\" name=\\"name\\" onChange={[Function]} onBlur={[Function]} value=\\"\\" errors={[undefined]} touched={[undefined]} className=\\"contact-form_name\\">
+            <div className=\\"form-input contact-form_name\\">
+              <p className=\\"form-input_label\\">
+                Name
+              </p>
+              <input name=\\"name\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Name\\" value=\\"\\" className=\\"form-input_input\\" />
+              <div className=\\"form-input_validation-marker undefined\\" />
+              <div className=\\"form-input_error\\" />
+            </div>
+          </FormInput>
+        </div>
+        <div className=\\"contact-form_line\\">
+          <FormInput label=\\"Phone\\" type=\\"text\\" name=\\"phone\\" onChange={[Function]} onBlur={[Function]} value=\\"\\" errors={[undefined]} touched={[undefined]}>
+            <div className=\\"form-input undefined\\">
+              <p className=\\"form-input_label\\">
+                Phone
+              </p>
+              <input name=\\"phone\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Phone\\" value=\\"\\" className=\\"form-input_input\\" />
+              <div className=\\"form-input_validation-marker undefined\\" />
+              <div className=\\"form-input_error\\" />
+            </div>
+          </FormInput>
+          <FormInput label=\\"Email\\" type=\\"email\\" name=\\"email\\" onChange={[Function]} onBlur={[Function]} value=\\"\\" errors={[undefined]} touched={[undefined]}>
+            <div className=\\"form-input undefined\\">
+              <p className=\\"form-input_label\\">
+                Email
+              </p>
+              <input name=\\"email\\" type=\\"email\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Email\\" value=\\"\\" className=\\"form-input_input\\" />
+              <div className=\\"form-input_validation-marker undefined\\" />
+              <div className=\\"form-input_error\\" />
+            </div>
+          </FormInput>
+        </div>
+        <div className=\\"contact-form_line\\">
+          <FormInput label=\\"How we can help you?\\" type=\\"text\\" name=\\"content\\" onChange={[Function]} onBlur={[Function]} value=\\"\\" errors={[undefined]} touched={[undefined]} className=\\"contact-form_message\\">
+            <div className=\\"form-input contact-form_message\\">
+              <p className=\\"form-input_label\\">
+                How we can help you?
+              </p>
+              <input name=\\"content\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"How we can help you?\\" value=\\"\\" className=\\"form-input_input\\" />
+              <div className=\\"form-input_validation-marker undefined\\" />
+              <div className=\\"form-input_error\\" />
+            </div>
+          </FormInput>
+        </div>
+        <button type=\\"submit\\" disabled={false} className=\\"contact-form_button\\">
+          Submit
+        </button>
+      </form>
+    </Formik>
+  </div>
+</ContactForm>"
+`;

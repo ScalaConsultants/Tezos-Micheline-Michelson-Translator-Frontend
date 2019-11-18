@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddTranslation matches snapshot 1`] = `
+"<AddTranslation setShowModal={[Function: setShowModal]}>
+  <div className=\\"add-translation\\">
+    <Formik initialValues={{...}} validationSchema={{...}} onSubmit={[Function: submitForm]} validateOnChange={true} validateOnBlur={true} isInitialValid={false} enableReinitialize={false}>
+      <form onSubmit={[Function]} noValidate={true}>
+        <div className=\\"add-translation_fields-line\\">
+          <FormInput label=\\"Name\\" type=\\"text\\" name=\\"name\\" onChange={[Function]} onBlur={[Function]} value=\\"\\" errors={[undefined]} touched={[undefined]}>
+            <div className=\\"form-input undefined\\">
+              <p className=\\"form-input_label\\">
+                Name
+              </p>
+              <input name=\\"name\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Name\\" value=\\"\\" className=\\"form-input_input\\" />
+              <div className=\\"form-input_validation-marker undefined\\" />
+              <div className=\\"form-input_error\\" />
+            </div>
+          </FormInput>
+          <FormInput label=\\"Author\\" type=\\"text\\" name=\\"author\\" onChange={[Function]} onBlur={[Function]} value=\\"\\" errors={[undefined]} touched={[undefined]}>
+            <div className=\\"form-input undefined\\">
+              <p className=\\"form-input_label\\">
+                Author
+              </p>
+              <input name=\\"author\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Author\\" value=\\"\\" className=\\"form-input_input\\" />
+              <div className=\\"form-input_validation-marker undefined\\" />
+              <div className=\\"form-input_error\\" />
+            </div>
+          </FormInput>
+        </div>
+        <FormTextarea label=\\"Description\\" placeholder=\\"Fill in the description.\\" name=\\"description\\" onChange={[Function]} onBlur={[Function]} value=\\"\\" errors={[undefined]} touched={[undefined]}>
+          <div className=\\"form-textarea undefined\\">
+            <div className=\\"form-textarea_label\\">
+              Description
+            </div>
+            <textarea className=\\"form-textarea_input\\" placeholder=\\"Fill in the description.\\" name=\\"description\\" onChange={[Function]} onBlur={[Function]} value=\\"\\" />
+            <div className=\\"form-textarea_error\\" />
+          </div>
+        </FormTextarea>
+        <div className=\\"add-translation_code-displays\\">
+          <FormCodeDisplay value=\\"\\" type=\\"Micheline\\">
+            <div className=\\"form-code-display\\">
+              <div className=\\"form-code-display_type\\">
+                Micheline
+              </div>
+              <div className=\\"form-code-display_value\\">
+                <pre />
+              </div>
+            </div>
+          </FormCodeDisplay>
+          <FormCodeDisplay value=\\"\\" type=\\"Michelson\\">
+            <div className=\\"form-code-display\\">
+              <div className=\\"form-code-display_type\\">
+                Michelson
+              </div>
+              <div className=\\"form-code-display_value\\">
+                <pre />
+              </div>
+            </div>
+          </FormCodeDisplay>
+        </div>
+        <div className=\\"add-translation_buttons\\">
+          <FormButton label=\\"cancel\\" type=\\"secondary\\" onClick={[Function: onClick]}>
+            <button className=\\"form-button form-button_secondary undefined\\" onClick={[Function: onClick]} disabled={[undefined]}>
+              cancel
+            </button>
+          </FormButton>
+          <FormButton label=\\"save\\" type=\\"submit\\" onClick={[Function: onClick]} disabled={false}>
+            <button className=\\"form-button form-button_submit undefined\\" onClick={[Function: onClick]} disabled={false}>
+              save
+            </button>
+          </FormButton>
+        </div>
+      </form>
+    </Formik>
+  </div>
+</AddTranslation>"
+`;

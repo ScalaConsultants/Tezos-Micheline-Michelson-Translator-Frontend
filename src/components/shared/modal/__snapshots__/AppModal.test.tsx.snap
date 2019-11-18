@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppModal matches snapshot 1`] = `
+"<AppModal showModal={true} setShowModal={[Function: setShowModal]}>
+  <div className=\\"app-modal\\" onClick={[Function: onClick]}>
+    <div className=\\"app-modal_content\\">
+      <div className=\\"app-modal_children\\" onClick={[Function: onClick]}>
+        <div>
+          children
+        </div>
+      </div>
+    </div>
+  </div>
+</AppModal>"
+`;

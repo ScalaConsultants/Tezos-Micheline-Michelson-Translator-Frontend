@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormInput matches snapshot 1`] = `
+"<FormInput label=\\"label\\" name=\\"name\\" type=\\"text\\" onChange={[Function: onChange]} onBlur={[Function: onBlur]} value=\\"value\\" errors={[undefined]} touched={false} className=\\"\\">
+  <div className=\\"form-input \\">
+    <p className=\\"form-input_label\\">
+      label
+    </p>
+    <input name=\\"name\\" type=\\"text\\" onChange={[Function: onChange]} onBlur={[Function: onBlur]} placeholder=\\"label\\" value=\\"value\\" className=\\"form-input_input\\" />
+    <div className=\\"form-input_validation-marker false\\" />
+    <div className=\\"form-input_error\\" />
+  </div>
+</FormInput>"
+`;

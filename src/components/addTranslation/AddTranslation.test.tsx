@@ -9,10 +9,18 @@ import rootSaga from "../../store/saga";
 const store = configureStore();
 store.runSaga(rootSaga);
 
-it("App -> renders without crashing", () => {
-  const wrapper = mount(
-    <StoreContext.Provider value={store}>
-      <AddTranslation setShowModal={() => {}} />
-    </StoreContext.Provider>,
-  );
+describe("AddTranslation", () => {
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = mount(
+      <StoreContext.Provider value={store}>
+        <AddTranslation setShowModal={() => { }} />
+      </StoreContext.Provider>,
+    );
+  });
+
+  it('matches snapshot', () => {
+    expect(wrapper.debug()).toMatchSnapshot();
+  })
 });

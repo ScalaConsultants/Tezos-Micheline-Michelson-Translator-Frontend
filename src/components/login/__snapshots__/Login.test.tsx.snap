@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login matches snapshot 1`] = `
+"<Login>
+  <div className=\\"login\\">
+    <div className=\\"login-content\\">
+      <Formik initialValues={{...}} validationSchema={{...}} onSubmit={[Function: submitForm]} validateOnChange={true} validateOnBlur={true} isInitialValid={false} enableReinitialize={false}>
+        <form onSubmit={[Function]} noValidate={true}>
+          <FormInput label=\\"Login\\" type=\\"text\\" name=\\"login\\" onChange={[Function]} onBlur={[Function]} value=\\"\\" errors={[undefined]} touched={[undefined]}>
+            <div className=\\"form-input undefined\\">
+              <p className=\\"form-input_label\\">
+                Login
+              </p>
+              <input name=\\"login\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Login\\" value=\\"\\" className=\\"form-input_input\\" />
+              <div className=\\"form-input_validation-marker undefined\\" />
+              <div className=\\"form-input_error\\" />
+            </div>
+          </FormInput>
+          <FormInput label=\\"Password\\" type=\\"password\\" name=\\"password\\" onChange={[Function]} onBlur={[Function]} value=\\"\\" errors={[undefined]} touched={[undefined]}>
+            <div className=\\"form-input undefined\\">
+              <p className=\\"form-input_label\\">
+                Password
+              </p>
+              <input name=\\"password\\" type=\\"password\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Password\\" value=\\"\\" className=\\"form-input_input\\" />
+              <div className=\\"form-input_validation-marker undefined\\" />
+              <div className=\\"form-input_error\\" />
+            </div>
+          </FormInput>
+          <FormButton type=\\"submit\\" label=\\"Log in\\" onClick={[Function: onClick]}>
+            <button className=\\"form-button form-button_submit undefined\\" onClick={[Function: onClick]} disabled={[undefined]}>
+              Log in
+            </button>
+          </FormButton>
+        </form>
+      </Formik>
+    </div>
+  </div>
+</Login>"
+`;
