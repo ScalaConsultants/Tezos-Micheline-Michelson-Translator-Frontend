@@ -115,12 +115,12 @@ describe("Library", () => {
   it("selecting Michelson source is working", () => {
     const item = wrapper.find(LibraryItem);
 
-    const itemMicheline = item
+    const itemMichelson = item
       .at(0)
       .find(".LibraryItem__wrapper2")
       .at(1);
 
-    itemMicheline.simulate("click");
+    itemMichelson.simulate("click");
     expect(store.dispatch).toHaveBeenCalledTimes(3);
     expect(store.dispatch).toHaveBeenCalledWith(
       TranslatorActions.TranslatorSetMode(TranslatorTypes.Modes.MICHELSONMICHELINE),
