@@ -1,5 +1,5 @@
 import React from "react";
-import { mount } from "enzyme/build";
+import { mount } from "enzyme";
 import { StoreContext } from "redux-react-hook";
 import Library from "./Library";
 
@@ -51,7 +51,7 @@ const library = [
   },
 ];
 
-it("App -> renders without crashing", () => {
+describe("Library", () => {
   store.dispatch({
     type: LibraryTypes.LIBRARY_SET,
     payload: library,
@@ -63,24 +63,30 @@ it("App -> renders without crashing", () => {
     </StoreContext.Provider>,
   );
 
-  const item = wrapper.find(LibraryItem);
-  // expect(item.at(0).find(".LibraryItem__detail-wrapper--label").at(0));
-  expect(
-    item
-      .at(0)
-      .find(".LibraryItem__detail-wrapper--label")
-      .at(0)
-      .text(),
-  ).toEqual("Name");
+  it("App -> renders without crashing", () => {
+    const item = wrapper.find(LibraryItem);
+    // expect(item.at(0).find(".LibraryItem__detail-wrapper--label").at(0));
+    expect(
+      item
+        .at(0)
+        .find(".LibraryItem__detail-wrapper--label")
+        .at(0)
+        .text(),
+    ).toEqual("Name");
 
-  expect(
-    item
-      .at(0)
-      .find(".LibraryItem__detail-wrapper--content")
-      .at(0)
-      .text(),
-  ).toEqual("some name");
+    expect(
+      item
+        .at(0)
+        .find(".LibraryItem__detail-wrapper--content")
+        .at(0)
+        .text(),
+    ).toEqual("some name");
 
-  expect(item.at(0).props().data).toEqual(library[1]);
-  expect(item).toHaveLength(7);
+    expect(item.at(0).props().data).toEqual(library[1]);
+    expect(item).toHaveLength(7);
+  });
+
+  it("matches snapshot", () => {
+    expect(wrapper.debug()).toMatchSnapshot();
+  });
 });

@@ -37,23 +37,34 @@ exports[`AddTranslation matches snapshot 1`] = `
           </div>
         </FormTextarea>
         <div className=\\"add-translation_code-displays\\">
-          <FormCodeDisplay value=\\"\\" type=\\"Micheline\\">
+          <FormCodeDisplay value=\\"parameter int;\\\\nstorage int;\\\\ncode { CAR ;\\\\n       PUSH int 1 ;\\\\n       ADD ;\\\\n       NIL operation ;\\\\n       PAIR }\\" type=\\"Micheline\\">
             <div className=\\"form-code-display\\">
               <div className=\\"form-code-display_type\\">
                 Micheline
               </div>
               <div className=\\"form-code-display_value\\">
-                <pre />
+                <pre>
+                  parameter int;
+                  storage int;
+                  code { CAR ;
+                         PUSH int 1 ;
+                         ADD ;
+                         NIL operation ;
+                         PAIR }
+                </pre>
               </div>
             </div>
           </FormCodeDisplay>
-          <FormCodeDisplay value=\\"\\" type=\\"Michelson\\">
+          <FormCodeDisplay value=\\"[ { \\"prim\\": \\"parameter\\", \\"args\\": [ { \\"prim\\": \\"int\\" } ] }, { \\"prim\\": \\"storage\\", \\"args\\": [ { \\"prim\\": \\"int\\" } ] }, { \\"prim\\": \\"code\\", \\"args\\": [ [ { \\"prim\\": \\"CAR\\" },{ \\"prim\\": \\"PUSH\\", \\"args\\": [ { \\"prim\\": \\"int\\" }, { \\"int\\": \\"1\\" } ] },{ \\"prim\\": \\"ADD\\" },{ \\"prim\\": \\"NIL\\", \\"args\\": [ { \\"prim\\": \\"operation\\" } ] },{ \\"prim\\": \\"PAIR\\" } ] ] } ]\\\\n\\" type=\\"Michelson\\">
             <div className=\\"form-code-display\\">
               <div className=\\"form-code-display_type\\">
                 Michelson
               </div>
               <div className=\\"form-code-display_value\\">
-                <pre />
+                <pre>
+                  [ { &quot;prim&quot;: &quot;parameter&quot;, &quot;args&quot;: [ { &quot;prim&quot;: &quot;int&quot; } ] }, { &quot;prim&quot;: &quot;storage&quot;, &quot;args&quot;: [ { &quot;prim&quot;: &quot;int&quot; } ] }, { &quot;prim&quot;: &quot;code&quot;, &quot;args&quot;: [ [ { &quot;prim&quot;: &quot;CAR&quot; },{ &quot;prim&quot;: &quot;PUSH&quot;, &quot;args&quot;: [ { &quot;prim&quot;: &quot;int&quot; }, { &quot;int&quot;: &quot;1&quot; } ] },{ &quot;prim&quot;: &quot;ADD&quot; },{ &quot;prim&quot;: &quot;NIL&quot;, &quot;args&quot;: [ { &quot;prim&quot;: &quot;operation&quot; } ] },{ &quot;prim&quot;: &quot;PAIR&quot; } ] ] } ]
+                  
+                </pre>
               </div>
             </div>
           </FormCodeDisplay>
