@@ -27,7 +27,7 @@ exports[`Login matches snapshot 1`] = `
             </div>
           </FormInput>
           <FormButton type=\\"submit\\" label=\\"Log in\\" onClick={[Function: onClick]}>
-            <button className=\\"form-button form-button_submit undefined\\" onClick={[Function: onClick]} disabled={[undefined]}>
+            <button className=\\"form-button form-button_submit undefined\\" data-testid=\\"form-button\\" onClick={[Function: onClick]} disabled={[undefined]}>
               Log in
             </button>
           </FormButton>

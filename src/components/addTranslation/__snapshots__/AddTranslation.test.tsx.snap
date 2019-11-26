@@ -60,12 +60,12 @@ exports[`AddTranslation matches snapshot 1`] = `
         </div>
         <div className=\\"add-translation_buttons\\">
           <FormButton label=\\"cancel\\" type=\\"secondary\\" onClick={[Function: onClick]}>
-            <button className=\\"form-button form-button_secondary undefined\\" onClick={[Function: onClick]} disabled={[undefined]}>
+            <button className=\\"form-button form-button_secondary undefined\\" data-testid=\\"form-button\\" onClick={[Function: onClick]} disabled={[undefined]}>
               cancel
             </button>
           </FormButton>
           <FormButton label=\\"save\\" type=\\"submit\\" onClick={[Function: onClick]} disabled={false}>
-            <button className=\\"form-button form-button_submit undefined\\" onClick={[Function: onClick]} disabled={false}>
+            <button className=\\"form-button form-button_submit undefined\\" data-testid=\\"form-button\\" onClick={[Function: onClick]} disabled={false}>
               save
             </button>
           </FormButton>

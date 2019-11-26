@@ -9,20 +9,28 @@ const defaultProps: FormTextareaProps = {
     placeholder: 'placeholder',
     onChange: () => { },
     onBlur: () => { },
-    value: 'value',
-    errors: null,
+    value: 'test value',
+    errors: undefined,
     touched: false,
     className: '',
 };
 
 describe("FormTextarea", () => {
-    let wrapper;
-
-    beforeEach(() => {
-        wrapper = mount(<FormTextarea {...defaultProps} />)
-    });
+    const wrapper = mount(<FormTextarea {...defaultProps} />);
 
     it("matches snapshot", () => {
         expect(wrapper.debug()).toMatchSnapshot();
+    });
+
+    it("renders without crashing", () => {
+        const item = wrapper.find(FormTextarea);
+
+        expect(
+            item
+                .at(0)
+                .find(".form-textarea_input")
+                .at(0)
+                .text()
+        ).toEqual('test value')
     });
 });

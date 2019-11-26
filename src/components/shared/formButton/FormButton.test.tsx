@@ -1,24 +1,32 @@
 import React from 'react';
 import FormButton from './FormButton';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import { ButtonProps } from './types';
 
 const defaultProps: ButtonProps = {
     type: 'submit',
-    label: '',
+    label: 'test label',
     className: '',
-    onClick: '',
+    onClick: () => { },
     disabled: false,
 }
 
 describe("Form Button", () => {
-    let wrapper;
-
-    beforeEach(() => {
-        wrapper = shallow(<FormButton {...defaultProps} />)
-    });
+    const wrapper = mount(<FormButton {...defaultProps} />)
 
     it('matches snapshot', () => {
         expect(wrapper.debug()).toMatchSnapshot();
-    })
+    });
+
+    it('renders without crashing', () => {
+        const item = wrapper.find(FormButton);
+
+        expect(
+            item
+                .at(0)
+                .find("[data-testid='form-button']")
+                .at(0)
+                .text()
+        ).toEqual("test label");
+    });
 });

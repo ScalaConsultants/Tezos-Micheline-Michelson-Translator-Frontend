@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FormTextarea matches snapshot 1`] = `
-"<FormTextarea label=\\"label\\" name=\\"name\\" placeholder=\\"placeholder\\" onChange={[Function: onChange]} onBlur={[Function: onBlur]} value=\\"value\\" errors={{...}} touched={false} className=\\"\\">
+"<FormTextarea label=\\"label\\" name=\\"name\\" placeholder=\\"placeholder\\" onChange={[Function: onChange]} onBlur={[Function: onBlur]} value=\\"test value\\" errors={[undefined]} touched={false} className=\\"\\">
   <div className=\\"form-textarea \\">
     <div className=\\"form-textarea_label\\">
       label
     </div>
-    <textarea className=\\"form-textarea_input\\" placeholder=\\"placeholder\\" name=\\"name\\" onChange={[Function: onChange]} onBlur={[Function: onBlur]} value=\\"value\\" />
+    <textarea className=\\"form-textarea_input\\" placeholder=\\"placeholder\\" name=\\"name\\" onChange={[Function: onChange]} onBlur={[Function: onBlur]} value=\\"test value\\" />
     <div className=\\"form-textarea_error\\" />
   </div>
 </FormTextarea>"

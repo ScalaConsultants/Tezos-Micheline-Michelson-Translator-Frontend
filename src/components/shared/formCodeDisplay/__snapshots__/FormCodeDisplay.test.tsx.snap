@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FormCodeDisplay matches snapshot 1`] = `
-"<FormCodeDisplay value=\\"value\\" type=\\"type\\">
+"<FormCodeDisplay value=\\"test value\\" type=\\"type\\">
   <div className=\\"form-code-display\\">
     <div className=\\"form-code-display_type\\">
       type
     </div>
     <div className=\\"form-code-display_value\\">
       <pre>
-        value
+        test value
       </pre>
     </div>
   </div>

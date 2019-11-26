@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContactForm matches snapshot 1`] = `
-"<ContactForm setShowModal={[Function: setShowModal]}>
+"<ContactForm>
   <div className=\\"contact-form\\">
     <h2>
       Send message
@@ -54,9 +54,11 @@ exports[`ContactForm matches snapshot 1`] = `
             </div>
           </FormInput>
         </div>
-        <button type=\\"submit\\" disabled={false} className=\\"contact-form_button\\">
-          Submit
-        </button>
+        <FormButton label=\\"Submit\\" type=\\"submit\\" disabled={false} onClick={[Function: onClick]}>
+          <button className=\\"form-button form-button_submit undefined\\" data-testid=\\"form-button\\" onClick={[Function: onClick]} disabled={false}>
+            Submit
+          </button>
+        </FormButton>
       </form>
     </Formik>
   </div>
