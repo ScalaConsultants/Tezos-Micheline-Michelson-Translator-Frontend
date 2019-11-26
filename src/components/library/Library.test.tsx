@@ -1,15 +1,13 @@
 import React from "react";
-import { mount } from "enzyme/build";
+import { mount, ReactWrapper } from "enzyme";
 import { StoreContext } from "redux-react-hook";
+import configureStore from "redux-mock-store";
 import Library from "./Library";
 
-import configureStore from "../../store/index";
-import rootSaga from "../../store/saga";
-import * as LibraryTypes from "../../store/library/types";
 import LibraryItem from "./LibraryItem";
 
-const store = configureStore();
-store.runSaga(rootSaga);
+import * as TranslatorActions from "../../store/translator/actions";
+import * as TranslatorTypes from "../../store/translator/types";
 
 const library = [
   {
@@ -51,36 +49,92 @@ const library = [
   },
 ];
 
-it("App -> renders without crashing", () => {
-  store.dispatch({
-    type: LibraryTypes.LIBRARY_SET,
-    payload: library,
+const mockStore = configureStore();
+
+describe("Library", () => {
+  let wrapper: ReactWrapper;
+  let store: any;
+
+  beforeEach(() => {
+    store = mockStore({ library });
+
+    store.dispatch = jest.fn();
+
+    wrapper = mount(
+      <StoreContext.Provider value={store}>
+        <Library />
+      </StoreContext.Provider>,
+    );
   });
 
-  const wrapper = mount(
-    <StoreContext.Provider value={store}>
-      <Library />
-    </StoreContext.Provider>,
-  );
+  it("renders without crashing", () => {
+    const item = wrapper.find(LibraryItem);
 
-  const item = wrapper.find(LibraryItem);
-  // expect(item.at(0).find(".LibraryItem__detail-wrapper--label").at(0));
-  expect(
-    item
-      .at(0)
-      .find(".LibraryItem__detail-wrapper--label")
-      .at(0)
-      .text(),
-  ).toEqual("Name");
+    expect(
+      item
+        .at(0)
+        .find(".LibraryItem__detail-wrapper--label")
+        .at(0)
+        .text(),
+    ).toEqual("Name");
 
-  expect(
-    item
-      .at(0)
-      .find(".LibraryItem__detail-wrapper--content")
-      .at(0)
-      .text(),
-  ).toEqual("some name");
+    expect(
+      item
+        .at(0)
+        .find(".LibraryItem__detail-wrapper--content")
+        .at(0)
+        .text(),
+    ).toEqual("some name");
 
-  expect(item.at(0).props().data).toEqual(library[1]);
-  expect(item).toHaveLength(7);
+    expect(item.at(0).props().data).toEqual(library[1]);
+    expect(item).toHaveLength(7);
+  });
+
+  it("selecting Micheline source is working", () => {
+    const item = wrapper.find(LibraryItem);
+
+    const itemMicheline = item
+      .at(0)
+      .find(".LibraryItem__wrapper2")
+      .at(0);
+
+    itemMicheline.simulate("click");
+    expect(store.dispatch).toHaveBeenCalledTimes(3);
+    expect(store.dispatch).toHaveBeenCalledWith(
+      TranslatorActions.TranslatorSetMode(TranslatorTypes.Modes.MICHELINEMICHELSON),
+    );
+    expect(store.dispatch).toHaveBeenCalledWith({
+      type: TranslatorTypes.TRANSLATOR_SET_MICHELINE,
+      translation: library[0].source,
+    });
+    expect(store.dispatch).toHaveBeenCalledWith(
+      TranslatorActions.TranslatorFetchMichelineToMichelson(library[0].source),
+    );
+  });
+
+  it("selecting Michelson source is working", () => {
+    const item = wrapper.find(LibraryItem);
+
+    const itemMichelson = item
+      .at(0)
+      .find(".LibraryItem__wrapper2")
+      .at(1);
+
+    itemMichelson.simulate("click");
+    expect(store.dispatch).toHaveBeenCalledTimes(3);
+    expect(store.dispatch).toHaveBeenCalledWith(
+      TranslatorActions.TranslatorSetMode(TranslatorTypes.Modes.MICHELSONMICHELINE),
+    );
+    expect(store.dispatch).toHaveBeenCalledWith({
+      type: TranslatorTypes.TRANSLATOR_SET_MICHELSON,
+      translation: library[0].translation,
+    });
+    expect(store.dispatch).toHaveBeenCalledWith(
+      TranslatorActions.TranslatorFetchMichelsonToMicheline(library[0].translation),
+    );
+  });
+
+  it("matches snapshot", () => {
+    expect(wrapper.debug()).toMatchSnapshot();
+  });
 });
