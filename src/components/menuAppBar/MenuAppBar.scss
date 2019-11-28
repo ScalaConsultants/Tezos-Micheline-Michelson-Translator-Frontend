@@ -1,12 +1,13 @@
 .AppBar {
     background-color: #C91C00;
-    height: 40px;
-    position: relative;
-    padding: 10px;
+    height: 60px;
     text-align: right;
+    padding: 0px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     button {
-        height: 40px;
         border: 0;
         outline: none;
         cursor: pointer;
@@ -16,8 +17,6 @@
         font-weight: normal;
         font-size: 12px;
         line-height: 14px;
-        align-items: center;
-        text-align: center;
         letter-spacing: 0.15px;
         text-transform: uppercase;
         color: #FFFFFF;
@@ -29,10 +28,23 @@
         }
     }
 
+    &__menu-btn-container {
+        display: flex;
+        justify-content: flex-end;
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            img{
+                margin-right: 5px;
+            }
+        }
+    }
+
     &__scalac {
-        position: absolute;
-        left: 50px;
         cursor: pointer;
+        vertical-align: middle;
     }
 
     &__scalac-transparent {

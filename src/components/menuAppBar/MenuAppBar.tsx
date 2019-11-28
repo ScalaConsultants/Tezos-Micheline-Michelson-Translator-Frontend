@@ -20,9 +20,9 @@ const MenuAppBar = (props: Props) => {
 
   return (
     <div className="AppBar">
-      <span role="button" tabIndex={-1} onClick={() => goScalac()} onKeyUp={() => {}}>
-        <img className="AppBar__scalac" src="/scalac.svg" alt="" />
-      </span>
+      <button tabIndex={-1} onClick={() => goScalac()} onKeyUp={() => {}}>
+        <img className="AppBar__scalac" src="/scalac.svg" alt="https://scalac.io" />
+      </button>
       <Title />
       <img
         className="AppBar__scalac-transparent"
@@ -30,17 +30,19 @@ const MenuAppBar = (props: Props) => {
         title="Go to Scalac homepage"
         alt="Go to Scalac homepage"
       />
-      <button type="button" onClick={() => goTo("/")}>
-        <img src="/dashboard.svg" alt="" />
-        Convert
-      </button>
-      <button type="button" onClick={() => goTo("/contact")}>
-        <img src="/mail.svg" alt="" />
-        Contact
-      </button>
-      <button type="button" onClick={() => goTo("/admin/library")}>
-        Admin
-      </button>
+      <div className="AppBar__menu-btn-container">
+        <button type="button" onClick={() => goTo("/")}>
+          <img src="/dashboard.svg" alt="" />
+          Convert
+        </button>
+        <button type="button" onClick={() => goTo("/contact")}>
+          <img src="/mail.svg" alt="" />
+          Contact
+        </button>
+        <button type="button" onClick={() => goTo("/admin/library")}>
+          Admin
+        </button>
+      </div>
     </div>
   );
 };
