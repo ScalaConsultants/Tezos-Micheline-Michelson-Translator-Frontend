@@ -14,6 +14,7 @@ const FormInput = ({ label, name, type, onChange, onBlur, value, errors, touched
       onBlur={onBlur}
       placeholder={label}
       value={value}
+      test-id="input-test"
       className="form-input_input"
     />
     <div className={`form-input_validation-marker ${touched && !errors && "valid"}`} />

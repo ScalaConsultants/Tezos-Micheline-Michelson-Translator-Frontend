@@ -1,5 +1,5 @@
 import React from "react";
-import { mount, shallow } from "enzyme/build";
+import { mount, shallow } from "enzyme";
 import { StoreContext } from "redux-react-hook";
 import ContactForm from "./ContactForm";
 import FormButton from "../shared/formButton/FormButton";

@@ -24,6 +24,7 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
   const { translator } = useMappedState(mapState);
 
   const submitForm = (values: FormValues) => {
+    console.log(values);
     setShowModal(false);
   };
 

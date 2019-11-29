@@ -11,7 +11,7 @@ exports[`AddTranslation matches snapshot 1`] = `
               <p className=\\"form-input_label\\">
                 Name
               </p>
-              <input name=\\"name\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Name\\" value=\\"\\" className=\\"form-input_input\\" />
+              <input name=\\"name\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Name\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" />
               <div className=\\"form-input_validation-marker undefined\\" />
               <div className=\\"form-input_error\\" />
             </div>
@@ -21,7 +21,7 @@ exports[`AddTranslation matches snapshot 1`] = `
               <p className=\\"form-input_label\\">
                 Author
               </p>
-              <input name=\\"author\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Author\\" value=\\"\\" className=\\"form-input_input\\" />
+              <input name=\\"author\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Author\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" />
               <div className=\\"form-input_validation-marker undefined\\" />
               <div className=\\"form-input_error\\" />
             </div>

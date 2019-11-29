@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import FormInput from './FormInput';
 import { FormInputProps } from './types';
 
@@ -32,5 +32,5 @@ describe('FormInput', () => {
                 .at(0)
                 .text()
         ).toEqual("test label")
-    })
+    });
 });

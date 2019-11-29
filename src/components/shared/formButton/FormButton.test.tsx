@@ -29,4 +29,15 @@ describe("Form Button", () => {
                 .text()
         ).toEqual("test label");
     });
+
+    it('calls onClick function on click', () => {
+        const onClickFn = jest.fn();
+        const clickWrapper = mount(<FormButton {...defaultProps} onClick={onClickFn} />);
+
+        const btn = clickWrapper.find("[data-testid='form-button']").at(0);
+
+        btn.simulate("click");
+
+        expect(onClickFn).toBeCalledTimes(1);
+    })
 });

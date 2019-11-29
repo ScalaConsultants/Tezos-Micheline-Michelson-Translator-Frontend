@@ -14,7 +14,7 @@ exports[`ContactForm matches snapshot 1`] = `
               <p className=\\"form-input_label\\">
                 Name
               </p>
-              <input name=\\"name\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Name\\" value=\\"\\" className=\\"form-input_input\\" />
+              <input name=\\"name\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Name\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" />
               <div className=\\"form-input_validation-marker undefined\\" />
               <div className=\\"form-input_error\\" />
             </div>
@@ -26,7 +26,7 @@ exports[`ContactForm matches snapshot 1`] = `
               <p className=\\"form-input_label\\">
                 Phone
               </p>
-              <input name=\\"phone\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Phone\\" value=\\"\\" className=\\"form-input_input\\" />
+              <input name=\\"phone\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Phone\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" />
               <div className=\\"form-input_validation-marker undefined\\" />
               <div className=\\"form-input_error\\" />
             </div>
@@ -36,7 +36,7 @@ exports[`ContactForm matches snapshot 1`] = `
               <p className=\\"form-input_label\\">
                 Email
               </p>
-              <input name=\\"email\\" type=\\"email\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Email\\" value=\\"\\" className=\\"form-input_input\\" />
+              <input name=\\"email\\" type=\\"email\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Email\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" />
               <div className=\\"form-input_validation-marker undefined\\" />
               <div className=\\"form-input_error\\" />
             </div>
@@ -48,7 +48,7 @@ exports[`ContactForm matches snapshot 1`] = `
               <p className=\\"form-input_label\\">
                 How we can help you?
               </p>
-              <input name=\\"content\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"How we can help you?\\" value=\\"\\" className=\\"form-input_input\\" />
+              <input name=\\"content\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"How we can help you?\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" />
               <div className=\\"form-input_validation-marker undefined\\" />
               <div className=\\"form-input_error\\" />
             </div>

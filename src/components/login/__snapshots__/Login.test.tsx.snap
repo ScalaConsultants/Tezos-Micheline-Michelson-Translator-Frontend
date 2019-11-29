@@ -11,7 +11,7 @@ exports[`Login matches snapshot 1`] = `
               <p className=\\"form-input_label\\">
                 Login
               </p>
-              <input name=\\"login\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Login\\" value=\\"\\" className=\\"form-input_input\\" />
+              <input name=\\"login\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Login\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" />
               <div className=\\"form-input_validation-marker undefined\\" />
               <div className=\\"form-input_error\\" />
             </div>
@@ -21,7 +21,7 @@ exports[`Login matches snapshot 1`] = `
               <p className=\\"form-input_label\\">
                 Password
               </p>
-              <input name=\\"password\\" type=\\"password\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Password\\" value=\\"\\" className=\\"form-input_input\\" />
+              <input name=\\"password\\" type=\\"password\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Password\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" />
               <div className=\\"form-input_validation-marker undefined\\" />
               <div className=\\"form-input_error\\" />
             </div>
