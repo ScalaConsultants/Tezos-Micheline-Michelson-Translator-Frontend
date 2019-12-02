@@ -8,4 +8,6 @@ export type FormInputProps = {
     errors?: string,
     touched?: boolean,
     className?: string,
-}
+    isValidationDisplay?: boolean,
+    disabled?: boolean,
+};
