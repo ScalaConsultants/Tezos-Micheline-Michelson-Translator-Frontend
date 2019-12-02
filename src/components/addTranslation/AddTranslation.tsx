@@ -15,8 +15,11 @@ const mapState = (state: IState) => ({
 });
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string(),
+  title: Yup.string().required("Title is required"),
   author: Yup.string(),
+  email: Yup.string()
+    .required("To get notification the email is needed.")
+    .email("It's a wrong email address."),
   description: Yup.string(),
 });
 
@@ -31,8 +34,10 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
     <div className="add-translation">
       <Formik
         initialValues={{
-          name: "",
+          title: "",
           author: "",
+          isEmail: "",
+          email: "",
           description: "",
         }}
         validationSchema={validationSchema}
@@ -42,14 +47,14 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
           <form onSubmit={handleSubmit} noValidate>
             <div className="add-translation_fields-line">
               <FormInput
-                label="Name"
+                label="Title"
                 type="text"
-                name="name"
+                name="title"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.name}
-                errors={errors.name}
-                touched={touched.name}
+                value={values.title}
+                errors={errors.title}
+                touched={touched.title}
               />
               <FormInput
                 label="Author"
@@ -60,6 +65,31 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
                 value={values.author}
                 errors={errors.author}
                 touched={touched.author}
+              />
+            </div>
+            <div className="add-translation_fields-line">
+              <FormInput
+                label="Email"
+                type="email"
+                name="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+                errors={errors.email}
+                touched={touched.email}
+                className={!values.isEmail ? "blocked" : "undefined"}
+                disabled={!values.isEmail}
+              />
+              <FormInput
+                label="Send me a notification via email"
+                type="checkbox"
+                name="isEmail"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.isEmail}
+                errors={errors.isEmail}
+                touched={touched.isEmail}
+                isValidationDisplay={false}
               />
             </div>
             <FormTextarea
