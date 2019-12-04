@@ -11,85 +11,86 @@ import { Redirect } from 'react-router-dom';
 import { IState, FormValues } from './types';
 
 const mapState = (state: IState) => ({
-    auth: state.auth,
+  auth: state.auth,
 });
 
 const validationSchema = Yup.object().shape({
-    login: Yup.string(),
-    password: Yup.string(),
+  login: Yup.string().required('Login is needed'),
+  password: Yup.string().required('Password is needed'),
 });
 
 const setLoggedIn = (dispatch: Function, value: boolean) => {
-    dispatch({
-        type: authTypes.AUTHENTICATION_SET_AUTH,
-        payload: value,
-    })
-}
+  dispatch({
+    type: authTypes.AUTHENTICATION_SET_AUTH,
+    payload: value,
+  });
+};
 
 const Login = () => {
-    const { auth } = useMappedState(mapState);
-    const dispatch = useDispatch();
+  const { auth } = useMappedState(mapState);
+  const dispatch = useDispatch();
 
-    const submitForm = (values: FormValues) => {
-        //if call to backend is succesfull, we should get a token to store in the localStorage
-        const token = '';
-        setLoginToken(token);
-        //if call to backend is succesfull, we set state to logged in or not
-        const loginSuccess = true;
-        setLoggedIn(dispatch, loginSuccess);
+  const submitForm = (values: FormValues) => {
+    //if call to backend is succesfull, we should get a token to store in the localStorage
+    const token = '';
+    setLoginToken(token);
+    //if call to backend is succesfull, we set state to logged in or not
+    const loginSuccess = true;
+    setLoggedIn(dispatch, loginSuccess);
+  };
+
+  const redirectToPanel = () => {
+    if (auth.loggedIn) {
+      return <Redirect to='/admin/library' />
     }
+  };
 
-    const redirectToPanel = () => {
-        if (auth.loggedIn) {
-            return <Redirect to='/admin/library' />
-        }
-    }
-
-    return (
-        <div className='login'>
-            {redirectToPanel()}
-            <div className='login-content'>
-                <Formik
-                    initialValues={{
-                        login: "",
-                        password: "",
-                    }}
-                    validationSchema={validationSchema}
-                    onSubmit={submitForm}
-                >
-                    {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
-                        <form onSubmit={handleSubmit} noValidate>
-                            <FormInput
-                                label="Login"
-                                type="text"
-                                name="login"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.login}
-                                errors={errors.login}
-                                touched={touched.login}
-                            />
-                            <FormInput
-                                label="Password"
-                                type="password"
-                                name="password"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.password}
-                                errors={errors.password}
-                                touched={touched.password}
-                            />
-                            <FormButton
-                                type="submit"
-                                label="Log in"
-                                onClick={() => submitForm(values)}
-                            />
-                        </form>
-                    )}
-                </Formik>
-            </div>
-        </div>
-    )
-}
+  return (
+    <div className='login'>
+      {redirectToPanel()}
+      <div className='login-content'>
+        <Formik
+          initialValues={{
+            login: "",
+            password: "",
+          }}
+          validationSchema={validationSchema}
+          onSubmit={submitForm}
+        >
+          {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
+            <form onSubmit={handleSubmit} noValidate>
+              <FormInput
+                label="Login"
+                type="text"
+                name="login"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.login}
+                errors={errors.login}
+                touched={touched.login}
+              />
+              <FormInput
+                label="Password"
+                type="password"
+                name="password"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.password}
+                errors={errors.password}
+                touched={touched.password}
+              />
+              <FormButton
+                label="Log in"
+                type="submit"
+                onClick={() => submitForm(values)}
+                disabled={isSubmitting || !!errors}
+              />
+            </form>
+          )}
+        </Formik>
+      </div>
+    </div>
+  );
+};
 
 export default Login;

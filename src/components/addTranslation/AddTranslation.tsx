@@ -108,7 +108,12 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
             </div>
             <div className="add-translation_buttons">
               <FormButton label="cancel" type="secondary" onClick={() => setShowModal(false)} />
-              <FormButton label="save" type="submit" onClick={() => submitForm(values)} disabled={isSubmitting} />
+              <FormButton
+                label="save"
+                type="submit"
+                onClick={() => submitForm(values)}
+                disabled={isSubmitting || !!errors}
+              />
             </div>
           </form>
         )}
