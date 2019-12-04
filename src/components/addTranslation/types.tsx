@@ -1,9 +1,11 @@
 export type AddTranslationState = {
-    setShowModal: Function,
+  setShowModal: Function,
 };
 
 export type FormValues = {
-    name: string,
-    author: string,
-    description: string,
-}
+  title: string,
+  author: string,
+  description: string,
+  isEmail: string,
+  email: string,
+};

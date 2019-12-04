@@ -1,46 +1,58 @@
+
 .form-input {
-    .form-input_input {
-        display: block;
-        min-width: 200px;
-        width: 90%;
-        border: none;
-        border-bottom: solid 2px #C91C00;
-        font-size: 16px;
-        padding-bottom: 10px;
-        caret-color: #C91C00;
+  transition: all 0.5s ease;
+	.form-input_input {
+		display: block;
+		min-width: 200px;
+		width: 90%;
+		border: none;
+		border-bottom: solid 2px #c91c00;
+		font-size: 16px;
+		padding-bottom: 10px;
+		caret-color: #c91c00;
 
-        &:focus {
-            outline: none;
-        }
-    }
+		&:focus {
+			outline: none;
+		}
+	}
 
-    .form-input_label {
-        text-align: left;
-        color: #C91C00;
-        font-size: 12px;
-        margin-bottom: 5px;
-    }
+	.form-input_label {
+		text-align: left;
+		color: #c91c00;
+		font-size: 12px;
+		margin-bottom: 5px;
+	}
 
-    .form-input_validation-marker {
-        border-radius: 100%;
-        border: 2px solid black;
-        opacity: 0.6;
-        width: 8px;
-        height: 8px;
-        position: relative;
-        bottom: 30px;
-        left: 85%;
+	.form-input_validation-marker {
+		border-radius: 100%;
+		border: 2px solid black;
+		opacity: 0.6;
+		width: 8px;
+		height: 8px;
+		position: relative;
+		bottom: 30px;
+		left: 85%;
 
-        &.valid {
-            background: black;
-        }
-    }
+		&.valid {
+			background: black;
+		}
+	}
 
-    .form-input_error {
-        height: 20px;
-        text-align: left;
-        opacity: 0.6;
-        font-size: 12px;
-        margin-top: -10px;
-    }
+	.form-input_error {
+		height: 20px;
+		text-align: left;
+		opacity: 0.6;
+		font-size: 12px;
+		margin-top: -10px;
+	}
+}
+
+.form-input.blocked {
+	opacity: 0.3;
+  .form-input_label {
+    color: #818181;
+  }
+  .form-input_input {
+    border-bottom: solid 2px #818181;
+  }
 }

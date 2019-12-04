@@ -2,11 +2,21 @@ import React from "react";
 import "./FormInput.scss";
 import { FormInputProps } from "./types";
 
-const FormInput = ({ label, name, type, onChange, onBlur, value, errors, touched, className }: FormInputProps) => (
+const FormInput = ({
+  label,
+  name,
+  type,
+  onChange,
+  onBlur,
+  value,
+  errors,
+  touched,
+  className,
+  isValidationDisplay = true,
+  disabled,
+}: FormInputProps) => (
   <div className={`form-input ${className}`}>
-    <p className="form-input_label">
-      {label}
-    </p>
+    <p className="form-input_label">{label}</p>
     <input
       name={name}
       type={type}
@@ -15,9 +25,14 @@ const FormInput = ({ label, name, type, onChange, onBlur, value, errors, touched
       placeholder={label}
       value={value}
       className="form-input_input"
+      disabled={disabled}
     />
-    <div className={`form-input_validation-marker ${touched && !errors && "valid"}`} />
-    <div className="form-input_error">{errors && touched && errors}</div>
+    {isValidationDisplay && (
+      <div>
+        <div className={`form-input_validation-marker ${touched && !errors && "valid"}`} />
+        <div className="form-input_error">{errors && touched && errors}</div>
+      </div>
+    )}
   </div>
 );
 
