@@ -17,7 +17,7 @@ const fetchMichelsonToMichelineTranslationRequest = (payload: string) => {
     return { status: response.status, text: await response.text() };
   })
   .catch(error => {
-    console.log('fetch   MichelsonToMichelineTranslationRequest: 2', payload);
+    console.log('-----fetch MichelsonToMichelineTranslationRequest: 2', payload);
       throw error;
     });
 };
