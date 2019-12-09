@@ -3,9 +3,10 @@ import { useDispatch, useMappedState } from "redux-react-hook";
 import * as TranslatorTypes from "../../store/translator/types";
 import "./Translator.scss";
 import TextField from "../textField/TextField";
+import { IState } from "../../store/global/types";
 
-const mapState = (state: TranslatorTypes.IState) => ({
-  translator: state.translator,
+const mapState = (state: IState) => ({
+  translator: state.translator
 });
 
 export const translate = (currentMode: TranslatorTypes.Modes, value: string, dispatch: Function) => {

@@ -1,5 +1,3 @@
-import { authState } from "../authentication/types";
-
 export type LibraryItem = {
   source: string;
   translation: string;
@@ -15,13 +13,6 @@ export type LibraryAction = {
   type: string;
   payload: LibraryItem[];
 };
-
-export interface IState {
-  pending: boolean;
-  library: LibraryState;
-  auth: authState;
-  error?: string;
-}
 
 export interface ILibraryFetch {
   type: typeof LIBRARY_FETCH;

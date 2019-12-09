@@ -1,57 +1,42 @@
-import React from 'react';
+import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import FormInput from '../shared/input/FormInput';
-import FormButton from '../shared/formButton/FormButton';
-import { setLoginToken } from './sessionHandler';
+import { Redirect } from "react-router-dom";
 import { useMappedState, useDispatch } from "redux-react-hook";
-import * as authTypes from '../../store/authentication/types';
-import './Login.scss';
-import { Redirect } from 'react-router-dom';
-import { IState, FormValues } from './types';
+import * as authTypes from "../../store/authentication/types";
+import { IState } from "../../store/global/types";
+import FormInput from "../shared/input/FormInput";
+import FormButton from "../shared/formButton/FormButton";
+import "./Login.scss";
 
 const mapState = (state: IState) => ({
   auth: state.auth,
 });
 
 const validationSchema = Yup.object().shape({
-  login: Yup.string().required('Login is needed'),
-  password: Yup.string().required('Password is needed'),
+  login: Yup.string().required("Login is needed"),
+  password: Yup.string().required("Password is needed"),
 });
-
-const setLoggedIn = (dispatch: Function, value: boolean) => {
-  dispatch({
-    type: authTypes.AUTHENTICATION_SET_AUTH,
-    payload: value,
-  });
-};
 
 const Login = () => {
   const { auth } = useMappedState(mapState);
   const dispatch = useDispatch();
 
-  const submitForm = (values: FormValues) => {
-    //if call to backend is succesfull, we should get a token to store in the localStorage
-    const token = '';
-    setLoginToken(token);
-    //if call to backend is succesfull, we set state to logged in or not
-    const loginSuccess = true;
-    setLoggedIn(dispatch, loginSuccess);
+  const submitForm = (values: authTypes.authCredentials) => {
+    dispatch({
+      type: authTypes.AUTHENTICATION_LOGIN,
+      payload: values,
+    });
   };
-
-  const redirectToPanel = () => {
-    if (auth.loggedIn) {
-      return <Redirect to='/admin/library' />
-    }
-  };
+  const redirectToPanel = () => (auth.isLogged && <Redirect to='/admin/library' />);
 
   return (
-    <div className='login'>
-      {redirectToPanel()}
-      <div className='login-content'>
+    <div className="login">
+      <div className="login-content">
+        {redirectToPanel()}
         <Formik
           initialValues={{
-            login: "",
+            username: "",
             password: "",
           }}
           validationSchema={validationSchema}
@@ -62,12 +47,12 @@ const Login = () => {
               <FormInput
                 label="Login"
                 type="text"
-                name="login"
+                name="username"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.login}
-                errors={errors.login}
-                touched={touched.login}
+                value={values.username}
+                errors={errors.username}
+                touched={touched.username}
               />
               <FormInput
                 label="Password"
