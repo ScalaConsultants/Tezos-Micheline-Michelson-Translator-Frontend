@@ -1,12 +1,19 @@
 import { takeEvery, fork, put } from "redux-saga/effects";
+
+import * as authActions from "./authentication/actions";
+import * as authTypes from "./authentication/types";
+import * as authSagas from "./authentication/sagas";
+
 import * as translatorTypes from "./translator/types";
+import * as translatorSagas from "./translator/sagas";
+
 import * as libraryActions from "./library/actions";
 import * as libraryTypes from "./library/types";
-import * as authActions from "./authentication/actions";
-import * as translatorSagas from "./translator/sagas";
 import * as librarySagas from "./library/sagas";
+
 import * as messageTypes from "./message/types";
 import * as messageSagas from "./message/sagas";
+
 import { getLoginToken } from '../components/login/sessionHandler';
 
 export function* startup(): any {
@@ -21,8 +28,7 @@ export function* getData() {
 export function* checkAuth() {
   const token = getLoginToken();
   //We make a call to backend and confirm if the token is correct. Then we set auth.
-  const auth = false;
-  yield put(authActions.AuthenticationSetAuth(auth));
+  token && (yield put(authActions.AuthenticationSuccess(token)));
 }
 
 export default function* root() {
@@ -38,4 +44,6 @@ export default function* root() {
   yield takeEvery(libraryTypes.LIBRARY_FETCH, librarySagas.doLibraryFetch);
   // yield takeEvery(messageTypes.MESSAGE_SET, messageSagas.doMessageSet);
   yield takeEvery(messageTypes.MESSAGE_SEND, messageSagas.doMessageSend);
-}
+
+  yield takeEvery(authTypes.AUTHENTICATION_LOGIN, authSagas.doLogin);
+};

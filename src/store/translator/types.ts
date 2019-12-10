@@ -25,12 +25,6 @@ export enum Modes {
   MICHELSONMICHELINE = "michelsonmicheline",
 }
 
-export interface IState {
-  pending: boolean;
-  translator: TranslatorState;
-  error?: string;
-}
-
 export interface ITranslatorSetMode {
   type: typeof TRANSLATOR_SET_MODE;
   mode: Modes;

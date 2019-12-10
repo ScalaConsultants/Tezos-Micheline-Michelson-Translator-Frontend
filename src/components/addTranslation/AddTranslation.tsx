@@ -2,9 +2,9 @@ import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { useMappedState } from "redux-react-hook";
+import { IState } from "../../store/global/types";
 import FormTextarea from "../shared/textarea/FormTextarea";
 import FormInput from "../shared/input/FormInput";
-import { IState } from "../../store/translator/types";
 import FormCodeDisplay from "../shared/formCodeDisplay/FormCodeDisplay";
 import FormButton from "../shared/formButton/FormButton";
 import { AddTranslationState, FormValues } from "./types";
@@ -109,7 +109,12 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
             </div>
             <div className="add-translation_buttons">
               <FormButton label="cancel" type="secondary" onClick={() => setShowModal(false)} />
-              <FormButton label="save" type="submit" onClick={() => submitForm(values)} disabled={isSubmitting} />
+              <FormButton
+                label="save"
+                type="submit"
+                onClick={() => submitForm(values)}
+                disabled={isSubmitting || !!errors}
+              />
             </div>
           </form>
         )}

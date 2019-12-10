@@ -3,7 +3,7 @@ import { Route } from "react-router";
 import Translation from "../containers/translation/Translation";
 import Contact from "../containers/contact/Contact";
 import LibraryList from "../components/admin/libraryList/LibraryList";
-import Login from '../components/login/Login';
+import Login from "../components/login/Login";
 
 export default () => {
   return (

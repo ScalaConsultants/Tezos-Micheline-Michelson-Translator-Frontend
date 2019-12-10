@@ -10,7 +10,7 @@ export const TranslatorFetchMichelsonToMicheline = (payload: string): Translator
   payload,
 });
 
-export const TranslatorFetchMichelineToMichelson = (payload: string): TranslatorTypes.TranslatorActionTypes => ({
+export const TranslatorFetchMichelineToMichelson = (payload: string): TranslatorTypes.TranslatorActionTypes =>  ({
   type: TranslatorTypes.TRANSLATOR_FETCH_MICHELINE_TO_MICHELSON,
   payload,
 });

@@ -1,7 +1,8 @@
 import * as AuthTypes from './types';
 
 const authenticationInitialState = {
-    loggedIn: false,
+    isLogged: false,
+    token: ""
 }
 
 export const authenticationReducer = (
@@ -9,10 +10,20 @@ export const authenticationReducer = (
     action: any,
 ) => {
     switch (action.type) {
-        case AuthTypes.AUTHENTICATION_SET_AUTH:
+        case AuthTypes.AUTHENTICATION_SUCCESS:
             return {
                 ...state,
-                loggedIn: action.payload,
+                isLogged: true,
+                token: action.token
+            };
+        case AuthTypes.AUTHENTICATION_FAIL:
+            return {
+                ...state,
+                isLogged: false,
+            };
+        case AuthTypes.AUTHENTICATION_LOGIN:
+            return {
+                ...state,
             };
         default:
             return state;
