@@ -7,6 +7,7 @@ import { FormValues, FormikSubmitting } from "./types";
 import "./ContactForm.scss";
 import * as MessageTypes from "../../store/message/types";
 import Alert from "../shared/alert/Alert";
+import FormButton from "../shared/formButton/FormButton";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string(),
@@ -30,9 +31,7 @@ const ContactForm = () => {
   const dispatch = useDispatch();
   const { message } = useMappedState(mapState);
 
-  const submitForm = (values: FormValues, { setSubmitting }: FormikSubmitting) => {
-    setSubmitting(true);
-
+  const submitForm = (values: FormValues) => {
     dispatch({
       type: MessageTypes.MESSAGE_SET,
       message: values,
@@ -42,8 +41,6 @@ const ContactForm = () => {
       type: MessageTypes.MESSAGE_SEND,
       message: values,
     });
-
-    setSubmitting(false);
   };
 
   useEffect(() => {
@@ -124,9 +121,7 @@ const ContactForm = () => {
                 className="contact-form_message"
               />
             </div>
-            <button type="submit" disabled={isSubmitting} className="contact-form_button">
-              Submit
-            </button>
+            <FormButton label="Submit" type="submit" disabled={isSubmitting} onClick={() => submitForm(values)} />
             {message.isError === false ? <Alert type="success" message="Message sent." /> : null}
           </form>
         )}

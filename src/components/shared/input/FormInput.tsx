@@ -24,6 +24,7 @@ const FormInput = ({
       onBlur={onBlur}
       placeholder={label}
       value={value}
+      test-id="input-test"
       className="form-input_input"
       disabled={disabled}
     />
