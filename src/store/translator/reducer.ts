@@ -6,11 +6,21 @@ const translatorInitState: TranslatorTypes.TranslatorState = {
   micheline: "",
   error: "",
 };
+const translatorMessageInitState: TranslatorTypes.TranslatorMessageState = {
+  name: "",
+  michelson: "",
+  micheline: "",
+  description: "",
+  author: "",
+  error: null,
+  wasSend: false,
+  isTranslationSet: false,
+};
 
 export const translatorReducer = (
   state: TranslatorTypes.TranslatorState = translatorInitState,
-  action: TranslatorTypes.TranslatorAction,
-): TranslatorTypes.TranslatorState => {
+  action: TranslatorTypes.TranslatorActionTypes,
+): TranslatorTypes.TranslatorState  => {
   switch (action.type) {
     case TranslatorTypes.TRANSLATOR_SET_MODE:
       return {
@@ -34,6 +44,41 @@ export const translatorReducer = (
       };
     case TranslatorTypes.TRANSLATOR_FLUSH_TRANSLATION:
       return translatorInitState;
+    default:
+      return state;
+  }
+};
+
+export const translatorMessageReducer = (
+  state: TranslatorTypes.TranslatorMessageState = translatorMessageInitState,
+  action: TranslatorTypes.TranslatorActionTypes,
+): TranslatorTypes.TranslatorMessageState  => {
+  switch (action.type) {
+    case TranslatorTypes.TRANSLATOR_SET_TRANSLATION_MESSAGE:
+      return {
+        ...state,
+        micheline: action.micheline,
+        michelson: action.michelson,
+        isTranslationSet: true
+
+      };
+    case TranslatorTypes.TRANSLATOR_SEND_TRANSLATION:
+      return {
+        ...state,
+      };
+    case TranslatorTypes.TRANSLATOR_MESSAGE_SET_ERROR:
+      return {
+        ...state,
+        error: action.error,
+        wasSend: true,
+      };
+    case TranslatorTypes.TRANSLATOR_MESSAGE_SET_SUCCESS:
+      return {
+        ...state,
+        wasSend: true,
+      };
+    case TranslatorTypes.TRANSLATOR_MESSAGE_RESET:
+      return translatorMessageInitState;
     default:
       return state;
   }

@@ -1,41 +1,76 @@
 import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { useMappedState } from "redux-react-hook";
+import { useMappedState, useDispatch } from "redux-react-hook";
 import { IState } from "../../store/global/types";
+import * as translatorTypes from "../../store/translator/types";
+
 import FormTextarea from "../shared/textarea/FormTextarea";
 import FormInput from "../shared/input/FormInput";
 import FormCodeDisplay from "../shared/formCodeDisplay/FormCodeDisplay";
 import FormButton from "../shared/formButton/FormButton";
-import { AddTranslationState, FormValues } from "./types";
+import Alert from "../shared/alert/Alert";
+import { AddTranslationState } from "./types";
 import "./AddTranslation.scss";
 
-const mapState = (state: IState) => ({
-  translator: state.translator,
-});
+const mapState = (state: IState) => {
+  return ({
+    translator: state.translator,
+    translatorMessage: state.translatorMessage
+  })
+};
 
 const validationSchema = Yup.object().shape({
-  title: Yup.string().required("Title is required").min(3),
+  name: Yup.string().required("Title is required").min(3),
+  isEmail: Yup.boolean(),
   author: Yup.string(),
-  email: Yup.string()
-    .required("To get notification the email is needed.")
-    .email("It's a wrong email address."),
-  description: Yup.string(),
+  email: Yup.string().email("It's a wrong email address.").when('isEmail', {
+    is: true,
+    then: Yup.string().required("To get notification the email is needed."),
+    otherwise: Yup.string()
+  }),
+  description: Yup.string().required("Description is required."),
+
 });
 
 const AddTranslation = ({ setShowModal }: AddTranslationState) => {
-  const { translator } = useMappedState(mapState);
+  const { translator, translatorMessage } = useMappedState(mapState);
 
-  const submitForm = (values: FormValues) => {
-    console.log(values);
-    setShowModal(false);
+  const dispatch = useDispatch();
+
+  if (!translatorMessage.isTranslationSet) {
+    const { micheline, michelson } = { ...translator }
+    dispatch({
+      type: translatorTypes.TRANSLATOR_SET_TRANSLATION_MESSAGE,
+      micheline,
+      michelson
+    });
   };
 
+  const submitForm = (values: any) => {
+    const sendValues = {
+      ...values,
+      micheline: translatorMessage.micheline || "",
+      michelson: translatorMessage.michelson || ""
+    };
+    dispatch({
+      type: translatorTypes.TRANSLATOR_SEND_TRANSLATION,
+      payload: sendValues,
+    });
+  };
+
+  {/* OPT => pure function */}
+  const handleCloseModal = () => {
+    setShowModal(false);
+    dispatch({
+      type: translatorTypes.TRANSLATOR_MESSAGE_RESET
+    })
+  }
   return (
     <div className="add-translation">
       <Formik
         initialValues={{
-          title: "",
+          name: "",
           author: "",
           isEmail: "",
           email: "",
@@ -50,12 +85,12 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
               <FormInput
                 label="Title"
                 type="text"
-                name="title"
+                name="name"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.title}
-                errors={errors.title}
-                touched={touched.title}
+                value={values.name}
+                errors={errors.name}
+                touched={touched.name}
               />
               <FormInput
                 label="Author"
@@ -108,14 +143,25 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
               <FormCodeDisplay value={translator.michelson} type="Michelson" />
             </div>
             <div className="add-translation_buttons">
-              <FormButton label="cancel" type="secondary" onClick={() => setShowModal(false)} />
+              <FormButton label="cancel" type="secondary" onClick={() => handleCloseModal()} />
               <FormButton
-                label="save"
+                label="send"
                 type="submit"
-                onClick={() => submitForm(values)}
-                disabled={isSubmitting || !!errors}
+                onClick={() => { }}
+                disabled={ !!Object.keys(errors).length
+                  || !Object.keys(touched).length
+                  || !translatorMessage.micheline
+                  || !translatorMessage.michelson
+                  || (!!translatorMessage.wasSend && !translatorMessage.error)
+                }
               />
+              {/* OPT => zamienic na funkcje ifowanie */}
             </div>
+            {!!(translatorMessage && translatorMessage.wasSend) && (
+              !!translatorMessage.error
+                ? <Alert message="Sending message failed. Please, check the form." type="error" />
+                : <Alert message="Translation was send" type="success" />
+            )}
           </form>
         )}
       </Formik>

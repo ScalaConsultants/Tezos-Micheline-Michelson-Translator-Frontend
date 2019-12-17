@@ -32,6 +32,21 @@ export const TranslatorSetError = (error: string): TranslatorTypes.TranslatorAct
   error,
 });
 
+export const TranslatorMessageSetError = (error: string): TranslatorTypes.TranslatorActionTypes => ({
+  type: TranslatorTypes.TRANSLATOR_MESSAGE_SET_ERROR,
+  error,
+});
+export const TranslatorMessageSetSuccess = (status: any): TranslatorTypes.TranslatorActionTypes => ({
+  type: TranslatorTypes.TRANSLATOR_MESSAGE_SET_SUCCESS,
+  status
+});
+export const TranslatorMessageReset = (): TranslatorTypes.TranslatorActionTypes => ({
+  type: TranslatorTypes.TRANSLATOR_MESSAGE_RESET,
+});
+export const TranslatorSendTranslation = (values: any): any => ({
+  type: TranslatorTypes.TRANSLATOR_SEND_TRANSLATION,
+  values,
+});
 export const TranslatorFlushTranslation = (): TranslatorTypes.TranslatorActionTypes => ({
   type: TranslatorTypes.TRANSLATOR_FLUSH_TRANSLATION,
 });
