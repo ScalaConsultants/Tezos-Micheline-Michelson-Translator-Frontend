@@ -15,7 +15,9 @@ const mapState = (state: IState) => ({
 });
 
 const validationSchema = Yup.object().shape({
-  title: Yup.string().required("Title is required").min(3),
+  title: Yup.string()
+    .required("Title is required")
+    .min(3),
   author: Yup.string(),
   email: Yup.string()
     .required("To get notification the email is needed.")

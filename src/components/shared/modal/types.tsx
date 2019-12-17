@@ -1,5 +1,5 @@
 export type AppModalProps = {
-    showModal: boolean,
-    setShowModal: Function,
-    children: any,
-}
+  showModal: boolean;
+  setShowModal: Function;
+  children: any;
+};

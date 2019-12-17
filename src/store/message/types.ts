@@ -30,6 +30,7 @@ export interface IMessageGlobalState {
 export interface IMessageSend {
   type: typeof MESSAGE_SEND;
   message: MessageState;
+  captcha: string;
 }
 
 export interface IMessageSet {

@@ -3,14 +3,10 @@ import * as messageActions from "./actions";
 import * as MessageTypes from "./types";
 import MessageService from "../../services/message.service";
 
-export function* doMessageSet(action: MessageTypes.IMessageSet) {
-  yield put(messageActions.MessageSend(action.message));
-}
-
 export function* doMessageSend(action: MessageTypes.IMessageSend) {
   const messageService = new MessageService();
   yield put(messageActions.MessageSetLoading(true));
-  const response = yield call(messageService.send, action.message);
+  const response = yield call(messageService.send, action.message, action.captcha);
   yield put(messageActions.MessageSetLoading(false));
 
   if (response.status === 200) {

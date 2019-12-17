@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useMappedState } from "redux-react-hook";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import FormInput from "../shared/input/FormInput";
-import { FormValues, FormikSubmitting } from "./types";
+import { FormValues } from "./types";
 import "./ContactForm.scss";
 import * as MessageTypes from "../../store/message/types";
 import Alert from "../shared/alert/Alert";
@@ -30,8 +31,14 @@ const mapState = (state: MessageTypes.IMessageGlobalState) => ({
 const ContactForm = () => {
   const dispatch = useDispatch();
   const { message } = useMappedState(mapState);
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
-  const submitForm = (values: FormValues) => {
+  const submitForm = async (values: FormValues) => {
+    if (!executeRecaptcha) return;
+
+    const token = await executeRecaptcha("contact_form");
+    if (!token.length) return;
+
     dispatch({
       type: MessageTypes.MESSAGE_SET,
       message: values,
@@ -40,6 +47,7 @@ const ContactForm = () => {
     dispatch({
       type: MessageTypes.MESSAGE_SEND,
       message: values,
+      captcha: token,
     });
   };
 
@@ -121,7 +129,7 @@ const ContactForm = () => {
                 className="contact-form_message"
               />
             </div>
-            <FormButton label="Submit" type="submit" disabled={isSubmitting} onClick={() => submitForm(values)} />
+            <FormButton label="Submit" type="submit" disabled={isSubmitting} />
             {message.isError === false ? <Alert type="success" message="Message sent." /> : null}
           </form>
         )}

@@ -3,7 +3,7 @@ import * as translatorActions from "./actions";
 import * as translatorTypes from "./types";
 
 const fetchMichelsonToMichelineTranslationRequest = (payload: string) => {
-  console.log('elo');
+  console.log("elo");
   const options = {
     method: "POST",
     headers: {
@@ -22,7 +22,7 @@ const fetchMichelsonToMichelineTranslationRequest = (payload: string) => {
 };
 
 export function* doFetchMichelsonToMichelineTranslation(action: translatorTypes.ITranslatorFetchMichelsonToMicheline) {
-  console.log('elo');
+  console.log("elo");
   const response = yield call(fetchMichelsonToMichelineTranslationRequest, action.payload);
   console.log(response);
 
@@ -31,7 +31,7 @@ export function* doFetchMichelsonToMichelineTranslation(action: translatorTypes.
       translatorActions.TranslatorSetMicheline(
         response.status,
         JSON.stringify(JSON.parse(response.text), undefined, 2),
-      )
+      ),
     );
   } else {
     yield put(translatorActions.TranslatorSetError(response.text));
@@ -62,4 +62,4 @@ export function* doFetchMichelineToMichelsonTranslation(action: translatorTypes.
   response.status === 200
     ? yield put(translatorActions.TranslatorSetMichelson(response.status, response.text))
     : yield put(translatorActions.TranslatorSetError(response.text));
-};
+}

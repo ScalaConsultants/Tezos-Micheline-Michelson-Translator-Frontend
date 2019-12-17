@@ -3,8 +3,8 @@ export type FormValues = {
   phone: string;
   email: string;
   content: string;
-}
+};
 
 export type FormikSubmitting = {
-  setSubmitting: Function,
-}
+  setSubmitting: Function;
+};

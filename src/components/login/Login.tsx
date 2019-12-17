@@ -28,7 +28,7 @@ const Login = () => {
       payload: values,
     });
   };
-  const redirectToPanel = () => (auth.isLogged && <Redirect to='/admin/library' />);
+  const redirectToPanel = () => auth.isLogged && <Redirect to="/admin/library" />;
 
   return (
     <div className="login">

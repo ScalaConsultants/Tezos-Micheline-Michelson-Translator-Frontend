@@ -3,7 +3,7 @@ import { mount, ReactWrapper } from "enzyme";
 import { StoreContext } from "redux-react-hook";
 import configureStore from "redux-mock-store";
 import AddTranslation from "./AddTranslation";
-import FormButton from '../shared/formButton/FormButton';
+import FormButton from "../shared/formButton/FormButton";
 
 const translator = {
   micheline:
@@ -25,7 +25,7 @@ describe("AddTranslation", () => {
 
     wrapper = mount(
       <StoreContext.Provider value={store}>
-        <AddTranslation setShowModal={() => { }} />
+        <AddTranslation setShowModal={() => {}} />
       </StoreContext.Provider>,
     );
   });
@@ -34,14 +34,15 @@ describe("AddTranslation", () => {
     expect(wrapper.debug()).toMatchSnapshot();
   });
 
-  it('renders without crashing', () => {
+  it("renders without crashing", () => {
     const item = wrapper.find(AddTranslation);
 
     expect(
       item
         .at(0)
         .find({ name: "name" })
-        .at(0).text()
+        .at(0)
+        .text(),
     ).toEqual("Name");
 
     expect(
@@ -49,7 +50,7 @@ describe("AddTranslation", () => {
         .at(0)
         .find(FormButton)
         .at(0)
-        .text()
+        .text(),
     ).toEqual("cancel");
   });
 });

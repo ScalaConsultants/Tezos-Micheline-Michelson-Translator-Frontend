@@ -1,6 +1,6 @@
 import React from "react";
 import "./AppModal.scss";
-import { AppModalProps } from './types';
+import { AppModalProps } from "./types";
 
 const AppModal = ({ showModal, setShowModal, children }: AppModalProps) =>
   showModal ? (

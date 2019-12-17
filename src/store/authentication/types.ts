@@ -1,11 +1,10 @@
-export const AUTHENTICATION_LOGIN = 'AUTHENTICATION_LOGIN';
-export const AUTHENTICATION_SUCCESS = 'AUTHENTICATION_SUCCESS';
-export const AUTHENTICATION_FAIL = 'AUTHENTICATION_FAIL';
-
+export const AUTHENTICATION_LOGIN = "AUTHENTICATION_LOGIN";
+export const AUTHENTICATION_SUCCESS = "AUTHENTICATION_SUCCESS";
+export const AUTHENTICATION_FAIL = "AUTHENTICATION_FAIL";
 
 export type authCredentials = {
-  username: string,
-  password: string,
+  username: string;
+  password: string;
 };
 
 export type AuthenticationState = {
@@ -14,20 +13,17 @@ export type AuthenticationState = {
 };
 
 export interface IAuthenticationLogin {
-  type: typeof AUTHENTICATION_LOGIN,
-  payload: authCredentials,
-};
+  type: typeof AUTHENTICATION_LOGIN;
+  payload: authCredentials;
+}
 export interface IAuthenticationSuccess {
-  type: typeof AUTHENTICATION_SUCCESS,
-  token: string,
-};
+  type: typeof AUTHENTICATION_SUCCESS;
+  token: string;
+}
 export interface IAuthenticationFail {
-  type: typeof AUTHENTICATION_FAIL,
-  error: string,
-  status: string
-};
+  type: typeof AUTHENTICATION_FAIL;
+  error: string;
+  status: string;
+}
 
-export type AuthActionTypes =
-  | IAuthenticationLogin
-  | IAuthenticationSuccess
-  | IAuthenticationFail;
+export type AuthActionTypes = IAuthenticationLogin | IAuthenticationSuccess | IAuthenticationFail;

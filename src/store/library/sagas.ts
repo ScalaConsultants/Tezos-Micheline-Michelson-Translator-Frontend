@@ -6,7 +6,7 @@ const libraryFetchRequest = () => {
     method: "GET",
   };
 
-  return fetch(`${process.env.REACT_APP_API_URL}/v1/translations`, options)
+  return fetch(`${process.env.REACT_APP_API_URL}/v1/library`, options)
     .then(async response => {
       return { status: response.status, json: await response.json() };
     })

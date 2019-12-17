@@ -1,4 +1,4 @@
 export type FormCodeDisplayProps = {
-    value: string,
-    type: string,
-}
+  value: string;
+  type: string;
+};
