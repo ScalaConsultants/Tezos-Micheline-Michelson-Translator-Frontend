@@ -29,7 +29,7 @@ export function* doFetchMichelsonToMichelineTranslation(action: translatorTypes.
       translatorActions.TranslatorSetMicheline(
         response.status,
         JSON.stringify(JSON.parse(response.text), undefined, 2),
-      )
+      ),
     );
   } else {
     yield put(translatorActions.TranslatorSetError(response.text));
@@ -60,7 +60,7 @@ export function* doFetchMichelineToMichelsonTranslation(action: translatorTypes.
   response.status === 200
     ? yield put(translatorActions.TranslatorSetMichelson(response.status, response.text))
     : yield put(translatorActions.TranslatorSetError(response.text));
-};
+}
 
 const sendTranslationRequest = (payload: any) => {
   const { isEmail = '', email = '', ...body } = { ...payload };

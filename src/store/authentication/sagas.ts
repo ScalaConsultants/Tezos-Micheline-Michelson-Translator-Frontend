@@ -9,7 +9,7 @@ const authenticationRequest = (data: any) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(data),
   };
 
   return fetch(`${process.env.REACT_APP_API_URL}/v1/login`, options)
@@ -30,5 +30,4 @@ export function* doLogin(action: authenticationTypes.IAuthenticationLogin) {
   } else {
     yield put(authenticationActions.AuthenticationFail(response.status, response.data));
   }
-
-};
+}

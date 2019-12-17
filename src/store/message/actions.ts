@@ -1,8 +1,9 @@
 import * as MessageTypes from "./types";
 
-export const MessageSend = (payload: MessageTypes.MessageState): MessageTypes.MessageActionTypes => ({
+export const MessageSend = (payload: MessageTypes.MessageState, captcha: string): MessageTypes.MessageActionTypes => ({
   type: MessageTypes.MESSAGE_SEND,
   message: payload,
+  captcha,
 });
 
 export const MessageSet = (payload: MessageTypes.MessageState): MessageTypes.MessageActionTypes => ({

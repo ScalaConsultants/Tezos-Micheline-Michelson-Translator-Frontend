@@ -4,7 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { translatorReducer, translatorMessageReducer } from "./translator/reducer";
 import { libraryReducer } from "./library/reducer";
 import { messageReducer } from "./message/reducer";
-import { authenticationReducer } from './authentication/reducer';
+import { authenticationReducer } from "./authentication/reducer";
 
 const rootReducer = combineReducers({
   translator: translatorReducer,

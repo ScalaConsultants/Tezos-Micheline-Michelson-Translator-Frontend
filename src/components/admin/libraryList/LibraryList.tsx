@@ -3,7 +3,7 @@ import { useMappedState } from "redux-react-hook";
 import { Redirect } from "react-router-dom";
 import LibraryListItem from "./LibraryListItem";
 import "./LibraryList.scss";
-import { IState} from "../../../store/global/types";
+import { IState } from "../../../store/global/types";
 
 const mapState = (state: IState) => ({
   library: state.library,
@@ -13,7 +13,7 @@ const mapState = (state: IState) => ({
 const LibraryList = () => {
   const { library, auth } = useMappedState(mapState);
 
-  const redirectToLogin = () => (!auth.isLogged && (<Redirect to='/admin'/>));
+  const redirectToLogin = () => !auth.isLogged && <Redirect to="/admin" />;
 
   return (
     <div className="LibraryList">

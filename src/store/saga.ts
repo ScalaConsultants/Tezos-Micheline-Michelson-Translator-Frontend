@@ -14,7 +14,7 @@ import * as librarySagas from "./library/sagas";
 import * as messageTypes from "./message/types";
 import * as messageSagas from "./message/sagas";
 
-import { getLoginToken } from '../components/login/sessionHandler';
+import { getLoginToken } from "../components/login/sessionHandler";
 
 export function* startup(): any {
   yield fork(getData);
@@ -50,4 +50,4 @@ export default function* root() {
   yield takeEvery(messageTypes.MESSAGE_SEND, messageSagas.doMessageSend);
 
   yield takeEvery(authTypes.AUTHENTICATION_LOGIN, authSagas.doLogin);
-};
+}

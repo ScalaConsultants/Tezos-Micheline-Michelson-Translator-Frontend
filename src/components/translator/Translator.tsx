@@ -6,7 +6,7 @@ import TextField from "../textField/TextField";
 import { IState } from "../../store/global/types";
 
 const mapState = (state: IState) => ({
-  translator: state.translator
+  translator: state.translator,
 });
 
 export const translate = (currentMode: TranslatorTypes.Modes, value: string, dispatch: Function) => {

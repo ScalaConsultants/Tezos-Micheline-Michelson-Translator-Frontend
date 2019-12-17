@@ -21,7 +21,9 @@ const mapState = (state: IState) => {
 };
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string().required("Title is required").min(3),
+  name: Yup.string()
+    .required("Title is required")
+    .min(3),
   isEmail: Yup.boolean(),
   author: Yup.string(),
   email: Yup.string().email("It's a wrong email address.").when('isEmail', {
