@@ -2,9 +2,9 @@ import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { useMappedState, useDispatch } from "redux-react-hook";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { IState } from "../../store/global/types";
 import * as translatorTypes from "../../store/translator/types";
-
 import FormTextarea from "../shared/textarea/FormTextarea";
 import FormInput from "../shared/input/FormInput";
 import FormCodeDisplay from "../shared/formCodeDisplay/FormCodeDisplay";
@@ -14,10 +14,10 @@ import { AddTranslationState } from "./types";
 import "./AddTranslation.scss";
 
 const mapState = (state: IState) => {
-  return ({
+  return {
     translator: state.translator,
-    translatorMessage: state.translatorMessage
-  })
+    translatorMessage: state.translatorMessage,
+  };
 };
 
 const validationSchema = Yup.object().shape({
@@ -26,48 +26,56 @@ const validationSchema = Yup.object().shape({
     .min(3),
   isEmail: Yup.boolean(),
   author: Yup.string(),
-  email: Yup.string().email("It's a wrong email address.").when('isEmail', {
-    is: true,
-    then: Yup.string().required("To get notification the email is needed."),
-    otherwise: Yup.string()
-  }),
+  email: Yup.string()
+    .email("It's a wrong email address.")
+    .when("isEmail", {
+      is: true,
+      then: Yup.string().required("To get notification the email is needed."),
+      otherwise: Yup.string(),
+    }),
   description: Yup.string().required("Description is required."),
-
 });
 
 const AddTranslation = ({ setShowModal }: AddTranslationState) => {
   const { translator, translatorMessage } = useMappedState(mapState);
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const dispatch = useDispatch();
 
   if (!translatorMessage.isTranslationSet) {
-    const { micheline, michelson } = { ...translator }
+    const { micheline, michelson } = { ...translator };
     dispatch({
       type: translatorTypes.TRANSLATOR_SET_TRANSLATION_MESSAGE,
       micheline,
-      michelson
+      michelson,
     });
-  };
+  }
 
-  const submitForm = (values: any) => {
+  const submitForm = async (values: any) => {
+    if (!executeRecaptcha) return;
+
+    const token = await executeRecaptcha("contact_form");
+    if (!token.length) return;
+
     const sendValues = {
       ...values,
       micheline: translatorMessage.micheline || "",
-      michelson: translatorMessage.michelson || ""
+      michelson: translatorMessage.michelson || "",
     };
     dispatch({
       type: translatorTypes.TRANSLATOR_SEND_TRANSLATION,
       payload: sendValues,
+      captcha: token,
     });
   };
 
-  {/* OPT => pure function */}
+  /* OPT => pure function */
   const handleCloseModal = () => {
     setShowModal(false);
     dispatch({
-      type: translatorTypes.TRANSLATOR_MESSAGE_RESET
-    })
-  }
+      type: translatorTypes.TRANSLATOR_MESSAGE_RESET,
+    });
+  };
   return (
     <div className="add-translation">
       <Formik
@@ -149,21 +157,23 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
               <FormButton
                 label="send"
                 type="submit"
-                onClick={() => { }}
-                disabled={ !!Object.keys(errors).length
-                  || !Object.keys(touched).length
-                  || !translatorMessage.micheline
-                  || !translatorMessage.michelson
-                  || (!!translatorMessage.wasSend && !translatorMessage.error)
+                onClick={() => {}}
+                disabled={
+                  !!Object.keys(errors).length ||
+                  !Object.keys(touched).length ||
+                  !translatorMessage.micheline ||
+                  !translatorMessage.michelson ||
+                  (!!translatorMessage.wasSend && !translatorMessage.error)
                 }
               />
               {/* OPT => zamienic na funkcje ifowanie */}
             </div>
-            {!!(translatorMessage && translatorMessage.wasSend) && (
-              !!translatorMessage.error
-                ? <Alert message="Sending message failed. Please, check the form." type="error" />
-                : <Alert message="Translation was send" type="success" />
-            )}
+            {!!(translatorMessage && translatorMessage.wasSend) &&
+              (!!translatorMessage.error ? (
+                <Alert message="Sending message failed. Please, check the form." type="error" />
+              ) : (
+                <Alert message="Translation was send" type="success" />
+              ))}
           </form>
         )}
       </Formik>

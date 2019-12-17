@@ -31,72 +31,73 @@ export enum Modes {
 }
 
 export type TranslatorMessageState = {
-  name: string,
-  author?: string,
-  description: string,
-  michelson: string,
-  micheline: string,
-  error: string | null,
-  wasSend: boolean,
-  isTranslationSet: boolean,
+  name: string;
+  author?: string;
+  description: string;
+  michelson: string;
+  micheline: string;
+  error: string | null;
+  wasSend: boolean;
+  isTranslationSet: boolean;
 };
 
 export interface ITranslatorSetMode {
   type: typeof TRANSLATOR_SET_MODE;
   mode: Modes;
-};
+}
 
 export interface ITranslatorFetchMichelineToMichelson {
   type: typeof TRANSLATOR_FETCH_MICHELINE_TO_MICHELSON;
   payload: string;
-};
+}
 
 export interface ITranslatorFetchMichelsonToMicheline {
   type: typeof TRANSLATOR_FETCH_MICHELSON_TO_MICHELINE;
   payload: string;
-};
+}
 
 export interface ITranslatorSetMichelson {
   type: typeof TRANSLATOR_SET_MICHELSON;
   status: number;
   translation: string;
-};
+}
 
 export interface ITranslatorSetMicheline {
   type: typeof TRANSLATOR_SET_MICHELINE;
   status: number;
   translation: string;
-};
+}
 
 export interface ITranslatorSetError {
   type: typeof TRANSLATOR_SET_ERROR;
   error: string;
-};
+}
 
 export interface ITranslatorFlushTranslation {
   type: typeof TRANSLATOR_FLUSH_TRANSLATION;
-};
+}
 export interface ITranslatorSendTranslation {
-  type: typeof TRANSLATOR_SEND_TRANSLATION
-  payload: any
-};
+  type: typeof TRANSLATOR_SEND_TRANSLATION;
+  payload: any;
+  captcha: string;
+}
 export interface ITranslatorSetTranslationMessage {
-  type: typeof TRANSLATOR_SET_TRANSLATION_MESSAGE,
-  micheline: string,
-  michelson: string,
-};
+  type: typeof TRANSLATOR_SET_TRANSLATION_MESSAGE;
+  micheline: string;
+  michelson: string;
+}
 
 export interface ITranslatorMessageSetError {
   type: typeof TRANSLATOR_MESSAGE_SET_ERROR;
   error: string;
-};
+}
 export interface ITranslatorMessageSetSuccess {
   type: typeof TRANSLATOR_MESSAGE_SET_SUCCESS;
-  status: any,
-};
+  status: any;
+}
 export interface ITranslatorMessageReset {
   type: typeof TRANSLATOR_MESSAGE_RESET;
-};
+}
 
 export type TranslatorActionTypes =
   | ITranslatorSetMode
@@ -110,4 +111,4 @@ export type TranslatorActionTypes =
   | ITranslatorMessageSetError
   | ITranslatorMessageSetSuccess
   | ITranslatorMessageReset
-  | ITranslatorSetTranslationMessage 
+  | ITranslatorSetTranslationMessage;

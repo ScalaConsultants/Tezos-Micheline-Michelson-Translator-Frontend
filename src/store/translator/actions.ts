@@ -38,7 +38,7 @@ export const TranslatorMessageSetError = (error: string): TranslatorTypes.Transl
 });
 export const TranslatorMessageSetSuccess = (status: any): TranslatorTypes.TranslatorActionTypes => ({
   type: TranslatorTypes.TRANSLATOR_MESSAGE_SET_SUCCESS,
-  status
+  status,
 });
 export const TranslatorMessageReset = (): TranslatorTypes.TranslatorActionTypes => ({
   type: TranslatorTypes.TRANSLATOR_MESSAGE_RESET,

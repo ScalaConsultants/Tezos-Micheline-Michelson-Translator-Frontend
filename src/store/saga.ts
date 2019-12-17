@@ -41,10 +41,7 @@ export default function* root() {
     translatorTypes.TRANSLATOR_FETCH_MICHELSON_TO_MICHELINE,
     translatorSagas.doFetchMichelsonToMichelineTranslation,
   );
-  yield takeEvery(
-    translatorTypes.TRANSLATOR_SEND_TRANSLATION,
-    translatorSagas.doSendTranslation,
-  );
+  yield takeEvery(translatorTypes.TRANSLATOR_SEND_TRANSLATION, translatorSagas.doSendTranslation);
   yield takeEvery(libraryTypes.LIBRARY_FETCH, librarySagas.doLibraryFetch);
   // yield takeEvery(messageTypes.MESSAGE_SET, messageSagas.doMessageSet);
   yield takeEvery(messageTypes.MESSAGE_SEND, messageSagas.doMessageSend);

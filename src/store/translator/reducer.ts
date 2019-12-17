@@ -20,7 +20,7 @@ const translatorMessageInitState: TranslatorTypes.TranslatorMessageState = {
 export const translatorReducer = (
   state: TranslatorTypes.TranslatorState = translatorInitState,
   action: TranslatorTypes.TranslatorActionTypes,
-): TranslatorTypes.TranslatorState  => {
+): TranslatorTypes.TranslatorState => {
   switch (action.type) {
     case TranslatorTypes.TRANSLATOR_SET_MODE:
       return {
@@ -52,15 +52,14 @@ export const translatorReducer = (
 export const translatorMessageReducer = (
   state: TranslatorTypes.TranslatorMessageState = translatorMessageInitState,
   action: TranslatorTypes.TranslatorActionTypes,
-): TranslatorTypes.TranslatorMessageState  => {
+): TranslatorTypes.TranslatorMessageState => {
   switch (action.type) {
     case TranslatorTypes.TRANSLATOR_SET_TRANSLATION_MESSAGE:
       return {
         ...state,
         micheline: action.micheline,
         michelson: action.michelson,
-        isTranslationSet: true
-
+        isTranslationSet: true,
       };
     case TranslatorTypes.TRANSLATOR_SEND_TRANSLATION:
       return {
