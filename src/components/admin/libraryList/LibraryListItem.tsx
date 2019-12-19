@@ -33,7 +33,7 @@ const LibraryListItem = ({ data, no }: Props) => {
           <div>{no}</div>
           <div>{data.author}</div>
           <div>{data.email}</div>
-          <div>{data.status.toString()}</div>
+          <div>{data.status}</div>
           <div>
             <span onClick={() => setStatus(data.uid, adminLibraryTypes.adminLibraryItemStatusType.ACCEPTED)}>
               Accept
@@ -41,9 +41,7 @@ const LibraryListItem = ({ data, no }: Props) => {
             <span onClick={() => setStatus(data.uid, adminLibraryTypes.adminLibraryItemStatusType.DECLINED)}>
               Reject
             </span>
-            <span onClick={() => deleteItem(data.uid)}>
-              Delete
-            </span>
+            <span onClick={() => deleteItem(data.uid)}>Delete</span>
           </div>
         </div>
       </div>
