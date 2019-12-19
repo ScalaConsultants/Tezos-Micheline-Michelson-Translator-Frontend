@@ -65,7 +65,7 @@ const Login = () => {
                 errors={errors.password}
                 touched={touched.password}
               />
-              <FormButton label="Log in" type="submit" disabled={!isValid || isSubmitting} />
+              <FormButton label="Log in" type="submit" />
             </form>
           )}
         </Formik>

@@ -14,7 +14,7 @@ const authenticationRequest = (data: any) => {
 
   return fetch(`${process.env.REACT_APP_API_URL}/v1/login`, options)
     .then(async response => {
-      return { status: response.status, data: await response.json() };
+      return { status: response.status, data: response.status === 200 ? await response.json() : null };
     })
     .catch(error => {
       throw error;
