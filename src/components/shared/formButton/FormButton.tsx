@@ -4,7 +4,7 @@ import { ButtonProps } from "./types";
 
 const FormButton = ({ type, label, className, disabled }: ButtonProps) => (
   <button
-    className={`form-button form-button_${type ? type : "submit"} ${className}`}
+    className={`form-button form-button_${type || "submit"} ${className}`}
     data-testid="form-button"
     disabled={disabled}
     type="submit"

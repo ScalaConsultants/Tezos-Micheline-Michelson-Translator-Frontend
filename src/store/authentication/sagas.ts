@@ -1,7 +1,7 @@
 import { put, call } from "redux-saga/effects";
 import * as authenticationActions from "./actions";
 import * as authenticationTypes from "./types";
-import { setLoginToken } from "../../components/login/sessionHandler";
+import { setLoginToken } from "../../helpers/sessionHandler";
 
 const authenticationRequest = (data: any) => {
   const options = {
@@ -14,7 +14,7 @@ const authenticationRequest = (data: any) => {
 
   return fetch(`${process.env.REACT_APP_API_URL}/v1/login`, options)
     .then(async response => {
-      return { status: response.status, data: await response.text() };
+      return { status: response.status, data: await response.json() };
     })
     .catch(error => {
       throw error;

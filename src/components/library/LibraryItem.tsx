@@ -34,13 +34,13 @@ const LibraryItem = ({ selectMicheline, selectMichelson, data }: Props) => {
           </div>
         </div>
       </div>
-      <div className="LibraryItem__wrapper2" onClick={() => selectMicheline(data.source)}>
+      <div className="LibraryItem__wrapper2" onClick={() => selectMicheline(data.micheline)}>
         <div className="LibraryItem__label">Micheline</div>
-        <div className="LibraryItem__content">{data.source}</div>
+        <div className="LibraryItem__content">{data.micheline}</div>
       </div>
-      <div className="LibraryItem__wrapper2" onClick={() => selectMichelson(data.translation)}>
+      <div className="LibraryItem__wrapper2" onClick={() => selectMichelson(data.michelson)}>
         <div className="LibraryItem__label">Michelson</div>
-        <div className="LibraryItem__content">{data.translation}</div>
+        <div className="LibraryItem__content">{data.michelson}</div>
       </div>
     </div>
   );

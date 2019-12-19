@@ -7,10 +7,14 @@ export const AuthenticationLogin = (data: AuthTypes.authCredentials): AuthTypes.
 
 export const AuthenticationSuccess = (token: string): AuthTypes.AuthActionTypes => ({
   type: AuthTypes.AUTHENTICATION_SUCCESS,
-  token: token,
+  token,
 });
 export const AuthenticationFail = (status: string, error: any): AuthTypes.AuthActionTypes => ({
   type: AuthTypes.AUTHENTICATION_FAIL,
-  status: status,
-  error: error,
+  status,
+  error,
+});
+
+export const AuthenticationLogout = (): AuthTypes.AuthActionTypes => ({
+  type: AuthTypes.AUTHENTICATION_LOGOUT,
 });

@@ -14,7 +14,7 @@ const mapState = (state: IState) => ({
 });
 
 const validationSchema = Yup.object().shape({
-  login: Yup.string().required("Login is needed"),
+  username: Yup.string().required("Login is needed"),
   password: Yup.string().required("Password is needed"),
 });
 
@@ -28,6 +28,7 @@ const Login = () => {
       payload: values,
     });
   };
+
   const redirectToPanel = () => auth.isLogged && <Redirect to="/admin/library" />;
 
   return (
@@ -42,7 +43,7 @@ const Login = () => {
           validationSchema={validationSchema}
           onSubmit={submitForm}
         >
-          {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
+          {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting, isValid }) => (
             <form onSubmit={handleSubmit} noValidate>
               <FormInput
                 label="Login"
@@ -64,12 +65,7 @@ const Login = () => {
                 errors={errors.password}
                 touched={touched.password}
               />
-              <FormButton
-                label="Log in"
-                type="submit"
-                onClick={() => submitForm(values)}
-                disabled={isSubmitting || !!errors}
-              />
+              <FormButton label="Log in" type="submit" disabled={!isValid || isSubmitting} />
             </form>
           )}
         </Formik>

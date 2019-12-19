@@ -49,7 +49,7 @@ const Library = () => {
           selectMicheline={selectMicheline}
           selectMichelson={selectMichelson}
           data={item}
-          key={`${item.source}${key.toString()}`}
+          key={`${item.uid}${key.toString()}`}
         />
       ))}
     </div>
