@@ -30,7 +30,7 @@ export function* checkAuth() {
 }
 
 export function* startup(): any {
-  yield fork(getData);
+  // yield fork(getData);
   yield fork(checkAuth);
 }
 
