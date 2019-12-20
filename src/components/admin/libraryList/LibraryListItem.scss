@@ -18,11 +18,17 @@
     padding: 5px;
     display: flex;
 
-    & div {
+    &__basic-data {
+        & div {
+            padding: 5px;
+        }
+    }
+
+    &__column {
         box-sizing: border-box;
         padding: 5px;
         width: 20%;
-        height: 100px;
+        height: 200px;
         display: flex;
         flex-wrap: wrap;
         overflow: hidden;

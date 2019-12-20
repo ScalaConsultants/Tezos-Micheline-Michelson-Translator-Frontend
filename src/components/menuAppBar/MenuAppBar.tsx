@@ -2,6 +2,8 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import "./MenuAppBar.scss";
 import Title from "./Title";
+import { IState } from "../../store/global/types";
+import { useMappedState } from "redux-react-hook";
 
 type Props = {
   history: {
@@ -9,7 +11,13 @@ type Props = {
   };
 };
 
+const mapState = (state: IState) => ({
+  auth: state.auth,
+});
+
 const MenuAppBar = (props: Props) => {
+  const { auth } = useMappedState(mapState);
+
   const goTo = (route: string) => {
     props.history.push(route);
   };
@@ -39,9 +47,22 @@ const MenuAppBar = (props: Props) => {
           <img src="/mail.svg" alt="" />
           Contact
         </button>
-        <button type="button" onClick={() => goTo("/admin/library")}>
-          Admin
-        </button>
+
+        {!auth.isLogged && (
+          <button type="button" onClick={() => goTo("/login")}>
+            Login
+          </button>
+        )}
+        {auth.isLogged && (
+          <>
+            <button type="button" onClick={() => goTo("/admin/library")}>
+              Admin
+            </button>
+            <button type="button" onClick={() => goTo("/logout")}>
+              Logout
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

@@ -22,6 +22,11 @@ export const authenticationReducer = (state: any = authenticationInitialState, a
       return {
         ...state,
       };
+    case AuthTypes.AUTHENTICATION_LOGOUT:
+      return {
+        ...state,
+        isLogged: false,
+      };
     default:
       return state;
   }

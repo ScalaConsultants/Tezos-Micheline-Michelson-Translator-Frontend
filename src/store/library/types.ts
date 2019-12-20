@@ -1,6 +1,11 @@
 export type LibraryItem = {
-  source: string;
-  translation: string;
+  uid: string;
+  name: string;
+  author: string;
+  email: string;
+  description: string;
+  micheline: string;
+  michelson: string;
 };
 
 export const LIBRARY_FETCH = "LIBRARY_FETCH";

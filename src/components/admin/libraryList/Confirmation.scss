@@ -1,0 +1,33 @@
+.Confirmation {
+    height: 50vh;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    align-items: center;
+    justify-content: center;
+    //vertical-align: top;
+    text-align: center;
+    resize: none;
+    box-sizing: border-box;
+    color: #a0a0a0;
+    font-family: Roboto, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 17px;
+    letter-spacing: 0.15px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+
+    & div {
+        padding: 20px;
+    }
+
+    & span {
+        margin: 50px;
+        &:hover {
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+}
