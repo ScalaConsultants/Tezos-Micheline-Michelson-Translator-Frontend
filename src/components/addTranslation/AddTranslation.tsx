@@ -52,6 +52,8 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
   }
 
   const submitForm = async (values: any) => {
+    console.log(translator);
+    console.log(translatorMessage);
     if (!executeRecaptcha) return;
 
     const token = await executeRecaptcha("contact_form");
@@ -59,8 +61,8 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
 
     const sendValues = {
       ...values,
-      micheline: translatorMessage.micheline || "",
-      michelson: translatorMessage.michelson || "",
+      micheline: translatorMessage.micheline,
+      michelson: translatorMessage.michelson,
     };
     dispatch({
       type: translatorTypes.TRANSLATOR_SEND_TRANSLATION,
@@ -160,8 +162,8 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
                 disabled={
                   !!Object.keys(errors).length ||
                   !Object.keys(touched).length ||
-                  !translatorMessage.micheline ||
-                  !translatorMessage.michelson ||
+                  // !translatorMessage.micheline ||
+                  // !translatorMessage.michelson ||
                   (!!translatorMessage.wasSend && !translatorMessage.error)
                 }
               />

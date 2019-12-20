@@ -37,7 +37,7 @@ export type TranslatorMessageState = {
   michelson: string;
   micheline: string;
   error: string | null;
-  wasSend: boolean;
+  wasSend: boolean | null;
   isTranslationSet: boolean;
 };
 
