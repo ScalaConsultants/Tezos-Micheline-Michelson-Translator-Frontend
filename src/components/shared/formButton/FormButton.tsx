@@ -2,12 +2,13 @@ import React from "react";
 import "./FormButton.scss";
 import { ButtonProps } from "./types";
 
-const FormButton = ({ type, label, className, disabled }: ButtonProps) => (
+const FormButton = ({ type, label, className, disabled, stylingType, onClick }: ButtonProps) => (
   <button
-    className={`form-button form-button_${type || "submit"} ${className}`}
+    className={`form-button form-button_${stylingType || "submit"} ${className}`}
     data-testid="form-button"
     disabled={disabled}
-    type="submit"
+    type={type}
+    onClick={onClick}
   >
     {label}
   </button>

@@ -64,6 +64,7 @@ export const translatorMessageReducer = (
     case TranslatorTypes.TRANSLATOR_SEND_TRANSLATION:
       return {
         ...state,
+        wasSend: null
       };
     case TranslatorTypes.TRANSLATOR_MESSAGE_SET_ERROR:
       return {
@@ -74,6 +75,7 @@ export const translatorMessageReducer = (
     case TranslatorTypes.TRANSLATOR_MESSAGE_SET_SUCCESS:
       return {
         ...state,
+        error: null,
         wasSend: true,
       };
     case TranslatorTypes.TRANSLATOR_MESSAGE_RESET:
