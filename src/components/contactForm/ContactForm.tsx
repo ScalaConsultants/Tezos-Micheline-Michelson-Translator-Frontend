@@ -129,7 +129,7 @@ const ContactForm = () => {
                 className="contact-form_message"
               />
             </div>
-            <FormButton label="Submit" type="submit" disabled={isSubmitting} />
+            <FormButton label="Submit" stylingType="submit" type="submit" disabled={isSubmitting} />
             {message.isError === false ? <Alert type="success" message="Message sent." /> : null}
           </form>
         )}

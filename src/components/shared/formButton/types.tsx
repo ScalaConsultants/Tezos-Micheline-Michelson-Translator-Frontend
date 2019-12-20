@@ -1,7 +1,8 @@
 export type ButtonProps = {
-  type: string;
+  type: 'submit' | 'reset' | 'button';
   label: string;
   className?: string;
   onClick?: any;
   disabled?: boolean;
+  stylingType?: string;
 };

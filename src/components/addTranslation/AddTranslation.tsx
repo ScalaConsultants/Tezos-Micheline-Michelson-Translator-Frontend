@@ -69,13 +69,13 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
     });
   };
 
-  /* OPT => pure function */
   const handleCloseModal = () => {
     setShowModal(false);
     dispatch({
       type: translatorTypes.TRANSLATOR_MESSAGE_RESET,
     });
   };
+
   return (
     <div className="add-translation">
       <Formik
@@ -153,11 +153,10 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
               <FormCodeDisplay value={translator.michelson} type="Michelson" />
             </div>
             <div className="add-translation_buttons">
-              <FormButton label="cancel" type="secondary" onClick={() => handleCloseModal()} />
+              <FormButton label="cancel" type="button" stylingType="secondary" onClick={() => {handleCloseModal()}} />
               <FormButton
                 label="send"
                 type="submit"
-                onClick={() => {}}
                 disabled={
                   !!Object.keys(errors).length ||
                   !Object.keys(touched).length ||
@@ -166,7 +165,6 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
                   (!!translatorMessage.wasSend && !translatorMessage.error)
                 }
               />
-              {/* OPT => zamienic na funkcje ifowanie */}
             </div>
             {!!(translatorMessage && translatorMessage.wasSend) &&
               (!!translatorMessage.error ? (

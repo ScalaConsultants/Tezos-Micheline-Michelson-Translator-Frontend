@@ -67,6 +67,7 @@ const Login = () => {
               <FormButton
                 label="Log in"
                 type="submit"
+                stylingType="submit"
                 onClick={() => submitForm(values)}
                 disabled={isSubmitting || !!errors}
               />
