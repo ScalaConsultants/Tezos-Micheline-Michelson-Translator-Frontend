@@ -1,22 +1,10 @@
 import { put, call } from "redux-saga/effects";
 import * as libraryActions from "./actions";
-
-const libraryFetchRequest = () => {
-  const options = {
-    method: "GET",
-  };
-
-  return fetch(`${process.env.REACT_APP_API_URL}/v1/library`, options)
-    .then(async response => {
-      return { status: response.status, json: await response.json() };
-    })
-    .catch(error => {
-      throw error;
-    });
-};
+import LibraryService from "../../services/library.service";
 
 export function* doLibraryFetch() {
-  const response = yield call(libraryFetchRequest);
+  const libraryService = new LibraryService();
+  const response = yield call(libraryService.get);
 
   if (response.status === 200) {
     yield put(libraryActions.LibrarySet(response.json));
