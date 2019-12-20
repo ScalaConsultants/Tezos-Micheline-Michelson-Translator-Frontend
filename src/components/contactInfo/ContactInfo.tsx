@@ -5,9 +5,8 @@ const ContactInfo = () => (
   <div className="contact-info">
     <h2>Contact info</h2>
     <div className="contact-info_container">
-      <img className="contact-info_img" alt="" />
+      <img className="contact-info_img" alt="" src="/scalac2.svg" />
       <div className="contact-info_title-container">
-        <img className="contact-info_icon" alt="" />
         <div className="contact-info_title">
           <h3>Micheline/Michelson Translator</h3>
           <h6>v0.01</h6>
