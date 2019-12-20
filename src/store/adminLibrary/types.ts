@@ -49,6 +49,12 @@ export interface IAdminLibraryFlush {
 export enum adminLibraryItemStatusType {
   ACCEPTED = "accepted",
   DECLINED = "declined",
+  REMOVED = "removed", // Removed is only for showing the message. There is no 'removed' type on backend
+}
+
+export enum adminLibraryItemRequestType {
+  PUT = "PUT",
+  DELETE = "DELETE",
 }
 
 export type AdminLibraryActionTypes =

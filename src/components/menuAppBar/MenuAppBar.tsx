@@ -47,14 +47,21 @@ const MenuAppBar = (props: Props) => {
           <img src="/mail.svg" alt="" />
           Contact
         </button>
-        <button type="button" onClick={() => goTo("/admin/library")}>
-          Admin
-        </button>
 
-        {auth.isLogged && (
-          <button type="button" onClick={() => goTo("/logout")}>
-            Logout
+        {!auth.isLogged && (
+          <button type="button" onClick={() => goTo("/login")}>
+            Login
           </button>
+        )}
+        {auth.isLogged && (
+          <>
+            <button type="button" onClick={() => goTo("/admin/library")}>
+              Admin
+            </button>
+            <button type="button" onClick={() => goTo("/logout")}>
+              Logout
+            </button>
+          </>
         )}
       </div>
     </div>

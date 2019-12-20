@@ -15,7 +15,7 @@ const Logout = () => {
     return true;
   };
 
-  const redirectToHome = () => doLogout() && <Redirect to="/admin" />;
+  const redirectToHome = () => doLogout() && <Redirect to="/" />;
 
   return <div className="logout">{redirectToHome()}</div>;
 };

@@ -19,19 +19,19 @@ import * as messageSagas from "./message/sagas";
 
 import { getLoginToken } from "../helpers/sessionHandler";
 
-export function* startup(): any {
-  yield fork(getData);
-  yield fork(checkAuth);
-}
-
 export function* getData() {
   yield put(libraryActions.LibraryFetch());
 }
 
 export function* checkAuth() {
   const token = getLoginToken();
-  //We make a call to backend and confirm if the token is correct. Then we set auth.
+  // We make a call to backend and confirm if the token is correct. Then we set auth.
   token && (yield put(authActions.AuthenticationSuccess(token)));
+}
+
+export function* startup(): any {
+  yield fork(getData);
+  yield fork(checkAuth);
 }
 
 export default function* root() {

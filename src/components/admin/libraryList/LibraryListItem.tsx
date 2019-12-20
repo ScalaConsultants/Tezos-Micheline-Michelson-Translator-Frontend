@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import "./LibraryListItem.scss";
 import { useDispatch } from "redux-react-hook";
 import * as adminLibraryTypes from "../../../store/adminLibrary/types";
+import AppModal from "../../shared/modal/AppModal";
+import Confirmation from "./Confirmation";
 
 type Props = {
   data: adminLibraryTypes.AdminLibraryItem;
   no: number;
 };
 
+type SelectedActionType = {
+  accept: Function;
+  reject: Function;
+  action: string;
+};
+
 const LibraryListItem = ({ data, no }: Props) => {
   const dispatch = useDispatch();
+  const [selectedAction, setSelectedAction] = useState<SelectedActionType>({
+    accept: () => {},
+    reject: () => {},
+    action: "",
+  });
+  const [showModal, setShowModal] = useState(false);
 
   const setStatus = (item: string, status: adminLibraryTypes.adminLibraryItemStatusType) => {
     dispatch({
@@ -17,6 +31,8 @@ const LibraryListItem = ({ data, no }: Props) => {
       item,
       status,
     });
+
+    setShowModal(false);
   };
 
   const deleteItem = (item: string) => {
@@ -24,6 +40,47 @@ const LibraryListItem = ({ data, no }: Props) => {
       type: adminLibraryTypes.ADMIN_LIBRARY_DELETE,
       item,
     });
+
+    setShowModal(false);
+  };
+
+  const setModalData = (
+    item: string,
+    requestType: adminLibraryTypes.adminLibraryItemRequestType,
+    status: adminLibraryTypes.adminLibraryItemStatusType,
+  ) => {
+    let accept: Function = () => {};
+    let action: string = "";
+
+    if (
+      requestType === adminLibraryTypes.adminLibraryItemRequestType.PUT &&
+      status === adminLibraryTypes.adminLibraryItemStatusType.ACCEPTED
+    ) {
+      accept = () => setStatus(item, status);
+      action = "accept";
+    } else if (
+      requestType === adminLibraryTypes.adminLibraryItemRequestType.PUT &&
+      status === adminLibraryTypes.adminLibraryItemStatusType.DECLINED
+    ) {
+      accept = () => setStatus(item, status);
+      action = "decline";
+    } else if (
+      requestType === adminLibraryTypes.adminLibraryItemRequestType.DELETE &&
+      status === adminLibraryTypes.adminLibraryItemStatusType.REMOVED
+    ) {
+      accept = () => deleteItem(item);
+      action = "remove";
+    }
+    setSelectedAction(prevState => {
+      return {
+        ...prevState,
+        accept: () => accept(),
+        reject: () => setShowModal(false),
+        action,
+      };
+    });
+
+    setShowModal(true);
   };
 
   return (
@@ -35,16 +92,50 @@ const LibraryListItem = ({ data, no }: Props) => {
           <div>{data.email}</div>
           <div>{data.status}</div>
           <div>
-            <span onClick={() => setStatus(data.uid, adminLibraryTypes.adminLibraryItemStatusType.ACCEPTED)}>
+            <span
+              onClick={() =>
+                setModalData(
+                  data.uid,
+                  adminLibraryTypes.adminLibraryItemRequestType.PUT,
+                  adminLibraryTypes.adminLibraryItemStatusType.ACCEPTED,
+                )
+              }
+            >
               Accept
             </span>
-            <span onClick={() => setStatus(data.uid, adminLibraryTypes.adminLibraryItemStatusType.DECLINED)}>
-              Reject
+            <span
+              onClick={() =>
+                setModalData(
+                  data.uid,
+                  adminLibraryTypes.adminLibraryItemRequestType.PUT,
+                  adminLibraryTypes.adminLibraryItemStatusType.DECLINED,
+                )
+              }
+            >
+              Decline
             </span>
-            <span onClick={() => deleteItem(data.uid)}>Delete</span>
+            <span
+              onClick={() =>
+                setModalData(
+                  data.uid,
+                  adminLibraryTypes.adminLibraryItemRequestType.DELETE,
+                  adminLibraryTypes.adminLibraryItemStatusType.REMOVED,
+                )
+              }
+            >
+              Delete
+            </span>
           </div>
         </div>
       </div>
+      <AppModal showModal={showModal} setShowModal={() => {}}>
+        <Confirmation
+          name={data.name}
+          action={selectedAction.action}
+          onAccept={selectedAction.accept}
+          onReject={selectedAction.reject}
+        />
+      </AppModal>
       <div className="LibraryListItem__column">{data.name}</div>
       <div className="LibraryListItem__column">{data.description}</div>
       <div className="LibraryListItem__column">{data.micheline}</div>

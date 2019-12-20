@@ -12,7 +12,7 @@ export default () => {
       <Route exact path="/" component={Translation} />
       <Route path="/contact" component={Contact} />
       <Route path="/admin/library" component={LibraryList} />
-      <Route exact path="/admin" component={Login} />
+      <Route exact path="/login" component={Login} />
       <Route exact path="/logout" component={Logout} />
     </div>
   );

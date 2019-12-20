@@ -21,13 +21,13 @@ const LibraryList = () => {
     });
   }, [dispatch]);
 
-  const redirectToLogin = () => !auth.isLogged && <Redirect to="/admin" />;
+  const redirectToLogin = () => !auth.isLogged && <Redirect to="/login" />;
 
   return (
     <div className="LibraryList">
       {redirectToLogin()}
       <div className="LibraryList__header">
-        <div>No.</div>
+        <div>Item</div>
         <div>Name</div>
         <div>Description</div>
         <div>Micheline</div>

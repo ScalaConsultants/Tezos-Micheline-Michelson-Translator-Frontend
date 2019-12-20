@@ -16,7 +16,7 @@ export default class AdminLibraryService {
       method: "GET",
     };
 
-    return fetch(`${process.env.REACT_APP_API_URL}/v1/library?access_token=${getLoginToken()}`, options)
+    return fetch(`${process.env.REACT_APP_API_URL}/v1/library?limit=100&access_token=${getLoginToken()}`, options)
       .then(async response => {
         return { status: response.status, json: await response.json() };
       })
@@ -35,7 +35,7 @@ export default class AdminLibraryService {
       options,
     )
       .then(async response => {
-        return { status: response.status, json: await response.json() };
+        return { status: response.status, data: await response.text() };
       })
       .catch(error => {
         throw error;
@@ -49,7 +49,7 @@ export default class AdminLibraryService {
 
     return fetch(`${process.env.REACT_APP_API_URL}/v1/library?uid=${item}&access_token=${getLoginToken()}`, options)
       .then(async response => {
-        return { status: response.status, json: await response.json() };
+        return { status: response.status, data: await response.text() };
       })
       .catch(error => {
         throw error;
