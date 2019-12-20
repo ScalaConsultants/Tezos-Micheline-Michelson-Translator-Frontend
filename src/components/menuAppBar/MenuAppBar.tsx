@@ -1,9 +1,9 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import "./MenuAppBar.scss";
+import { useMappedState } from "redux-react-hook";
 import Title from "./Title";
 import { IState } from "../../store/global/types";
-import { useMappedState } from "redux-react-hook";
 
 type Props = {
   history: {
