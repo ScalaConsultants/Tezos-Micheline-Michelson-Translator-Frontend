@@ -52,6 +52,8 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
   }
 
   const submitForm = async (values: any) => {
+    console.log(translator);
+    console.log(translatorMessage);
     if (!executeRecaptcha) return;
 
     const token = await executeRecaptcha("contact_form");
@@ -59,8 +61,8 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
 
     const sendValues = {
       ...values,
-      micheline: translatorMessage.micheline || "",
-      michelson: translatorMessage.michelson || "",
+      micheline: translatorMessage.micheline,
+      michelson: translatorMessage.michelson,
     };
     dispatch({
       type: translatorTypes.TRANSLATOR_SEND_TRANSLATION,
@@ -69,13 +71,13 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
     });
   };
 
-  /* OPT => pure function */
   const handleCloseModal = () => {
     setShowModal(false);
     dispatch({
       type: translatorTypes.TRANSLATOR_MESSAGE_RESET,
     });
   };
+
   return (
     <div className="add-translation">
       <Formik
@@ -153,20 +155,18 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
               <FormCodeDisplay value={translator.michelson} type="Michelson" />
             </div>
             <div className="add-translation_buttons">
-              <FormButton label="cancel" type="secondary" onClick={() => handleCloseModal()} />
+              <FormButton label="cancel" type="button" stylingType="secondary" onClick={() => {handleCloseModal()}} />
               <FormButton
                 label="send"
                 type="submit"
-                onClick={() => {}}
                 disabled={
                   !!Object.keys(errors).length ||
                   !Object.keys(touched).length ||
-                  !translatorMessage.micheline ||
-                  !translatorMessage.michelson ||
+                  // !translatorMessage.micheline ||
+                  // !translatorMessage.michelson ||
                   (!!translatorMessage.wasSend && !translatorMessage.error)
                 }
               />
-              {/* OPT => zamienic na funkcje ifowanie */}
             </div>
             {!!(translatorMessage && translatorMessage.wasSend) &&
               (!!translatorMessage.error ? (

@@ -20,7 +20,7 @@ const Confirmation = ({ name, action, onAccept, onReject }: Props) => {
           <FormButton type="submit" label="OK" />
         </span>
         <span onClick={() => onReject()}>
-          <FormButton type="secondary" label="Cancel" />
+          <FormButton type="button" stylingType="secondary" label="Cancel" />
         </span>
       </div>
     </div>
