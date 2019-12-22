@@ -18,6 +18,12 @@
     padding: 5px;
     display: flex;
 
+    &__clickable {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
     &__basic-data {
         & div {
             padding: 5px;

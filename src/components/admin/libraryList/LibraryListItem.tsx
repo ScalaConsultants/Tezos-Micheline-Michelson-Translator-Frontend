@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./LibraryListItem.scss";
 import { useDispatch } from "redux-react-hook";
 import * as adminLibraryTypes from "../../../store/adminLibrary/types";
-import AppModal from "../../shared/modal/AppModal";
 import Confirmation from "./Confirmation";
+import Details from "./Details";
 
 type Props = {
   data: adminLibraryTypes.AdminLibraryItem;
@@ -23,7 +23,9 @@ const LibraryListItem = ({ data, no }: Props) => {
     reject: () => {},
     action: "",
   });
-  const [showModal, setShowModal] = useState(false);
+  const [selectedDetail, setSelectedDetail] = useState("");
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
 
   const setStatus = (item: string, status: adminLibraryTypes.adminLibraryItemStatusType) => {
     dispatch({
@@ -32,7 +34,7 @@ const LibraryListItem = ({ data, no }: Props) => {
       status,
     });
 
-    setShowModal(false);
+    setShowConfirmationModal(false);
   };
 
   const deleteItem = (item: string) => {
@@ -41,7 +43,7 @@ const LibraryListItem = ({ data, no }: Props) => {
       item,
     });
 
-    setShowModal(false);
+    setShowConfirmationModal(false);
   };
 
   const setModalData = (
@@ -75,12 +77,17 @@ const LibraryListItem = ({ data, no }: Props) => {
       return {
         ...prevState,
         accept: () => accept(),
-        reject: () => setShowModal(false),
+        reject: () => setShowConfirmationModal(false),
         action,
       };
     });
 
-    setShowModal(true);
+    setShowConfirmationModal(true);
+  };
+
+  const setDetailModalData = (data: string) => {
+    setSelectedDetail(data);
+    setShowDetailsModal(true);
   };
 
   return (
@@ -128,18 +135,33 @@ const LibraryListItem = ({ data, no }: Props) => {
           </div>
         </div>
       </div>
-      <AppModal showModal={showModal} setShowModal={() => {}}>
-        <Confirmation
-          name={data.name}
-          action={selectedAction.action}
-          onAccept={selectedAction.accept}
-          onReject={selectedAction.reject}
-        />
-      </AppModal>
       <div className="LibraryListItem__column">{data.name}</div>
-      <div className="LibraryListItem__column">{data.description}</div>
-      <div className="LibraryListItem__column">{data.micheline}</div>
-      <div className="LibraryListItem__column">{data.michelson}</div>
+      <div
+        className="LibraryListItem__column LibraryListItem__clickable"
+        onClick={() => setDetailModalData(data.description)}
+      >
+        {data.description}
+      </div>
+      <div
+        className="LibraryListItem__column LibraryListItem__clickable"
+        onClick={() => setDetailModalData(data.micheline)}
+      >
+        {data.micheline}
+      </div>
+      <div
+        className="LibraryListItem__column LibraryListItem__clickable"
+        onClick={() => setDetailModalData(data.michelson)}
+      >
+        {data.michelson}
+      </div>
+      <Confirmation
+        showModal={showConfirmationModal}
+        name={data.name}
+        action={selectedAction.action}
+        onAccept={selectedAction.accept}
+        onReject={selectedAction.reject}
+      />
+      <Details showModal={showDetailsModal} data={selectedDetail} onClose={setShowDetailsModal} />
     </div>
   );
 };
