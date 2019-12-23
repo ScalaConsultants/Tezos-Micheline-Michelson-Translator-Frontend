@@ -25,7 +25,7 @@ const validationSchema = Yup.object().shape({
     .required("Title is required")
     .min(3),
   isEmail: Yup.boolean(),
-  author: Yup.string().required("Title is required"),
+  author: Yup.string().required("Author is required"),
   email: Yup.string()
     .email("It's a wrong email address.")
     .when("isEmail", {
