@@ -155,7 +155,7 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
               <FormCodeDisplay value={translator.michelson} type="Michelson" />
             </div>
             <div className="add-translation_buttons">
-              <FormButton label="cancel" type="button" stylingType="secondary" onClick={() => {handleCloseModal()}} />
+              <FormButton label="close" type="button" stylingType="secondary" onClick={() => {handleCloseModal()}} />
               <FormButton
                 label="send"
                 type="submit"
