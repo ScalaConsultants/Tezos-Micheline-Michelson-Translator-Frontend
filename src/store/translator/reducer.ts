@@ -7,7 +7,7 @@ const translatorInitState: TranslatorTypes.TranslatorState = {
   error: "",
 };
 const translatorMessageInitState: TranslatorTypes.TranslatorMessageState = {
-  name: "",
+  title: "",
   michelson: "",
   micheline: "",
   description: "",

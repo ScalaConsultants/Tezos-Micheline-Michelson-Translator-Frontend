@@ -31,7 +31,7 @@ export enum Modes {
 }
 
 export type TranslatorMessageState = {
-  name: string;
+  title: string;
   author?: string;
   description: string;
   michelson: string;
