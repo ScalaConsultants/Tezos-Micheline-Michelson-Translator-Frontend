@@ -28,8 +28,6 @@ COPY --from=builder --chown=node:node /usr/src/app/build/ .
 # expose 5000 on container
 EXPOSE 5000
 
-RUN yarn install
-
 # start the app
 RUN yarn global add serve
 CMD ["serve", "-s", "."]
