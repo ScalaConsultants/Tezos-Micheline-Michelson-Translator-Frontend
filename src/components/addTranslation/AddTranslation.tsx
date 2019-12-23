@@ -21,11 +21,11 @@ const mapState = (state: IState) => {
 };
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string()
+  title: Yup.string()
     .required("Title is required")
     .min(3),
   isEmail: Yup.boolean(),
-  author: Yup.string(),
+  author: Yup.string().required("Author is required"),
   email: Yup.string()
     .email("It's a wrong email address.")
     .when("isEmail", {
@@ -82,7 +82,7 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
     <div className="add-translation">
       <Formik
         initialValues={{
-          name: "",
+          title: "",
           author: "",
           isEmail: "",
           email: "",
@@ -97,12 +97,12 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
               <FormInput
                 label="Title"
                 type="text"
-                name="name"
+                name="title"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.name}
-                errors={errors.name}
-                touched={touched.name}
+                value={values.title}
+                errors={errors.title}
+                touched={touched.title}
               />
               <FormInput
                 label="Author"
@@ -155,15 +155,15 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
               <FormCodeDisplay value={translator.michelson} type="Michelson" />
             </div>
             <div className="add-translation_buttons">
-              <FormButton label="cancel" type="button" stylingType="secondary" onClick={() => {handleCloseModal()}} />
+              <FormButton label="close" type="button" stylingType="secondary" onClick={() => {handleCloseModal()}} />
               <FormButton
                 label="send"
                 type="submit"
                 disabled={
                   !!Object.keys(errors).length ||
                   !Object.keys(touched).length ||
-                  // !translatorMessage.micheline ||
-                  // !translatorMessage.michelson ||
+                  !translatorMessage.micheline ||
+                  !translatorMessage.michelson ||
                   (!!translatorMessage.wasSend && !translatorMessage.error)
                 }
               />

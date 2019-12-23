@@ -18,8 +18,8 @@ const ContactInfo = () => (
           <p className="contact-info_contact-label">Call us</p>
         </div>
         <div className="contact-info_value">
-          <p className="contact-info_contact">somefunny@email.com</p>
-          <p className="contact-info_contact">+48 555 444 777</p>
+          <p className="contact-info_contact">mmt-admin@scalac.io</p>
+          {/* <p className="contact-info_contact">+48 555 444 777</p> */}
         </div>
       </div>
     </div>
