@@ -8,12 +8,11 @@
 	color: none;
 	cursor: pointer;
 	img {
-			width: 40px;
-			padding-top: 10px;
+		width: 40px;
+		padding-top: 10px;
 	}
 	&:disabled {
 		opacity: 0.3;
 		cursor: not-allowed;
 	}
 }
-
