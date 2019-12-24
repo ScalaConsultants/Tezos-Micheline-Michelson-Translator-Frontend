@@ -31,11 +31,13 @@ export const translatorReducer = (
       return {
         ...state,
         michelson: action.translation,
+        error: ""
       };
     case TranslatorTypes.TRANSLATOR_SET_MICHELINE:
       return {
         ...state,
         micheline: action.translation,
+        error: ""
       };
     case TranslatorTypes.TRANSLATOR_SET_ERROR:
       return {
