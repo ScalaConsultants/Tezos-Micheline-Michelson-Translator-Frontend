@@ -1,0 +1,18 @@
+.AddIconButton {
+	display: inline-flex;
+	align-items: center;
+	vertical-align: middle;
+	resize: none;
+	box-sizing: border-box;
+	border: none;
+	color: none;
+	cursor: pointer;
+	img {
+		width: 40px;
+		padding-top: 10px;
+	}
+	&:disabled {
+		opacity: 0.3;
+		cursor: not-allowed;
+	}
+}

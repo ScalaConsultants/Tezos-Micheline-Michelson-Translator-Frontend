@@ -5,6 +5,7 @@ const translatorInitState: TranslatorTypes.TranslatorState = {
   michelson: "",
   micheline: "",
   error: "",
+  isErrorOrEmpty: true
 };
 const translatorMessageInitState: TranslatorTypes.TranslatorMessageState = {
   title: "",
@@ -31,16 +32,21 @@ export const translatorReducer = (
       return {
         ...state,
         michelson: action.translation,
+        error: "",
+        isErrorOrEmpty: false
       };
     case TranslatorTypes.TRANSLATOR_SET_MICHELINE:
       return {
         ...state,
         micheline: action.translation,
+        error: "",
+        isErrorOrEmpty: false
       };
     case TranslatorTypes.TRANSLATOR_SET_ERROR:
       return {
         ...state,
         error: action.error ? action.error : "",
+        isErrorOrEmpty: true
       };
     case TranslatorTypes.TRANSLATOR_FLUSH_TRANSLATION:
       return translatorInitState;

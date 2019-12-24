@@ -16,6 +16,7 @@ export type TranslatorState = {
   michelson: string;
   micheline: string;
   error: string;
+  isErrorOrEmpty?: boolean
 };
 
 export type TranslatorAction = {
