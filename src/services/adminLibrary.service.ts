@@ -3,20 +3,25 @@ import * as adminLibraryTypes from "../store/adminLibrary/types";
 
 export default class AdminLibraryService {
   private apiUrl: string;
-
   private libraryUrl: string;
+  private token: string;
 
   constructor() {
     this.apiUrl = `${process.env.REACT_APP_API_URL}/v1`;
     this.libraryUrl = "/library";
+    this.token = getLoginToken() || "";
   }
 
   get = () => {
     const options: RequestInit = {
       method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.token}`
+      },
     };
 
-    return fetch(`${process.env.REACT_APP_API_URL}/v1/library?limit=100&access_token=${getLoginToken()}`, options)
+    return fetch(`${process.env.REACT_APP_API_URL}/v1/library?limit=100`, options)
       .then(async response => {
         return { status: response.status, json: await response.json() };
       })
@@ -28,10 +33,13 @@ export default class AdminLibraryService {
   setStatus = (item: string, status: adminLibraryTypes.adminLibraryItemStatusType) => {
     const options: RequestInit = {
       method: "PUT",
+      headers: {
+        "Authorization": `Bearer ${this.token}`
+      },
     };
 
     return fetch(
-      `${process.env.REACT_APP_API_URL}/v1/library?uid=${item}&status=${status}&access_token=${getLoginToken()}`,
+      `${process.env.REACT_APP_API_URL}/v1/library?uid=${item}&status=${status}`,
       options,
     )
       .then(async response => {
@@ -45,9 +53,12 @@ export default class AdminLibraryService {
   removeItem = (item: string) => {
     const options = {
       method: "DELETE",
+      headers: {
+        "Authorization": `Bearer ${this.token}`
+      },
     };
 
-    return fetch(`${process.env.REACT_APP_API_URL}/v1/library?uid=${item}&access_token=${getLoginToken()}`, options)
+    return fetch(`${process.env.REACT_APP_API_URL}/v1/library?uid=${item}`, options)
       .then(async response => {
         return { status: response.status, data: await response.text() };
       })

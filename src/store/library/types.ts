@@ -1,6 +1,6 @@
 export type LibraryItem = {
   uid: string;
-  name: string;
+  title: string;
   author: string;
   email: string;
   description: string;
