@@ -13,24 +13,15 @@ const LibraryItem = ({ selectMicheline, selectMichelson, data }: Props) => {
     <div className="LibraryItem">
       <div className="LibraryItem__info-area-wrapper">
         <div className="LibraryItem__detail-wrapper">
-          <div className="LibraryItem__detail-wrapper--label">Name</div>
-          <div className="LibraryItem__detail-wrapper--content">some name</div>
-        </div>
-        <div className="LibraryItem__detail-wrapper">
-          <div className="LibraryItem__detail-wrapper--label">Date created</div>
-          <div className="LibraryItem__detail-wrapper--content">2019-01-01</div>
-        </div>
-        <div className="LibraryItem__detail-wrapper">
-          <div className="LibraryItem__detail-wrapper--label">Date created</div>
-          <div className="LibraryItem__detail-wrapper--content">2019-01-01</div>
+          <div className="LibraryItem__detail-wrapper--label">Title</div>
+          <div className="LibraryItem__detail-wrapper--content">{data.title}</div>
         </div>
       </div>
       <div className="LibraryItem__info-area-wrapper">
         <div className="LibraryItem__description-wrapper">
           <div className="LibraryItem__description-wrapper--label">Description</div>
           <div className="LibraryItem__description-wrapper--content">
-            some description ewr ewwer wer werwer wer wer werwer werwe rwe rewr wer werwe rwe rewrewr ewr ew ewrewrwer
-            rew rwerwe rwerwerwerwe rwerwerwe rweewrwe wrwe we rwe werew rwe
+            {data.description}
           </div>
         </div>
       </div>
