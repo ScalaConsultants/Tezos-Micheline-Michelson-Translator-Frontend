@@ -54,8 +54,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier --write \"**/*.+(ts|tsx|json|css|md)\"",
-    "eslint": "eslint '**/*s.ts' '**/*.tsx' --fix",
-    "build:dev": "env-cmd -f .env.development react-scripts build"
+    "eslint": "eslint '**/*s.ts' '**/*.tsx' --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
