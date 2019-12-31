@@ -1,0 +1,78 @@
+.contact-form {
+    .contact-form_line {
+        display: flex;
+        justify-content: space-between;
+
+        @media screen and (max-width: 500px) {
+            display: block;
+        }
+    }
+
+    .contact-form_button {
+        font-size: 16px;
+        margin-top: 15px;
+        background: #C91C00;
+        color: white;
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.12), 0px 0px 2px rgba(0, 0, 0, 0.14);
+        border-radius: 4px;
+        height: 40px;
+        width: 100px;
+        text-transform: uppercase;
+        display: inline-block;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .form-input {
+        width: 80%;
+
+        .form-input_input {
+            width: 90%;
+        }
+
+        @media screen and (max-width: 500px) {
+            width: 100%;
+
+            .form-input_input {
+                width: 95%;
+            }
+        }
+    }
+
+    .contact-form_message {
+        width: 100%;
+
+        .form-input_input {
+            width: 95%;
+        }
+
+        .form-input_validation-marker {
+            left: calc(92% + 3px);
+
+            @media screen and (max-width: 500px) {
+                left: 85%;
+            }
+        }
+    }
+
+    .contact-form_name {
+        width: 100%;
+
+        .form-input_input {
+            width: 45%;
+            @media screen and (max-width: 500px) {
+                width: 95%;
+            }
+        }
+
+        .form-input_validation-marker {
+            left: calc(42% + 3px);
+
+            @media screen and (max-width: 500px) {
+                left: 85%;
+            }
+        }
+    }
+}

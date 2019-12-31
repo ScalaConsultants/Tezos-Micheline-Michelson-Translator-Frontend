@@ -1,0 +1,14 @@
+.Alert {
+  margin: 10px;
+  color: #1b9309;
+  font-weight: bold;
+
+  &__success {
+    color: #1b9309;
+  }
+
+  &__error {
+    color: #C91C01;
+  }
+
+}

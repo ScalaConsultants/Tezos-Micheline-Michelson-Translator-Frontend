@@ -1,30 +1,40 @@
-import React, {useEffect, useState} from 'react';
-import { useDispatch, useMappedState } from 'redux-react-hook';
-import * as TranslatorActions from "../../store/actions/translator";
-import * as TranslatorType from "../../types/translator";
-import Grid from "@material-ui/core/Grid/Grid";
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Fab from '@material-ui/core/Fab';
-import DeleteIcon from '@material-ui/icons/Delete';
-import {TranslatorState} from "../../store/reducers/translator";
-
-interface IState {
-  pending: boolean,
-  translator: TranslatorState,
-  error?: any
-}
+import React, { useEffect, useState } from "react";
+import { useDispatch, useMappedState } from "redux-react-hook";
+import * as TranslatorTypes from "../../store/translator/types";
+import "./Translator.scss";
+import TextField from "../textField/TextField";
+import { IState } from "../../store/global/types";
 
 const mapState = (state: IState) => ({
-  translator: state.translator
+  translator: state.translator,
 });
+
+export const translate = (currentMode: TranslatorTypes.Modes, value: string, dispatch: Function) => {
+  let action = null;
+  if (currentMode === TranslatorTypes.Modes.MICHELINEMICHELSON && value.trim().length)
+    action = TranslatorTypes.TRANSLATOR_FETCH_MICHELINE_TO_MICHELSON;
+  else if (currentMode === TranslatorTypes.Modes.MICHELSONMICHELINE && value.trim().length)
+    action = TranslatorTypes.TRANSLATOR_FETCH_MICHELSON_TO_MICHELINE;
+  if (!action) return;
+
+  dispatch({
+    type: action,
+    payload: value,
+  });
+};
 
 const Translator = () => {
   const dispatch = useDispatch();
   const { translator } = useMappedState(mapState);
-  const [currentMode, setCurrentMode] = useState<TranslatorType.ModesType>('michelinemichelson');
   const [micheline, setMicheline] = useState(translator.micheline);
   const [michelson, setMichelson] = useState(translator.michelson);
+
+  const setCurrentMode = (mode: TranslatorTypes.Modes) => {
+    dispatch({
+      type: TranslatorTypes.TRANSLATOR_SET_MODE,
+      mode,
+    });
+  };
 
   useEffect(() => {
     setMichelson(translator.michelson);
@@ -34,115 +44,84 @@ const Translator = () => {
     setMicheline(translator.micheline);
   }, [translator.micheline]);
 
-  const switchMode = (value?: TranslatorType.ModesType) => {
-    if(value) setCurrentMode(value);
-    else {
-      if (currentMode === 'michelinemichelson') setCurrentMode('michelsonmicheline');
-      else if (currentMode === 'michelsonmicheline') setCurrentMode('michelinemichelson');
-    }
-  };
-
-  const translate = () => {
-    console.log("Translating...");
-
-    if(currentMode === 'michelinemichelson') {
-      dispatch({
-        type: TranslatorActions.TRANSLATOR_FETCH_MICHELINE_TO_MICHELSON,
-        payload: micheline
-      });
-    }
-
-    else if(currentMode === 'michelsonmicheline') {
-      dispatch({
-        type: TranslatorActions.TRANSLATOR_FETCH_MICHELSON_TO_MICHELINE,
-        payload: michelson
-      });
-    }
+  const switchMode = (value?: TranslatorTypes.Modes) => {
+    if (value) setCurrentMode(value);
+    else if (translator.mode === TranslatorTypes.Modes.MICHELINEMICHELSON)
+      setCurrentMode(TranslatorTypes.Modes.MICHELSONMICHELINE);
+    else if (translator.mode === TranslatorTypes.Modes.MICHELSONMICHELINE)
+      setCurrentMode(TranslatorTypes.Modes.MICHELINEMICHELSON);
   };
 
   const reduxSetMicheline = (value: string) => {
+    switchMode(TranslatorTypes.Modes.MICHELINEMICHELSON);
+
     dispatch({
-      type: TranslatorActions.TRANSLATOR_SET_MICHELINE,
-      translation: value
+      type: TranslatorTypes.TRANSLATOR_SET_MICHELINE,
+      translation: value,
     });
 
-    if(value) switchMode('michelinemichelson');
+    translate(translator.mode, value, dispatch);
   };
 
   const reduxSetMichelson = (value: string) => {
+    switchMode(TranslatorTypes.Modes.MICHELSONMICHELINE);
+
     dispatch({
-      type: TranslatorActions.TRANSLATOR_SET_MICHELSON,
-      translation: value
+      type: TranslatorTypes.TRANSLATOR_SET_MICHELSON,
+      translation: value,
     });
 
-    if(value) switchMode('michelsonmicheline');
+    translate(translator.mode, value, dispatch);
+  };
+
+  const getValue = (mode: TranslatorTypes.Modes) => {
+    if (mode === TranslatorTypes.Modes.MICHELINEMICHELSON) return micheline;
+    if (mode === TranslatorTypes.Modes.MICHELSONMICHELINE) return michelson;
+    return "";
   };
 
   return (
-    <Grid container spacing={4} className="Container">
-      <Grid container spacing={1} className="Container">
-        <Grid item xs={4} lg={4}>
-          <label className="CurrentMode">Mode: {TranslatorType.Labels[currentMode]}</label>
-        </Grid>
-        <Grid item xs={2} lg={2}>
-          <Button variant="contained" color="primary" className="Button" onClick={() => switchMode()}>
-            Switch
-          </Button>
-        </Grid>
-        <Grid item xs={2} lg={2}>
-          <Button variant="contained" color="primary" className="Button" onClick={() => translate()}>
-            Translate
-          </Button>
-        </Grid>
-      </Grid>
-      <Grid item xs={6} lg={6}>
-        <Grid container spacing={1}>
-          <Grid item xs={12} lg={12}>
-            <Fab aria-label="delete" onClick={() => reduxSetMicheline('')}>
-              <DeleteIcon />
-            </Fab>
-          </Grid>
-          <Grid item xs={12} lg={12}>
-            <TextField
-              id="outlined-multiline-static"
-              label="Micheline"
-              multiline
-              rows="20"
-              value={translator.micheline}
-              onChange={(e) => {reduxSetMicheline(e.target.value)}}
-              className="Textfield"
-              margin="normal"
-              variant="outlined"
-            />
-          </Grid>
-        </Grid>
-      </Grid>
-      <Grid item xs={6} lg={6}>
-        <Grid container spacing={1}>
-          <Grid item xs={12} lg={12}>
-            <Fab aria-label="delete" onClick={() => reduxSetMichelson('')}>
-              <DeleteIcon />
-            </Fab>
-          </Grid>
-          <Grid item xs={12} lg={12}>
-            <TextField
-              id="outlined-multiline-static"
-              label="Michelson"
-              multiline
-              rows="20"
-              value={translator.michelson}
-              onChange={(e) => {reduxSetMichelson(e.target.value)}}
-              className="Textfield"
-              margin="normal"
-              variant="outlined"
-            />
-          </Grid>
-        </Grid>
-      </Grid>
-      <Grid item xs={12} lg={12}>
-        <div className="Error">{translator.error}</div>
-      </Grid>
-    </Grid>
+    <div className="Translator">
+      <div className="Translator__header">
+        <button
+          className={translator.mode === TranslatorTypes.Modes.MICHELINEMICHELSON ? "Translator__header-selected" : ""}
+          onClick={() => switchMode(TranslatorTypes.Modes.MICHELINEMICHELSON)}
+        >
+          Micheline
+        </button>
+        <img
+          src="arrows.svg"
+          alt=""
+          className="Translator__header__translate-button"
+          onClick={() => translate(translator.mode, getValue(translator.mode), dispatch)}
+        />
+        <button
+          className={translator.mode === TranslatorTypes.Modes.MICHELSONMICHELINE ? "Translator__header-selected" : ""}
+          onClick={() => switchMode(TranslatorTypes.Modes.MICHELSONMICHELINE)}
+        >
+          Michelson
+        </button>
+      </div>
+      <div className="Translator__translator-area">
+        <TextField
+          value={translator.micheline}
+          onValueChange={(val: string) => {
+            reduxSetMicheline(val);
+          }}
+          onClick={() => switchMode(TranslatorTypes.Modes.MICHELINEMICHELSON)}
+          clearClick={() => reduxSetMicheline("")}
+        />
+        <TextField
+          value={translator.michelson}
+          onValueChange={(val: string) => {
+            reduxSetMichelson(val);
+          }}
+          onClick={() => switchMode(TranslatorTypes.Modes.MICHELSONMICHELINE)}
+          clearClick={() => reduxSetMichelson("")}
+        />
+      </div>
+      {translator.error ? <div className="Translator__error-area">{translator.error}</div> : null}
+    </div>
   );
 };
 

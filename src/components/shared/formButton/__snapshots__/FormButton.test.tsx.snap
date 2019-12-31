@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form Button matches snapshot 1`] = `
+"<FormButton type=\\"submit\\" label=\\"test label\\" className=\\"\\" onClick={[Function: onClick]} disabled={false}>
+  <button className=\\"form-button form-button_submit \\" data-testid=\\"form-button\\" onClick={[Function: onClick]} disabled={false}>
+    test label
+  </button>
+</FormButton>"
+`;

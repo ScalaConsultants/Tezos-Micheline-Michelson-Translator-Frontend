@@ -5,36 +5,56 @@
   "dependencies": {
     "@material-ui/core": "^4.3.0",
     "@material-ui/icons": "^4.2.1",
-    "@types/jest": "^24.0.15",
+    "@types/enzyme": "^3.10.3",
+    "@types/jest": "^24.0.23",
     "@types/material-ui": "^0.21.6",
     "@types/node": "^12.6.8",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.5",
     "@types/react-router-dom": "^4.3.4",
+    "@types/redux-mock-store": "^1.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.13",
+    "@typescript-eslint/parser": "^2.6.1",
+    "babel-eslint": "^10.0.3",
     "chart.js": "^2.8.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "eslint-config-prettier": "^6.5.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.14.3",
+    "formik": "^1.5.8",
+    "jest": "^24.9.0",
+    "node-sass": "^4.12.0",
+    "prettier": "^1.18.2",
     "react": "^16.8.6",
+    "react-addons-test-utils": "^15.6.2",
     "react-chartjs-2": "^2.7.6",
     "react-dom": "^16.8.6",
     "react-ga": "^2.6.0",
+    "react-google-recaptcha-v3": "^1.5.0",
     "react-redux": "^7.1.0",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
+    "react-scripts": "3.2.0",
+    "react-test-renderer": "^16.12.0",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
+    "redux-mock-store": "^1.5.3",
     "redux-react-hook": "^3.3.2",
     "redux-saga": "^1.0.5",
     "typescript": "3.5.3",
-    "util": "^0.12.1"
+    "util": "^0.12.1",
+    "yup": "^0.27.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write \"**/*.+(ts|tsx|json|css|md)\"",
+    "eslint": "eslint '**/*s.ts' '**/*.tsx' --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -52,7 +72,11 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^17.1.1"
+    "@types/yup": "^0.26.24",
+    "enzyme-to-json": "^3.4.3",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-plugin-jest": "^23.0.3",
+    "ts-jest": "^23.6.0"
   }
 }

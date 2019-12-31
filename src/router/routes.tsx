@@ -1,17 +1,19 @@
 import React from "react";
-import {Route} from "react-router";
-import Home from "../containers/home/Home";
+import { Route } from "react-router";
 import Translation from "../containers/translation/Translation";
+import Contact from "../containers/contact/Contact";
+import LibraryList from "../components/admin/libraryList/LibraryList";
+import Login from "../components/login/Login";
+import Logout from "../components/logout/Logout";
 
 export default () => {
-
-  let routes =
-    <div className="Main">
-      <Route exact path="/" component={Home} />
-      <Route exact path="/translation" component={Translation} />
-    </div>;
-
   return (
-    routes
+    <div className="Main">
+      <Route exact path="/" component={Translation} />
+      <Route path="/contact" component={Contact} />
+      <Route path="/admin/library" component={LibraryList} />
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/logout" component={Logout} />
+    </div>
   );
-}
+};

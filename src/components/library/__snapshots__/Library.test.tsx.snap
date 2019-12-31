@@ -1,0 +1,647 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Library matches snapshot 1`] = `
+"<Library>
+  <div className=\\"Library\\">
+    <LibraryItem selectMicheline={[Function: selectMicheline]} selectMichelson={[Function: selectMichelson]} data={{...}}>
+      <div className=\\"LibraryItem\\">
+        <div className=\\"LibraryItem__info-area-wrapper\\">
+          <div className=\\"LibraryItem__detail-wrapper\\">
+            <div className=\\"LibraryItem__detail-wrapper--label\\">
+              Name
+            </div>
+            <div className=\\"LibraryItem__detail-wrapper--content\\">
+              some name
+            </div>
+          </div>
+          <div className=\\"LibraryItem__detail-wrapper\\">
+            <div className=\\"LibraryItem__detail-wrapper--label\\">
+              Date created
+            </div>
+            <div className=\\"LibraryItem__detail-wrapper--content\\">
+              2019-01-01
+            </div>
+          </div>
+          <div className=\\"LibraryItem__detail-wrapper\\">
+            <div className=\\"LibraryItem__detail-wrapper--label\\">
+              Date created
+            </div>
+            <div className=\\"LibraryItem__detail-wrapper--content\\">
+              2019-01-01
+            </div>
+          </div>
+        </div>
+        <div className=\\"LibraryItem__info-area-wrapper\\">
+          <div className=\\"LibraryItem__description-wrapper\\">
+            <div className=\\"LibraryItem__description-wrapper--label\\">
+              Description
+            </div>
+            <div className=\\"LibraryItem__description-wrapper--content\\">
+              some description ewr ewwer wer werwer wer wer werwer werwe rwe rewr wer werwe rwe rewrewr ewr ew ewrewrwer rew rwerwe rwerwerwerwe rwerwerwe rweewrwe wrwe we rwe werew rwe
+            </div>
+          </div>
+        </div>
+        <div className=\\"LibraryItem__wrapper2\\" onClick={[Function: onClick]}>
+          <div className=\\"LibraryItem__label\\">
+            Micheline
+          </div>
+          <div className=\\"LibraryItem__content\\">
+            parameter int;
+            storage int;
+            code { CAR ;
+                   PUSH int 1 ;
+                   ADD ;
+                   NIL operation ;
+                   PAIR }
+          </div>
+        </div>
+        <div className=\\"LibraryItem__wrapper2\\" onClick={[Function: onClick]}>
+          <div className=\\"LibraryItem__label\\">
+            Michelson
+          </div>
+          <div className=\\"LibraryItem__content\\">
+            [ { &quot;prim&quot;: &quot;parameter&quot;, &quot;args&quot;: [ { &quot;prim&quot;: &quot;int&quot; } ] }, { &quot;prim&quot;: &quot;storage&quot;, &quot;args&quot;: [ { &quot;prim&quot;: &quot;int&quot; } ] }, { &quot;prim&quot;: &quot;code&quot;, &quot;args&quot;: [ [ { &quot;prim&quot;: &quot;CAR&quot; },{ &quot;prim&quot;: &quot;PUSH&quot;, &quot;args&quot;: [ { &quot;prim&quot;: &quot;int&quot; }, { &quot;int&quot;: &quot;1&quot; } ] },{ &quot;prim&quot;: &quot;ADD&quot; },{ &quot;prim&quot;: &quot;NIL&quot;, &quot;args&quot;: [ { &quot;prim&quot;: &quot;operation&quot; } ] },{ &quot;prim&quot;: &quot;PAIR&quot; } ] ] } ]
+            
+          </div>
+        </div>
+      </div>
+    </LibraryItem>
+    <LibraryItem selectMicheline={[Function: selectMicheline]} selectMichelson={[Function: selectMichelson]} data={{...}}>
+      <div className=\\"LibraryItem\\">
+        <div className=\\"LibraryItem__info-area-wrapper\\">
+          <div className=\\"LibraryItem__detail-wrapper\\">
+            <div className=\\"LibraryItem__detail-wrapper--label\\">
+              Name
+            </div>
+            <div className=\\"LibraryItem__detail-wrapper--content\\">
+              some name
+            </div>
+          </div>
+          <div className=\\"LibraryItem__detail-wrapper\\">
+            <div className=\\"LibraryItem__detail-wrapper--label\\">
+              Date created
+            </div>
+            <div className=\\"LibraryItem__detail-wrapper--content\\">
+              2019-01-01
+            </div>
+          </div>
+          <div className=\\"LibraryItem__detail-wrapper\\">
+            <div className=\\"LibraryItem__detail-wrapper--label\\">
+              Date created
+            </div>
+            <div className=\\"LibraryItem__detail-wrapper--content\\">
+              2019-01-01
+            </div>
+          </div>
+        </div>
+        <div className=\\"LibraryItem__info-area-wrapper\\">
+          <div className=\\"LibraryItem__description-wrapper\\">
+            <div className=\\"LibraryItem__description-wrapper--label\\">
+              Description
+            </div>
+            <div className=\\"LibraryItem__description-wrapper--content\\">
+              some description ewr ewwer wer werwer wer wer werwer werwe rwe rewr wer werwe rwe rewrewr ewr ew ewrewrwer rew rwerwe rwerwerwerwe rwerwerwe rweewrwe wrwe we rwe werew rwe
+            </div>
+          </div>
+        </div>
+        <div className=\\"LibraryItem__wrapper2\\" onClick={[Function: onClick]}>
+          <div className=\\"LibraryItem__label\\">
+            Micheline
+          </div>
+          <div className=\\"LibraryItem__content\\">
+            parameter int;
+            storage int;
+            code { CAR ;
+                   PUSH int 1 ;
+                   ADD ;
+                   NIL operation ;
+                   PAIR }
+          </div>
+        </div>
+        <div className=\\"LibraryItem__wrapper2\\" onClick={[Function: onClick]}>
+          <div className=\\"LibraryItem__label\\">
+            Michelson
+          </div>
+          <div className=\\"LibraryItem__content\\">
+            [ { &quot;prim&quot;: &quot;parameter&quot;, &quot;args&quot;: [ { &quot;prim&quot;: &quot;int&quot; } ] }, { &quot;prim&quot;: &quot;storage&quot;, &quot;args&quot;: [ { &quot;prim&quot;: &quot;int&quot; } ] }, { &quot;prim&quot;: &quot;code&quot;, &quot;args&quot;: [ [ { &quot;prim&quot;: &quot;CAR&quot; },{ &quot;prim&quot;: &quot;PUSH&quot;, &quot;args&quot;: [ { &quot;prim&quot;: &quot;int&quot; }, { &quot;int&quot;: &quot;1&quot; } ] },{ &quot;prim&quot;: &quot;ADD&quot; },{ &quot;prim&quot;: &quot;NIL&quot;, &quot;args&quot;: [ { &quot;prim&quot;: &quot;operation&quot; } ] },{ &quot;prim&quot;: &quot;PAIR&quot; } ] ] } ]
+            
+          </div>
+        </div>
+      </div>
+    </LibraryItem>
+    <LibraryItem selectMicheline={[Function: selectMicheline]} selectMichelson={[Function: selectMichelson]} data={{...}}>
+      <div className=\\"LibraryItem\\">
+        <div className=\\"LibraryItem__info-area-wrapper\\">
+          <div className=\\"LibraryItem__detail-wrapper\\">
+            <div className=\\"LibraryItem__detail-wrapper--label\\">
+              Name
+            </div>
+            <div className=\\"LibraryItem__detail-wrapper--content\\">
+              some name
+            </div>
+          </div>
+          <div className=\\"LibraryItem__detail-wrapper\\">
+            <div className=\\"LibraryItem__detail-wrapper--label\\">
+              Date created
+            </div>
+            <div className=\\"LibraryItem__detail-wrapper--content\\">
+              2019-01-01
+            </div>
+          </div>
+          <div className=\\"LibraryItem__detail-wrapper\\">
+            <div className=\\"LibraryItem__detail-wrapper--label\\">
+              Date created
+            </div>
+            <div className=\\"LibraryItem__detail-wrapper--content\\">
+              2019-01-01
+            </div>
+          </div>
+        </div>
+        <div className=\\"LibraryItem__info-area-wrapper\\">
+          <div className=\\"LibraryItem__description-wrapper\\">
+            <div className=\\"LibraryItem__description-wrapper--label\\">
+              Description
+            </div>
+            <div className=\\"LibraryItem__description-wrapper--content\\">
+              some description ewr ewwer wer werwer wer wer werwer werwe rwe rewr wer werwe rwe rewrewr ewr ew ewrewrwer rew rwerwe rwerwerwerwe rwerwerwe rweewrwe wrwe we rwe werew rwe
+            </div>
+          </div>
+        </div>
+        <div className=\\"LibraryItem__wrapper2\\" onClick={[Function: onClick]}>
+          <div className=\\"LibraryItem__label\\">
+            Micheline
+          </div>
+          <div className=\\"LibraryItem__content\\">
+            [
+                {
+                  &quot;prim&quot;: &quot;parameter&quot;,
+                  &quot;args&quot;: [
+                    {
+                      &quot;prim&quot;: &quot;int&quot;
+                    }
+                  ]
+                },
+                {
+                  &quot;prim&quot;: &quot;storage&quot;,
+                  &quot;args&quot;: [
+                    {
+                      &quot;prim&quot;: &quot;int&quot;
+                    }
+                  ]
+                },
+                {
+                  &quot;prim&quot;: &quot;code&quot;,
+                  &quot;args&quot;: [
+                    [
+                      {
+                        &quot;prim&quot;: &quot;CAR&quot;
+                      },
+                      {
+                        &quot;prim&quot;: &quot;PUSH&quot;,
+                        &quot;args&quot;: [
+                          {
+                            &quot;prim&quot;: &quot;int&quot;
+                          },
+                          {
+                            &quot;int&quot;: &quot;1&quot;
+                          }
+                        ]
+                      },
+                      {
+                        &quot;prim&quot;: &quot;ADD&quot;
+                      },
+                      {
+                        &quot;prim&quot;: &quot;NIL&quot;,
+                        &quot;args&quot;: [
+                          {
+                            &quot;prim&quot;: &quot;operation&quot;
+                          }
+                        ]
+                      },
+                      {
+                        &quot;prim&quot;: &quot;PAIR&quot;
+                      }
+                    ]
+                  ]
+                }
+            ]
+          </div>
+        </div>
+        <div className=\\"LibraryItem__wrapper2\\" onClick={[Function: onClick]}>
+          <div className=\\"LibraryItem__label\\">
+            Michelson
+          </div>
+          <div className=\\"LibraryItem__content\\">
+            parameter int;
+            storage int;
+            code { CAR ;
+                   PUSH int 1 ;
+                   ADD ;
+                   NIL operation ;
+                   PAIR }
+          </div>
+        </div>
+      </div>
+    </LibraryItem>
+    <LibraryItem selectMicheline={[Function: selectMicheline]} selectMichelson={[Function: selectMichelson]} data={{...}}>
+      <div className=\\"LibraryItem\\">
+        <div className=\\"LibraryItem__info-area-wrapper\\">
+          <div className=\\"LibraryItem__detail-wrapper\\">
+            <div className=\\"LibraryItem__detail-wrapper--label\\">
+              Name
+            </div>
+            <div className=\\"LibraryItem__detail-wrapper--content\\">
+              some name
+            </div>
+          </div>
+          <div className=\\"LibraryItem__detail-wrapper\\">
+            <div className=\\"LibraryItem__detail-wrapper--label\\">
+              Date created
+            </div>
+            <div className=\\"LibraryItem__detail-wrapper--content\\">
+              2019-01-01
+            </div>
+          </div>
+          <div className=\\"LibraryItem__detail-wrapper\\">
+            <div className=\\"LibraryItem__detail-wrapper--label\\">
+              Date created
+            </div>
+            <div className=\\"LibraryItem__detail-wrapper--content\\">
+              2019-01-01
+            </div>
+          </div>
+        </div>
+        <div className=\\"LibraryItem__info-area-wrapper\\">
+          <div className=\\"LibraryItem__description-wrapper\\">
+            <div className=\\"LibraryItem__description-wrapper--label\\">
+              Description
+            </div>
+            <div className=\\"LibraryItem__description-wrapper--content\\">
+              some description ewr ewwer wer werwer wer wer werwer werwe rwe rewr wer werwe rwe rewrewr ewr ew ewrewrwer rew rwerwe rwerwerwerwe rwerwerwe rweewrwe wrwe we rwe werew rwe
+            </div>
+          </div>
+        </div>
+        <div className=\\"LibraryItem__wrapper2\\" onClick={[Function: onClick]}>
+          <div className=\\"LibraryItem__label\\">
+            Micheline
+          </div>
+          <div className=\\"LibraryItem__content\\">
+            EQ
+          </div>
+        </div>
+        <div className=\\"LibraryItem__wrapper2\\" onClick={[Function: onClick]}>
+          <div className=\\"LibraryItem__label\\">
+            Michelson
+          </div>
+          <div className=\\"LibraryItem__content\\">
+            { &quot;prim&quot;: &quot;EQ&quot; }
+            
+          </div>
+        </div>
+      </div>
+    </LibraryItem>
+    <LibraryItem selectMicheline={[Function: selectMicheline]} selectMichelson={[Function: selectMichelson]} data={{...}}>
+      <div className=\\"LibraryItem\\">
+        <div className=\\"LibraryItem__info-area-wrapper\\">
+          <div className=\\"LibraryItem__detail-wrapper\\">
+            <div className=\\"LibraryItem__detail-wrapper--label\\">
+              Name
+            </div>
+            <div className=\\"LibraryItem__detail-wrapper--content\\">
+              some name
+            </div>
+          </div>
+          <div className=\\"LibraryItem__detail-wrapper\\">
+            <div className=\\"LibraryItem__detail-wrapper--label\\">
+              Date created
+            </div>
+            <div className=\\"LibraryItem__detail-wrapper--content\\">
+              2019-01-01
+            </div>
+          </div>
+          <div className=\\"LibraryItem__detail-wrapper\\">
+            <div className=\\"LibraryItem__detail-wrapper--label\\">
+              Date created
+            </div>
+            <div className=\\"LibraryItem__detail-wrapper--content\\">
+              2019-01-01
+            </div>
+          </div>
+        </div>
+        <div className=\\"LibraryItem__info-area-wrapper\\">
+          <div className=\\"LibraryItem__description-wrapper\\">
+            <div className=\\"LibraryItem__description-wrapper--label\\">
+              Description
+            </div>
+            <div className=\\"LibraryItem__description-wrapper--content\\">
+              some description ewr ewwer wer werwer wer wer werwer werwe rwe rewr wer werwe rwe rewrewr ewr ew ewrewrwer rew rwerwe rwerwerwerwe rwerwerwe rweewrwe wrwe we rwe werew rwe
+            </div>
+          </div>
+        </div>
+        <div className=\\"LibraryItem__wrapper2\\" onClick={[Function: onClick]}>
+          <div className=\\"LibraryItem__label\\">
+            Micheline
+          </div>
+          <div className=\\"LibraryItem__content\\">
+            [
+                {
+                  &quot;prim&quot;: &quot;parameter&quot;,
+                  &quot;args&quot;: [
+                    {
+                      &quot;prim&quot;: &quot;int&quot;
+                    }
+                  ]
+                },
+                {
+                  &quot;prim&quot;: &quot;storage&quot;,
+                  &quot;args&quot;: [
+                    {
+                      &quot;prim&quot;: &quot;int&quot;
+                    }
+                  ]
+                },
+                {
+                  &quot;prim&quot;: &quot;code&quot;,
+                  &quot;args&quot;: [
+                    [
+                      {
+                        &quot;prim&quot;: &quot;CAR&quot;
+                      },
+                      {
+                        &quot;prim&quot;: &quot;PUSH&quot;,
+                        &quot;args&quot;: [
+                          {
+                            &quot;prim&quot;: &quot;int&quot;
+                          },
+                          {
+                            &quot;int&quot;: &quot;1&quot;
+                          }
+                        ]
+                      },
+                      {
+                        &quot;prim&quot;: &quot;ADD&quot;
+                      },
+                      {
+                        &quot;prim&quot;: &quot;NIL&quot;,
+                        &quot;args&quot;: [
+                          {
+                            &quot;prim&quot;: &quot;operation&quot;
+                          }
+                        ]
+                      },
+                      {
+                        &quot;prim&quot;: &quot;PAIR&quot;
+                      }
+                    ]
+                  ]
+                }
+            ]
+          </div>
+        </div>
+        <div className=\\"LibraryItem__wrapper2\\" onClick={[Function: onClick]}>
+          <div className=\\"LibraryItem__label\\">
+            Michelson
+          </div>
+          <div className=\\"LibraryItem__content\\">
+            parameter int;
+            storage int;
+            code { CAR ;
+                   PUSH int 1 ;
+                   ADD ;
+                   NIL operation ;
+                   PAIR }
+          </div>
+        </div>
+      </div>
+    </LibraryItem>
+    <LibraryItem selectMicheline={[Function: selectMicheline]} selectMichelson={[Function: selectMichelson]} data={{...}}>
+      <div className=\\"LibraryItem\\">
+        <div className=\\"LibraryItem__info-area-wrapper\\">
+          <div className=\\"LibraryItem__detail-wrapper\\">
+            <div className=\\"LibraryItem__detail-wrapper--label\\">
+              Name
+            </div>
+            <div className=\\"LibraryItem__detail-wrapper--content\\">
+              some name
+            </div>
+          </div>
+          <div className=\\"LibraryItem__detail-wrapper\\">
+            <div className=\\"LibraryItem__detail-wrapper--label\\">
+              Date created
+            </div>
+            <div className=\\"LibraryItem__detail-wrapper--content\\">
+              2019-01-01
+            </div>
+          </div>
+          <div className=\\"LibraryItem__detail-wrapper\\">
+            <div className=\\"LibraryItem__detail-wrapper--label\\">
+              Date created
+            </div>
+            <div className=\\"LibraryItem__detail-wrapper--content\\">
+              2019-01-01
+            </div>
+          </div>
+        </div>
+        <div className=\\"LibraryItem__info-area-wrapper\\">
+          <div className=\\"LibraryItem__description-wrapper\\">
+            <div className=\\"LibraryItem__description-wrapper--label\\">
+              Description
+            </div>
+            <div className=\\"LibraryItem__description-wrapper--content\\">
+              some description ewr ewwer wer werwer wer wer werwer werwe rwe rewr wer werwe rwe rewrewr ewr ew ewrewrwer rew rwerwe rwerwerwerwe rwerwerwe rweewrwe wrwe we rwe werew rwe
+            </div>
+          </div>
+        </div>
+        <div className=\\"LibraryItem__wrapper2\\" onClick={[Function: onClick]}>
+          <div className=\\"LibraryItem__label\\">
+            Micheline
+          </div>
+          <div className=\\"LibraryItem__content\\">
+            [
+                {
+                  &quot;prim&quot;: &quot;parameter&quot;,
+                  &quot;args&quot;: [
+                    {
+                      &quot;prim&quot;: &quot;int&quot;
+                    }
+                  ]
+                },
+                {
+                  &quot;prim&quot;: &quot;storage&quot;,
+                  &quot;args&quot;: [
+                    {
+                      &quot;prim&quot;: &quot;int&quot;
+                    }
+                  ]
+                },
+                {
+                  &quot;prim&quot;: &quot;code&quot;,
+                  &quot;args&quot;: [
+                    [
+                      {
+                        &quot;prim&quot;: &quot;CAR&quot;
+                      },
+                      {
+                        &quot;prim&quot;: &quot;PUSH&quot;,
+                        &quot;args&quot;: [
+                          {
+                            &quot;prim&quot;: &quot;int&quot;
+                          },
+                          {
+                            &quot;int&quot;: &quot;1&quot;
+                          }
+                        ]
+                      },
+                      {
+                        &quot;prim&quot;: &quot;ADD&quot;
+                      },
+                      {
+                        &quot;prim&quot;: &quot;NIL&quot;,
+                        &quot;args&quot;: [
+                          {
+                            &quot;prim&quot;: &quot;operation&quot;
+                          }
+                        ]
+                      },
+                      {
+                        &quot;prim&quot;: &quot;PAIR&quot;
+                      }
+                    ]
+                  ]
+                }
+            ]
+          </div>
+        </div>
+        <div className=\\"LibraryItem__wrapper2\\" onClick={[Function: onClick]}>
+          <div className=\\"LibraryItem__label\\">
+            Michelson
+          </div>
+          <div className=\\"LibraryItem__content\\">
+            parameter int;
+            storage int;
+            code { CAR ;
+                   PUSH int 1 ;
+                   ADD ;
+                   NIL operation ;
+                   PAIR }
+          </div>
+        </div>
+      </div>
+    </LibraryItem>
+    <LibraryItem selectMicheline={[Function: selectMicheline]} selectMichelson={[Function: selectMichelson]} data={{...}}>
+      <div className=\\"LibraryItem\\">
+        <div className=\\"LibraryItem__info-area-wrapper\\">
+          <div className=\\"LibraryItem__detail-wrapper\\">
+            <div className=\\"LibraryItem__detail-wrapper--label\\">
+              Name
+            </div>
+            <div className=\\"LibraryItem__detail-wrapper--content\\">
+              some name
+            </div>
+          </div>
+          <div className=\\"LibraryItem__detail-wrapper\\">
+            <div className=\\"LibraryItem__detail-wrapper--label\\">
+              Date created
+            </div>
+            <div className=\\"LibraryItem__detail-wrapper--content\\">
+              2019-01-01
+            </div>
+          </div>
+          <div className=\\"LibraryItem__detail-wrapper\\">
+            <div className=\\"LibraryItem__detail-wrapper--label\\">
+              Date created
+            </div>
+            <div className=\\"LibraryItem__detail-wrapper--content\\">
+              2019-01-01
+            </div>
+          </div>
+        </div>
+        <div className=\\"LibraryItem__info-area-wrapper\\">
+          <div className=\\"LibraryItem__description-wrapper\\">
+            <div className=\\"LibraryItem__description-wrapper--label\\">
+              Description
+            </div>
+            <div className=\\"LibraryItem__description-wrapper--content\\">
+              some description ewr ewwer wer werwer wer wer werwer werwe rwe rewr wer werwe rwe rewrewr ewr ew ewrewrwer rew rwerwe rwerwerwerwe rwerwerwe rweewrwe wrwe we rwe werew rwe
+            </div>
+          </div>
+        </div>
+        <div className=\\"LibraryItem__wrapper2\\" onClick={[Function: onClick]}>
+          <div className=\\"LibraryItem__label\\">
+            Micheline
+          </div>
+          <div className=\\"LibraryItem__content\\">
+            [
+              {
+                &quot;prim&quot;: &quot;parameter&quot;,
+                &quot;args&quot;: [
+                  {
+                    &quot;prim&quot;: &quot;int&quot;
+                  }
+                ]
+              },
+              {
+                &quot;prim&quot;: &quot;storage&quot;,
+                &quot;args&quot;: [
+                  {
+                    &quot;prim&quot;: &quot;int&quot;
+                  }
+                ]
+              },
+              {
+                &quot;prim&quot;: &quot;code&quot;,
+                &quot;args&quot;: [
+                  [
+                    {
+                      &quot;prim&quot;: &quot;CAR&quot;
+                    },
+                    {
+                      &quot;prim&quot;: &quot;PUSH&quot;,
+                      &quot;args&quot;: [
+                        {
+                          &quot;prim&quot;: &quot;int&quot;
+                        },
+                        {
+                          &quot;int&quot;: &quot;1&quot;
+                        }
+                      ]
+                    },
+                    {
+                      &quot;prim&quot;: &quot;ADD&quot;
+                    },
+                    {
+                      &quot;prim&quot;: &quot;NIL&quot;,
+                      &quot;args&quot;: [
+                        {
+                          &quot;prim&quot;: &quot;operation&quot;
+                        }
+                      ]
+                    },
+                    {
+                      &quot;prim&quot;: &quot;PAIR&quot;
+                    }
+                  ]
+                ]
+              }
+            ]
+          </div>
+        </div>
+        <div className=\\"LibraryItem__wrapper2\\" onClick={[Function: onClick]}>
+          <div className=\\"LibraryItem__label\\">
+            Michelson
+          </div>
+          <div className=\\"LibraryItem__content\\">
+            parameter int;
+            storage int;
+            code { CAR ;
+                   PUSH int 1 ;
+                   ADD ;
+                   NIL operation ;
+                   PAIR }
+          </div>
+        </div>
+      </div>
+    </LibraryItem>
+  </div>
+</Library>"
+`;

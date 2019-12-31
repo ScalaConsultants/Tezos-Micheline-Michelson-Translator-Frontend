@@ -1,74 +1,71 @@
-import React, {useState} from 'react';
-import {withRouter} from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import ScalacLogo from "./ScalacLogo";
-import {createStyles, makeStyles} from "@material-ui/core";
+import React from "react";
+import { withRouter } from "react-router-dom";
+import "./MenuAppBar.scss";
+import { useMappedState } from "redux-react-hook";
+import Title from "./Title";
+import { IState } from "../../store/global/types";
 
-const useStyles = makeStyles(
-  createStyles({
-    description: {
-      '@media (max-width: 550px)': {
-        display: 'none'
-      }
-    }
-  })
-);
+type Props = {
+  history: {
+    push: Function;
+  };
+};
 
-const ButtonAppBar = (props: any) => {
-  const classes = useStyles();
-  const [anchorEl, setAnchorEl] = useState(null);
+const mapState = (state: IState) => ({
+  auth: state.auth,
+});
 
-  const menuItems = [
-    { name: 'Home', route: '/'},
-    { name: 'Translation', route: '/translation'}
-  ];
+const MenuAppBar = (props: Props) => {
+  const { auth } = useMappedState(mapState);
 
   const goTo = (route: string) => {
-    handleClose();
     props.history.push(route);
   };
 
-  const handleClick = (event: any) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
+  const goScalac = () => {
+    window.open("https://scalac.io", "_blank");
   };
 
   return (
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-          aria-owns={anchorEl ? 'simple-menu' : undefined}
-          aria-haspopup="true"
-          color="inherit"
-          onClick={handleClick}>
-            <MenuIcon/>
-          </IconButton>
-          <div className="MenuSpace">
-          </div>
-          <Button color="inherit" onClick={() => goTo('/')}><span className={classes.description}>Micheline / Michelson Translator v0.01</span></Button>
-          <Menu
-            id="simple-menu"
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            {menuItems.map((item, key) => {
-              return <MenuItem onClick={() => goTo(item.route)} key={key}>{item.name}</MenuItem>
-            })}
-          </Menu>
-          <ScalacLogo/>
-        </Toolbar>
-      </AppBar>
-    );
+    <div className="AppBar">
+      <button tabIndex={-1} onClick={() => goScalac()} onKeyUp={() => {}}>
+        <img className="AppBar__scalac" src="/scalac.svg" alt="https://scalac.io" />
+      </button>
+      <Title />
+      <img
+        className="AppBar__scalac-transparent"
+        src="/scalac-transparent.svg"
+        title="Go to Scalac homepage"
+        alt="Go to Scalac homepage"
+      />
+      <div className="AppBar__menu-btn-container">
+        <button type="button" onClick={() => goTo("/")}>
+          <img src="/dashboard.svg" alt="" />
+          Convert
+        </button>
+        <button type="button" onClick={() => goTo("/contact")}>
+          <img src="/mail.svg" alt="" />
+          Contact
+        </button>
+
+        {!auth.isLogged && (
+          <button type="button" onClick={() => goTo("/login")}>
+            Login
+          </button>
+        )}
+        {auth.isLogged && (
+          <>
+            <button type="button" onClick={() => goTo("/admin/library")}>
+              Admin
+            </button>
+            <button type="button" onClick={() => goTo("/logout")}>
+              Logout
+            </button>
+          </>
+        )}
+      </div>
+    </div>
+  );
 };
 
-export default withRouter(ButtonAppBar);
+export default withRouter(MenuAppBar);

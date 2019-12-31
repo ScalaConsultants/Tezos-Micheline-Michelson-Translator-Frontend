@@ -1,0 +1,12 @@
+.Translation {
+  h1 {
+    display: inline-flex;
+  }
+
+  &__buttons-area {
+    margin-top: 5px;
+    width: auto;
+    display: inline-flex;
+    float: right;
+  }
+}

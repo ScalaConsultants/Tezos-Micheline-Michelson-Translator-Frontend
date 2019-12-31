@@ -1,26 +1,22 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import './App.css';
+import "./App.scss";
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import Routes from "./router/routes";
 import MenuAppBar from "./components/menuAppBar/MenuAppBar";
-import { MuiThemeProvider } from '@material-ui/core/styles';
-import theme from "./theme/theme";
-import ReactGA from 'react-ga';
-
-// Initializing Google Analytics
-ReactGA.initialize('UA-47834691-1');
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 const App = () => {
+  const recaptchaSiteKey = process.env.REACT_APP_RECAPTCHA_SITE_KEY;
+
   return (
-    <MuiThemeProvider theme={theme}>
-      <div className="App">
+    <div className="App">
+      <GoogleReCaptchaProvider reCaptchaKey={recaptchaSiteKey} language="[optional_language]">
         <Router>
           <MenuAppBar />
           <Routes />
         </Router>
-      </div>
-    </MuiThemeProvider>
+      </GoogleReCaptchaProvider>
+    </div>
   );
 };
 
