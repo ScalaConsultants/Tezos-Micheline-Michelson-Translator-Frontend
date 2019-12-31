@@ -37,7 +37,7 @@
     "react-redux": "^7.1.0",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.2.0",
+    "react-scripts": "^3.3.0",
     "react-test-renderer": "^16.12.0",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
@@ -54,7 +54,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier --write \"**/*.+(ts|tsx|json|css|md)\"",
-    "eslint": "eslint '**/*s.ts' '**/*.tsx' --fix"
+    "eslint": "eslint '**/*s.ts' '**/*.tsx' --fix",
+    "build:dev": "env-cmd -f .env.development react-scripts build"
   },
   "eslintConfig": {
     "extends": "react-app"
