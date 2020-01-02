@@ -10,6 +10,8 @@ RUN apk add git
 
 # copy the app, note .dockerignore
 COPY . /usr/src/app/
+ARG REACT_APP_API_URL
+ARG REACT_APP_RECAPTCHA_SITE_KEY
 RUN npm install
 
 # build necessary, even if no static files are needed,
