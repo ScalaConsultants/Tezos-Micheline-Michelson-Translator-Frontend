@@ -25,10 +25,10 @@ export default class TranslatorService {
 
     return fetch(`${this.apiUrl}${this.michelsonToMichelineUrl}`, options)
       .then(async response => {
-        return { status: response.status, text: await response.text() };
+        return { status: response.status, text: response.status === 200 ? await response.text() : null };
       })
       .catch(error => {
-        throw error;
+        console.log(error);
       });
   };
 
@@ -43,10 +43,10 @@ export default class TranslatorService {
 
     return fetch(`${this.apiUrl}${this.michelineToMichelsonUrl}`, options)
       .then(async response => {
-        return { status: response.status, text: await response.text() };
+        return { status: response.status, text: response.status === 200 ? await response.text() : null };
       })
       .catch(error => {
-        throw error;
+        console.log(error);
       });
   };
 
