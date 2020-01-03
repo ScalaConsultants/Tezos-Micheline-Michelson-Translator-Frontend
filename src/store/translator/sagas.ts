@@ -7,15 +7,17 @@ export function* doFetchMichelsonToMichelineTranslation(action: translatorTypes.
   const translatorService = new TranslatorService();
   const response = yield call(translatorService.michelsonToMicheline, action.payload);
 
-  if (response.status === 200) {
+  if (response && response.status === 200) {
     yield put(
       translatorActions.TranslatorSetMicheline(
         response.status,
         JSON.stringify(JSON.parse(response.text), undefined, 2),
       ),
     );
-  } else {
+  } else if (response) {
     yield put(translatorActions.TranslatorSetError(response.text));
+  } else {
+    yield put(translatorActions.TranslatorSetError("Error"));
   }
 }
 
@@ -23,9 +25,10 @@ export function* doFetchMichelineToMichelsonTranslation(action: translatorTypes.
   const translationService = new TranslatorService();
   const response = yield call(translationService.michelineToMichelson, action.payload);
 
-  response.status === 200
-    ? yield put(translatorActions.TranslatorSetMichelson(response.status, response.text))
-    : yield put(translatorActions.TranslatorSetError(response.text));
+  if (response && response.status === 200)
+    yield put(translatorActions.TranslatorSetMichelson(response.status, response.text));
+  else if (response) yield put(translatorActions.TranslatorSetError(response.text));
+  else yield put(translatorActions.TranslatorSetError(""));
 }
 
 export function* doSendTranslation(action: translatorTypes.ITranslatorSendTranslation) {
