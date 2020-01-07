@@ -53,4 +53,5 @@ export default function* root() {
   yield takeEvery(messageTypes.MESSAGE_SEND, messageSagas.doMessageSend);
 
   yield takeEvery(authTypes.AUTHENTICATION_LOGIN, authSagas.doLogin);
+  yield takeEvery(authTypes.AUTHENTICATION_LOGOUT, authSagas.doLogout);
 }
