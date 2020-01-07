@@ -15,3 +15,8 @@ export function* doLogin(action: authenticationTypes.IAuthenticationLogin) {
     yield put(authenticationActions.AuthenticationFail(response.status, response.data));
   }
 }
+
+export function* doLogout() {
+  const authenticationService = new AuthenticationService();
+  yield call(authenticationService.logout);
+}

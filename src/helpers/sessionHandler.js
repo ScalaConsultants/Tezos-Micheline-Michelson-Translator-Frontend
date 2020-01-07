@@ -4,7 +4,6 @@ export const setLoginToken = token => {
 
 export const getLoginToken = () => {
   const token = localStorage.getItem("loginToken");
-  console.log(token);
   return token;
 };
 

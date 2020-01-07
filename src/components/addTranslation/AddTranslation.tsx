@@ -52,8 +52,6 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
   }
 
   const submitForm = async (values: any) => {
-    console.log(translator);
-    console.log(translatorMessage);
     if (!executeRecaptcha) return;
 
     const token = await executeRecaptcha("contact_form");
