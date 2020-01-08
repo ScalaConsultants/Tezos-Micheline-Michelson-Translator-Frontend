@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useMappedState } from "redux-react-hook";
 import { Formik } from "formik";
-import * as Yup from "yup";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import FormInput from "../shared/input/FormInput";
 import { FormValues } from "./types";
@@ -9,20 +8,7 @@ import "./ContactForm.scss";
 import * as MessageTypes from "../../store/message/types";
 import Alert from "../shared/alert/Alert";
 import FormButton from "../shared/formButton/FormButton";
-
-const validationSchema = Yup.object().shape({
-  name: Yup.string(),
-  group: Yup.string(),
-  phone: Yup.number()
-    .integer("It's a wrong phone number!")
-    .min(8, "This phone number is too short."),
-  email: Yup.string()
-    .required("Email is required.")
-    .email("It's a wrong email address."),
-  content: Yup.string()
-    .required("Message is required.")
-    .min(10, "Message is too short."),
-});
+import { removeEmptyProperties } from "../../helpers/tools";
 
 const mapState = (state: MessageTypes.IMessageGlobalState) => ({
   message: state.message,
@@ -39,6 +25,8 @@ const ContactForm = () => {
     const token = await executeRecaptcha("contact_form");
     if (!token.length) return;
 
+    const data = removeEmptyProperties(values);
+
     dispatch({
       type: MessageTypes.MESSAGE_SET,
       message: values,
@@ -46,7 +34,7 @@ const ContactForm = () => {
 
     dispatch({
       type: MessageTypes.MESSAGE_SEND,
-      message: values,
+      message: data,
       captcha: token,
     });
   };
@@ -65,6 +53,42 @@ const ContactForm = () => {
     });
   };
 
+  type validationErrors = {
+    name?: string;
+    phone?: string;
+    email?: string;
+    content?: string;
+  };
+
+  const validate = (values: any) => {
+    saveForm(values);
+
+    const errors: validationErrors = {};
+
+    if (!values.name) {
+      errors.name = "Required";
+    }
+
+    if (!values.phone && !values.email) {
+      errors.phone = "You need to provide an email or a phone number";
+    } else if (values.phone && !/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/i.test(values.phone)) {
+      console.log(errors);
+      errors.phone = "It's a wrong phone number!";
+    }
+
+    if (!values.email && !values.phone) {
+      errors.email = "You need to provide an email or a phone number";
+    } else if (values.email && !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/i.test(values.email)) {
+      errors.email = "It's a wrong email address!";
+    }
+
+    if (!values.content) {
+      errors.content = "Required";
+    }
+
+    return errors;
+  };
+
   return (
     <div className="contact-form">
       <h2>Send message</h2>
@@ -75,9 +99,8 @@ const ContactForm = () => {
           email: message.email,
           content: message.content,
         }}
-        validationSchema={validationSchema}
         onSubmit={submitForm}
-        validate={saveForm}
+        validate={validate}
       >
         {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
           <form onSubmit={handleSubmit} noValidate>
