@@ -60,7 +60,7 @@ const ContactForm = () => {
     content?: string;
   };
 
-  const validate = (values: any) => {
+  const validate = (values: FormValues) => {
     saveForm(values);
 
     const errors: validationErrors = {};
