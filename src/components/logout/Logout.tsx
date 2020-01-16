@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "redux-react-hook";
 import * as authTypes from "../../store/authentication/types";
 import {useRouter} from "next/router";
+import "./Logout.scss";
 
 const Logout = () => {
   const dispatch = useDispatch();
