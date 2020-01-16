@@ -4,10 +4,10 @@ import LogoutForm from "../../components/logout/Logout";
 
 const Logout = () => {
   return (
-    <div className="login-page">
+    <div className="logout-page">
       <h1>Logout</h1>
       <div className="container_full">
-        <div className="sub-container_login-form">
+        <div className="sub-container_logout-form">
           <LogoutForm />
         </div>
       </div>

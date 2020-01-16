@@ -4,7 +4,7 @@ import LibraryList from "../../../components/admin/libraryList/LibraryList";
 
 const Library = () => {
   return (
-    <div className="login-page">
+    <div className="admin-library">
       <h1>Library</h1>
       <div className="container_full">
         <div className="sub-container_login-form">

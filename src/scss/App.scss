@@ -63,3 +63,7 @@ textarea, button {
   font-weight: bold;
   padding-top: 8px;
 }
+
+.grecaptcha-badge { // hidding recaptcha
+  visibility: hidden;
+}
