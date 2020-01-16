@@ -6,7 +6,7 @@ import "./Contact.scss";
 const Contact = () => {
   return (
     <div className="contact-page">
-      <h1>Translator</h1>
+      <h1>Contact</h1>
       <div className="container_full">
         <div className="sub-container_contact-form">
           <ContactForm />

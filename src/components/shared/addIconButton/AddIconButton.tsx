@@ -1,7 +1,9 @@
 import React from "react";
-import addImg from "./add-btn.svg";
 import "./AddIconButton.scss";
 import { AddIconButtonProps } from "./types";
+
+const addImg = require("./add-btn.svg");
+
 
 const AddIconButton = ({ type, disabled, onClick }: AddIconButtonProps) => (
   <button

@@ -1,8 +1,14 @@
 import { put, call } from "redux-saga/effects";
 import * as authenticationActions from "./actions";
 import * as authenticationTypes from "./types";
-import { setLoginToken } from "../../helpers/sessionHandler";
+import {getLoginToken, setLoginToken} from "../../helpers/sessionHandler";
 import AuthenticationService from "../../services/authentication.service";
+
+export function* doCheckAuth() {
+  const token = getLoginToken();
+  // We make a call to backend and confirm if the token is correct. Then we set auth.
+  token && (yield put(authenticationActions.AuthenticationSuccess(token)));
+}
 
 export function* doLogin(action: authenticationTypes.IAuthenticationLogin) {
   const authenticationService = new AuthenticationService();

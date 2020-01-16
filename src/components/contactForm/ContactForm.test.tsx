@@ -4,7 +4,7 @@ import { StoreContext } from "redux-react-hook";
 import ContactForm from "./ContactForm";
 import FormButton from "../shared/formButton/FormButton";
 
-import configureStore from "../../store/index";
+import configureStore from "../../store";
 import rootSaga from "../../store/saga";
 
 const store = configureStore();

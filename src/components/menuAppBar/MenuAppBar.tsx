@@ -1,25 +1,21 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+// import { withRouter } from "react-router-dom";
 import "./MenuAppBar.scss";
 import { useMappedState } from "redux-react-hook";
 import Title from "./Title";
 import { IState } from "../../store/global/types";
-
-type Props = {
-  history: {
-    push: Function;
-  };
-};
+import {useRouter} from "next/router";
 
 const mapState = (state: IState) => ({
   auth: state.auth,
 });
 
-const MenuAppBar = (props: Props) => {
+const MenuAppBar = () => {
   const { auth } = useMappedState(mapState);
+  const router = useRouter();
 
   const goTo = (route: string) => {
-    props.history.push(route);
+    router.push(route);
   };
 
   const goScalac = () => {
@@ -68,4 +64,4 @@ const MenuAppBar = (props: Props) => {
   );
 };
 
-export default withRouter(MenuAppBar);
+export default MenuAppBar;

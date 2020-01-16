@@ -1,5 +1,4 @@
 import React from "react";
-import "./FormButton.scss";
 import { ButtonProps } from "./types";
 
 const FormButton = ({ type, label, className, disabled, stylingType, onClick }: ButtonProps) => (
