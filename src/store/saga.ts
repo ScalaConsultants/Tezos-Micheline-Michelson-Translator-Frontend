@@ -31,11 +31,15 @@ export function* checkAuth() {
 
 export function* startup(): any {
   // yield fork(getData);
-  yield fork(checkAuth);
+  // yield fork(checkAuth);
 }
 
 export default function* root() {
   yield fork(startup);
+  yield takeEvery(
+    authTypes.AUTHENTICATION_CHECK,
+    authSagas.doCheckAuth,
+  );
   yield takeEvery(
     translatorTypes.TRANSLATOR_FETCH_MICHELINE_TO_MICHELSON,
     translatorSagas.doFetchMichelineToMichelsonTranslation,

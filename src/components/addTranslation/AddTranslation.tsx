@@ -99,8 +99,8 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.title}
-                errors={errors.title}
-                touched={touched.title}
+                // errors={errors.title}
+                // touched={touched.title}
               />
               <FormInput
                 label="Author"
@@ -109,8 +109,8 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.author}
-                errors={errors.author}
-                touched={touched.author}
+                // errors={errors.author}
+                // touched={touched.author}
               />
             </div>
             <div className="add-translation_fields-line">
@@ -121,8 +121,8 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
-                errors={errors.email}
-                touched={touched.email}
+                // errors={errors.email}
+                // touched={touched.email}
                 className={!values.isEmail ? "blocked" : "undefined"}
                 disabled={!values.isEmail}
               />
@@ -133,8 +133,8 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.isEmail}
-                errors={errors.isEmail}
-                touched={touched.isEmail}
+                // errors={errors.isEmail}
+                // touched={touched.isEmail}
                 isValidationDisplay={false}
               />
             </div>
@@ -145,8 +145,8 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.description}
-              errors={errors.description}
-              touched={touched.description}
+              // errors={errors.description}
+              // touched={touched.description}
             />
             <div className="add-translation_code-displays">
               <FormCodeDisplay value={translator.micheline} type="Micheline" />

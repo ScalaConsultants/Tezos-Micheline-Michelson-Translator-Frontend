@@ -1,3 +1,4 @@
+export const AUTHENTICATION_CHECK = "AUTHENTICATION_CHECK";
 export const AUTHENTICATION_LOGIN = "AUTHENTICATION_LOGIN";
 export const AUTHENTICATION_SUCCESS = "AUTHENTICATION_SUCCESS";
 export const AUTHENTICATION_FAIL = "AUTHENTICATION_FAIL";
@@ -12,6 +13,10 @@ export type AuthenticationState = {
   token: string;
   isLogged: string;
 };
+
+export interface IAuthenticationCheck {
+  type: typeof AUTHENTICATION_CHECK;
+}
 
 export interface IAuthenticationLogin {
   type: typeof AUTHENTICATION_LOGIN;

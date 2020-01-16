@@ -5,6 +5,7 @@ import LibraryListItem from "./LibraryListItem";
 import "./LibraryList.scss";
 import { IState } from "../../../store/global/types";
 import * as adminLibraryTypes from "../../../store/adminLibrary/types";
+import {useRouter} from "next/router";
 
 const mapState = (state: IState) => ({
   library: state.adminLibrary,
@@ -14,6 +15,7 @@ const mapState = (state: IState) => ({
 const LibraryList = () => {
   const { library, auth } = useMappedState(mapState);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   useEffect(() => {
     dispatch({
@@ -21,11 +23,11 @@ const LibraryList = () => {
     });
   }, [dispatch]);
 
-  const redirectToLogin = () => !auth.isLogged && <Redirect to="/login" />;
+  const redirectToLogin = () => !auth.isLogged && router.push("/login");
 
   return (
     <div className="LibraryList">
-      {redirectToLogin()}
+      {/*{redirectToLogin()}*/}
       <div className="LibraryList__header">
         <div>Item</div>
         <div>Name</div>

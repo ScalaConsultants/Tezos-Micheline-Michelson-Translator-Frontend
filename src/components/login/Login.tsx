@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Redirect } from "react-router-dom";
@@ -8,6 +8,7 @@ import { IState } from "../../store/global/types";
 import FormInput from "../shared/input/FormInput";
 import FormButton from "../shared/formButton/FormButton";
 import "./Login.scss";
+import {useRouter} from "next/router";
 
 const mapState = (state: IState) => ({
   auth: state.auth,
@@ -21,6 +22,7 @@ const validationSchema = Yup.object().shape({
 const Login = () => {
   const { auth } = useMappedState(mapState);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const submitForm = (values: authTypes.authCredentials) => {
     dispatch({
@@ -29,12 +31,16 @@ const Login = () => {
     });
   };
 
-  const redirectToPanel = () => auth.isLogged && <Redirect to="/admin/library" />;
+  // const redirectToPanel = () => auth.isLogged && router.push("/admin/library");
+
+  useEffect(() => {
+    auth.isLogged && router.push("/admin/library")
+  }, [auth.isLogged]);
+
 
   return (
     <div className="login">
       <div className="login-content">
-        {redirectToPanel()}
         <Formik
           initialValues={{
             username: "",
