@@ -10,6 +10,8 @@ const translator = {
     "parameter int;\nstorage int;\ncode { CAR ;\n       PUSH int 1 ;\n       ADD ;\n       NIL operation ;\n       PAIR }",
   michelson:
     '[ { "prim": "parameter", "args": [ { "prim": "int" } ] }, { "prim": "storage", "args": [ { "prim": "int" } ] }, { "prim": "code", "args": [ [ { "prim": "CAR" },{ "prim": "PUSH", "args": [ { "prim": "int" }, { "int": "1" } ] },{ "prim": "ADD" },{ "prim": "NIL", "args": [ { "prim": "operation" } ] },{ "prim": "PAIR" } ] ] } ]\n',
+  error: "",
+  isErrorOrEmpty: true
 };
 
 const mockStore = configureStore();
@@ -28,10 +30,6 @@ describe("AddTranslation", () => {
         <AddTranslation setShowModal={() => {}} />
       </StoreContext.Provider>,
     );
-  });
-
-  it("matches snapshot", () => {
-    expect(wrapper.debug()).toMatchSnapshot();
   });
 
   it("renders without crashing", () => {
@@ -53,4 +51,9 @@ describe("AddTranslation", () => {
         .text(),
     ).toEqual("cancel");
   });
+
+  it("matches snapshot", () => {
+    expect(wrapper.debug()).toMatchSnapshot();
+  });
+
 });

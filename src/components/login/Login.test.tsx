@@ -28,7 +28,7 @@ describe("Login", () => {
     expect(
       item
         .at(0)
-        .find({ name: "login" })
+        .find({ name: "username" })
         .at(0)
         .text(),
     ).toEqual("Login");

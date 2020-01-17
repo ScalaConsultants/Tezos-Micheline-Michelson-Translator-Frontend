@@ -1,34 +1,34 @@
 module.exports = {
-  "testEnvironment": "node",
-  "roots": [
-    "<rootDir>/src"
-  ],
-  "preset": "ts-jest",
-  "setupFilesAfterEnv": ["<rootDir>/setupTests.ts"],
-  "transform": {
-    "^.+\\.tsx?$": "ts-jest",
-    ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
-  },
-  "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
-  "moduleFileExtensions": [
+  moduleFileExtensions: [
     "ts",
     "tsx",
-    "js",
-    "jsx",
-    "json",
-    "node",
+    "js"
   ],
-  "moduleNameMapper": {
-    "^.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
+  transform: {
+    "^.+\\.tsx?$": "ts-jest"
   },
-  "testPathIgnorePatterns": ["<rootDir>/.next/", "<rootDir>/node_modules/"],
-  "snapshotSerializers": ["enzyme-to-json/serializer"],
-  "globals": {
-    // we must specify a custom tsconfig for tests because we need the typescript transform
-    // to transform jsx into js rather than leaving it jsx such as the next build requires. you
-    // can see this setting in tsconfig.jest.json -> "jsx": "react"
+  testMatch: [
+    "**/*.(test|spec).(ts|tsx)"
+  ],
+  globals: {
     "ts-jest": {
-      "tsConfig": "<rootDir>/tsconfig.jest.json"
+      babelConfig: true,
+      tsConfig: "jest.tsconfig.json"
     }
+  },
+  coveragePathIgnorePatterns: [
+    "/node_modules/",
+    "setupTests.js"
+  ],
+  setupFilesAfterEnv: ["<rootDir>/setupTests.js"],
+  coverageReporters: [
+    "json",
+    "lcov",
+    "text",
+    "text-summary"
+  ],
+  moduleNameMapper: {
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/mocks.js",
+    "^.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
   }
 };
