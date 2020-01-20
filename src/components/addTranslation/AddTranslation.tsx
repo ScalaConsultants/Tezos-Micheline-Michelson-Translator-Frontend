@@ -15,8 +15,7 @@ import "./AddTranslation.scss";
 
 const mapState = (state: IState) => {
   return {
-    translator: state.translator,
-    translatorMessage: state.translatorMessage,
+    translator: state.translator
   };
 };
 
@@ -37,19 +36,10 @@ const validationSchema = Yup.object().shape({
 });
 
 const AddTranslation = ({ setShowModal }: AddTranslationState) => {
-  const { translator, translatorMessage } = useMappedState(mapState);
+  const { translator } = useMappedState(mapState);
   const { executeRecaptcha } = useGoogleReCaptcha();
 
   const dispatch = useDispatch();
-
-  if (!translatorMessage.isTranslationSet) {
-    const { micheline, michelson } = { ...translator };
-    dispatch({
-      type: translatorTypes.TRANSLATOR_SET_TRANSLATION_MESSAGE,
-      micheline,
-      michelson,
-    });
-  }
 
   const submitForm = async (values: any) => {
     if (!executeRecaptcha) return;
@@ -59,8 +49,8 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
 
     const sendValues = {
       ...values,
-      micheline: translatorMessage.micheline,
-      michelson: translatorMessage.michelson,
+      micheline: translator.micheline,
+      michelson: translator.michelson,
     };
     dispatch({
       type: translatorTypes.TRANSLATOR_SEND_TRANSLATION,
@@ -160,14 +150,14 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
                 disabled={
                   !!Object.keys(errors).length ||
                   !Object.keys(touched).length ||
-                  !translatorMessage.micheline ||
-                  !translatorMessage.michelson ||
-                  (!!translatorMessage.wasSend && !translatorMessage.error)
+                  !translator.micheline ||
+                  !translator.michelson ||
+                  (!!translator.wasSend && !translator.error)
                 }
               />
             </div>
-            {!!(translatorMessage && translatorMessage.wasSend) &&
-              (!!translatorMessage.error ? (
+            {!!(translator && translator.wasSend) &&
+              (!!translator.error ? (
                 <Alert message="Sending message failed. Please, check the form." type="error" />
               ) : (
                 <Alert message="Translation was send" type="success" />

@@ -4,8 +4,10 @@ import { StoreContext } from "redux-react-hook";
 import configureStore from "redux-mock-store";
 import AddTranslation from "./AddTranslation";
 import FormButton from "../shared/formButton/FormButton";
+import FormInput from "../shared/input/FormInput";
 
 const translator = {
+  title: "Title1",
   micheline:
     "parameter int;\nstorage int;\ncode { CAR ;\n       PUSH int 1 ;\n       ADD ;\n       NIL operation ;\n       PAIR }",
   michelson:
@@ -38,10 +40,10 @@ describe("AddTranslation", () => {
     expect(
       item
         .at(0)
-        .find({ name: "name" })
+        .find(FormInput)
         .at(0)
         .text(),
-    ).toEqual("Name");
+    ).toEqual("Title");
 
     expect(
       item
@@ -49,7 +51,7 @@ describe("AddTranslation", () => {
         .find(FormButton)
         .at(0)
         .text(),
-    ).toEqual("cancel");
+    ).toEqual("close");
   });
 
   it("matches snapshot", () => {

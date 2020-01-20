@@ -3,7 +3,13 @@ export const setLoginToken = token => {
 };
 
 export const getLoginToken = () => {
-  const token = localStorage.getItem("loginToken");
+  let token = null;
+  try {
+    token = localStorage.getItem("loginToken");
+  }
+  catch(e) {
+    token = null;
+  }
   return token;
 };
 
