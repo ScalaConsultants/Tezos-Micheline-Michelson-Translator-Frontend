@@ -4,7 +4,7 @@ import { StoreContext } from "redux-react-hook";
 import configureStore from "redux-mock-store";
 import Library from "./Contract";
 
-import LibraryItem from "./LibraryItem";
+import Contract from "./LibraryItem";
 
 import * as TranslatorActions from "../../store/translator/actions";
 import * as TranslatorTypes from "../../store/translator/types";
@@ -29,7 +29,7 @@ describe("Library", () => {
   });
 
   it("renders without crashing", () => {
-    const item = wrapper.find(LibraryItem);
+    const item = wrapper.find(Contract);
 
     expect(
       item
@@ -52,7 +52,7 @@ describe("Library", () => {
   });
 
   it("selecting Micheline source is working", () => {
-    const item = wrapper.find(LibraryItem);
+    const item = wrapper.find(Contract);
 
     const itemMicheline = item
       .at(0)
@@ -74,7 +74,7 @@ describe("Library", () => {
   });
 
   it("selecting Michelson source is working", () => {
-    const item = wrapper.find(LibraryItem);
+    const item = wrapper.find(Contract);
 
     const itemMichelson = item
       .at(0)

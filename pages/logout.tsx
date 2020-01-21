@@ -1,13 +1,13 @@
 import React from "react";
-import Logout from "../src/containers/logout/Logout";
+import LogoutForm from "../src/containers/logout/Logout";
 
-const App = () => {
+const Logout = () => {
 
   return (
     <div>
-      <Logout />
+      <LogoutForm />
     </div>
   );
 };
 
-export default App;
+export default Logout;

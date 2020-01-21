@@ -1,13 +1,23 @@
 import React from "react";
-import Contact from "../src/containers/contact/Contact";
+import fetch from "isomorphic-unfetch";
+import Contract from "../src/components/contract/Contract";
 
-const App = () => {
+import {LibraryItem as LibraryItemType} from "../src/store/library/types";
 
+const ContractPage = (data: LibraryItemType) => {
   return (
     <div>
-      <Contact />
-    </div>
+      <h1>Contract details</h1>
+      <Contract data={data} />
+     </div>
   );
 };
 
-export default App;
+ContractPage.getInitialProps = async ({ query }) => {
+  const response = await fetch(`http://localhost:3000/api/contract?id=${query.id}`);
+  const json = await response.json();
+  return { ...json }
+};
+
+
+export default ContractPage;

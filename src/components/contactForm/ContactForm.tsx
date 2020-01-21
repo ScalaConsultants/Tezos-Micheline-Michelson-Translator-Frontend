@@ -6,9 +6,11 @@ import FormInput from "../shared/input/FormInput";
 import { FormValues } from "./types";
 import "./ContactForm.scss";
 import * as MessageTypes from "../../store/message/types";
+import * as MessageActions from "../../store/message/actions";
 import Alert from "../shared/alert/Alert";
 import FormButton from "../shared/formButton/FormButton";
 import { removeEmptyProperties } from "../../helpers/tools";
+import {bindActionCreators} from "redux";
 
 const mapState = (state: MessageTypes.IMessageGlobalState) => ({
   message: state.message,
@@ -18,6 +20,7 @@ const ContactForm = () => {
   const dispatch = useDispatch();
   const { message } = useMappedState(mapState);
   const { executeRecaptcha } = useGoogleReCaptcha();
+  const boundMessageActions = bindActionCreators(MessageActions, dispatch);
 
   const submitForm = async (values: FormValues) => {
     if (!executeRecaptcha) return;
@@ -27,30 +30,17 @@ const ContactForm = () => {
 
     const data = removeEmptyProperties(values);
 
-    dispatch({
-      type: MessageTypes.MESSAGE_SET,
-      message: values,
-    });
-
-    dispatch({
-      type: MessageTypes.MESSAGE_SEND,
-      message: data,
-      captcha: token,
-    });
+    boundMessageActions.MessageSet(data);
+    boundMessageActions.MessageSend(data, token);
   };
 
   useEffect(() => {
-    dispatch({
-      type: MessageTypes.MESSAGE_SET_ERROR,
-      isError: null,
-    });
-  }, [dispatch]);
+    boundMessageActions.MessageSetError(null);
+  }, [boundMessageActions]);
 
   const saveForm = (values: FormValues) => {
-    dispatch({
-      type: MessageTypes.MESSAGE_SET,
-      message: values,
-    });
+    const data = removeEmptyProperties(values);
+    boundMessageActions.MessageSet(data);
   };
 
   type validationErrors = {
@@ -72,7 +62,6 @@ const ContactForm = () => {
     if (!values.phone && !values.email) {
       errors.phone = "You need to provide an email or a phone number";
     } else if (values.phone && !/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/i.test(values.phone)) {
-      console.log(errors);
       errors.phone = "It's a wrong phone number!";
     }
 

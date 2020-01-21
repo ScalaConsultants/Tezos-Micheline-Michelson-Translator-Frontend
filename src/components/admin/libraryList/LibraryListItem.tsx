@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import "./LibraryListItem.scss";
 import { useDispatch } from "redux-react-hook";
 import * as adminLibraryTypes from "../../../store/adminLibrary/types";
+import * as adminLibraryActions from "../../../store/adminLibrary/actions";
 import Confirmation from "./Confirmation";
 import Details from "./Details";
+import {bindActionCreators} from "redux";
 
 type Props = {
   data: adminLibraryTypes.AdminLibraryItem;
@@ -26,23 +28,15 @@ const LibraryListItem = ({ data, no }: Props) => {
   const [selectedDetail, setSelectedDetail] = useState("");
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
+  const boundAdminLibraryActions = bindActionCreators(adminLibraryActions, dispatch);
 
   const setStatus = (item: string, status: adminLibraryTypes.adminLibraryItemStatusType) => {
-    dispatch({
-      type: adminLibraryTypes.ADMIN_LIBRARY_SET_STATUS,
-      item,
-      status,
-    });
-
+    boundAdminLibraryActions.LibrarySetStatus(item, status);
     setShowConfirmationModal(false);
   };
 
   const deleteItem = (item: string) => {
-    dispatch({
-      type: adminLibraryTypes.ADMIN_LIBRARY_DELETE,
-      item,
-    });
-
+    boundAdminLibraryActions.LibraryDelete(item);
     setShowConfirmationModal(false);
   };
 
@@ -135,7 +129,7 @@ const LibraryListItem = ({ data, no }: Props) => {
           </div>
         </div>
       </div>
-      <div className="LibraryListItem__column">{data.name}</div>
+      <div className="LibraryListItem__column">{data.title}</div>
       <div
         className="LibraryListItem__column LibraryListItem__clickable"
         onClick={() => setDetailModalData(data.description)}
@@ -156,7 +150,7 @@ const LibraryListItem = ({ data, no }: Props) => {
       </div>
       <Confirmation
         showModal={showConfirmationModal}
-        name={data.name}
+        name={data.title}
         action={selectedAction.action}
         onAccept={selectedAction.accept}
         onReject={selectedAction.reject}
