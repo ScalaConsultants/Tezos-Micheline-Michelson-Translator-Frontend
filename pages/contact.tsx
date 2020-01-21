@@ -1,13 +1,13 @@
 import React from "react";
-import Contact from "../src/containers/contact/Contact";
+import ContactForm from "../src/containers/contact/Contact";
 
-const App = () => {
+const Contact = () => {
 
   return (
     <div>
-      <Contact />
+      <ContactForm />
     </div>
   );
 };
 
-export default App;
+export default Contact;

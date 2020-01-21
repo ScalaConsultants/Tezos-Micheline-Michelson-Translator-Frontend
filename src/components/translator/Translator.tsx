@@ -4,23 +4,24 @@ import * as TranslatorTypes from "../../store/translator/types";
 import "./Translator.scss";
 import TextField from "../textField/TextField";
 import { IState } from "../../store/global/types";
+import * as TranslatorActions from "../../store/translator/actions";
+import {bindActionCreators} from "redux";
 
 const mapState = (state: IState) => ({
   translator: state.translator,
 });
 
-export const translate = (currentMode: TranslatorTypes.Modes, value: string, dispatch: Function) => {
+export const translate = (currentMode: TranslatorTypes.Modes, value: string, boundTranslatorActions: typeof TranslatorActions) => {
   let action = null;
-  if (currentMode === TranslatorTypes.Modes.MICHELINEMICHELSON && value.trim().length)
+  if (currentMode === TranslatorTypes.Modes.MICHELINEMICHELSON && value.trim().length) {
     action = TranslatorTypes.TRANSLATOR_FETCH_MICHELINE_TO_MICHELSON;
-  else if (currentMode === TranslatorTypes.Modes.MICHELSONMICHELINE && value.trim().length)
+    boundTranslatorActions.TranslatorFetchMichelineToMichelson(value);
+  }
+  else if (currentMode === TranslatorTypes.Modes.MICHELSONMICHELINE && value.trim().length) {
     action = TranslatorTypes.TRANSLATOR_FETCH_MICHELSON_TO_MICHELINE;
+    boundTranslatorActions.TranslatorFetchMichelsonToMicheline(value);
+  }
   if (!action) return;
-
-  dispatch({
-    type: action,
-    payload: value,
-  });
 };
 
 const Translator = () => {
@@ -28,12 +29,10 @@ const Translator = () => {
   const { translator } = useMappedState(mapState);
   const [micheline, setMicheline] = useState(translator.micheline);
   const [michelson, setMichelson] = useState(translator.michelson);
+  const boundTranslatorActions = bindActionCreators(TranslatorActions, dispatch);
 
   const setCurrentMode = (mode: TranslatorTypes.Modes) => {
-    dispatch({
-      type: TranslatorTypes.TRANSLATOR_SET_MODE,
-      mode,
-    });
+    boundTranslatorActions.TranslatorSetMode(mode);
   };
 
   useEffect(() => {
@@ -54,24 +53,14 @@ const Translator = () => {
 
   const reduxSetMicheline = (value: string) => {
     switchMode(TranslatorTypes.Modes.MICHELINEMICHELSON);
-
-    dispatch({
-      type: TranslatorTypes.TRANSLATOR_SET_MICHELINE,
-      translation: value,
-    });
-
-    translate(translator.mode, value, dispatch);
+    boundTranslatorActions.TranslatorSetMicheline(null, value);
+    translate(translator.mode, value, boundTranslatorActions);
   };
 
   const reduxSetMichelson = (value: string) => {
     switchMode(TranslatorTypes.Modes.MICHELSONMICHELINE);
-
-    dispatch({
-      type: TranslatorTypes.TRANSLATOR_SET_MICHELSON,
-      translation: value,
-    });
-
-    translate(translator.mode, value, dispatch);
+    boundTranslatorActions.TranslatorSetMichelson(null, value);
+    translate(translator.mode, value, boundTranslatorActions);
   };
 
   const getValue = (mode: TranslatorTypes.Modes) => {
@@ -93,7 +82,7 @@ const Translator = () => {
           src="arrows.svg"
           alt=""
           className="Translator__header__translate-button"
-          onClick={() => translate(translator.mode, getValue(translator.mode), dispatch)}
+          onClick={() => translate(translator.mode, getValue(translator.mode), boundTranslatorActions)}
         />
         <button
           className={translator.mode === TranslatorTypes.Modes.MICHELSONMICHELINE ? "Translator__header-selected" : ""}

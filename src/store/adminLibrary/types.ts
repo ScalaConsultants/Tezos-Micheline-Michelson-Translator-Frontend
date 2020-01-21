@@ -1,6 +1,6 @@
 export type AdminLibraryItem = {
   uid: string;
-  name: string;
+  title: string;
   author: string;
   email: string;
   description: string;
@@ -61,4 +61,5 @@ export type AdminLibraryActionTypes =
   | IAdminLibraryFetch
   | IAdminLibrarySet
   | IAdminLibrarySetStatus
-  | IAdminLibraryFlush;
+  | IAdminLibraryFlush
+  | IAdminLibraryDelete;

@@ -73,8 +73,8 @@ export interface ITranslatorFlushTranslation {
 }
 export interface ITranslatorSendTranslation {
   type: typeof TRANSLATOR_SEND_TRANSLATION;
-  payload: any;
-  captcha: string;
+  values: any;
+  token: string;
 }
 export interface ITranslatorSetTranslationMessage {
   type: typeof TRANSLATOR_SET_TRANSLATION_MESSAGE;

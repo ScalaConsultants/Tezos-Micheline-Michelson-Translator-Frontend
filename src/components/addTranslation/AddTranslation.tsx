@@ -5,6 +5,7 @@ import { useMappedState, useDispatch } from "redux-react-hook";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { IState } from "../../store/global/types";
 import * as translatorTypes from "../../store/translator/types";
+import * as translatorActions from "../../store/translator/actions";
 import FormTextarea from "../shared/textarea/FormTextarea";
 import FormInput from "../shared/input/FormInput";
 import FormCodeDisplay from "../shared/formCodeDisplay/FormCodeDisplay";
@@ -12,6 +13,7 @@ import FormButton from "../shared/formButton/FormButton";
 import Alert from "../shared/alert/Alert";
 import { AddTranslationState } from "./types";
 import "./AddTranslation.scss";
+import {bindActionCreators} from "redux";
 
 const mapState = (state: IState) => {
   return {
@@ -38,8 +40,8 @@ const validationSchema = Yup.object().shape({
 const AddTranslation = ({ setShowModal }: AddTranslationState) => {
   const { translator } = useMappedState(mapState);
   const { executeRecaptcha } = useGoogleReCaptcha();
-
   const dispatch = useDispatch();
+  const boundTranslatorActions = bindActionCreators(translatorActions, dispatch);
 
   const submitForm = async (values: any) => {
     if (!executeRecaptcha) return;
@@ -52,18 +54,13 @@ const AddTranslation = ({ setShowModal }: AddTranslationState) => {
       micheline: translator.micheline,
       michelson: translator.michelson,
     };
-    dispatch({
-      type: translatorTypes.TRANSLATOR_SEND_TRANSLATION,
-      payload: sendValues,
-      captcha: token,
-    });
+
+    boundTranslatorActions.TranslatorSendTranslation(sendValues, token);
   };
 
   const handleCloseModal = () => {
     setShowModal(false);
-    dispatch({
-      type: translatorTypes.TRANSLATOR_MESSAGE_RESET,
-    });
+    boundTranslatorActions.TranslatorMessageReset();
   };
 
   return (
