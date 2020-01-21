@@ -1,0 +1,5 @@
+const contract = {"title":"Some example #2","author":"lordh","email":null,"description":"test 2","micheline":"[\n  {\n    \"prim\": \"parameter\",\n    \"args\": [\n      {\n        \"prim\": \"int\"\n      }\n    ]\n  },\n  {\n    \"prim\": \"storage\",\n    \"args\": [\n      {\n        \"prim\": \"int\"\n      }\n    ]\n  },\n  {\n    \"prim\": \"code\",\n    \"args\": [\n      [\n        {\n          \"prim\": \"CAR\"\n        },\n        {\n          \"prim\": \"PUSH\",\n          \"args\": [\n            {\n              \"prim\": \"int\"\n            },\n            {\n              \"int\": \"1\"\n            }\n          ]\n        },\n        {\n          \"prim\": \"ADD\"\n        },\n        {\n          \"prim\": \"NIL\",\n          \"args\": [\n            {\n              \"prim\": \"operation\"\n            }\n          ]\n        },\n        {\n          \"prim\": \"PAIR\"\n        }\n      ]\n    ]\n  }\n]","michelson":"parameter int;\nstorage int;\ncode { CAR ;\n       PUSH int 1 ;\n       ADD ;\n       NIL operation ;\n       PAIR }"};
+
+export default (req, res) => {
+  res.status(200).json(contract);
+};

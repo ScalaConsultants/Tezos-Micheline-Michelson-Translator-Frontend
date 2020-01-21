@@ -1,18 +1,17 @@
 import React, {useEffect} from "react";
 import { useDispatch } from "redux-react-hook";
-import * as authTypes from "../../store/authentication/types";
+import * as authActions from "../../store/authentication/actions";
 import {useRouter} from "next/router";
 import "./Logout.scss";
+import {bindActionCreators} from "redux";
 
 const Logout = () => {
   const dispatch = useDispatch();
   const router = useRouter();
+  const boundAuthActions = bindActionCreators(authActions, dispatch);
 
   const doLogout = () => {
-    dispatch({
-      type: authTypes.AUTHENTICATION_LOGOUT,
-    });
-    return true;
+    boundAuthActions.AuthenticationLogout();
   };
 
   useEffect(() => {

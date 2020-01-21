@@ -1,14 +1,15 @@
 import React, {useEffect} from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { Redirect } from "react-router-dom";
 import { useMappedState, useDispatch } from "redux-react-hook";
 import * as authTypes from "../../store/authentication/types";
+import * as authActions from "../../store/authentication/actions";
 import { IState } from "../../store/global/types";
 import FormInput from "../shared/input/FormInput";
 import FormButton from "../shared/formButton/FormButton";
 import "./Login.scss";
 import {useRouter} from "next/router";
+import {bindActionCreators} from "redux";
 
 const mapState = (state: IState) => ({
   auth: state.auth,
@@ -23,12 +24,10 @@ const Login = () => {
   const { auth } = useMappedState(mapState);
   const dispatch = useDispatch();
   const router = useRouter();
+  const boundAuthActions = bindActionCreators(authActions, dispatch);
 
   const submitForm = (values: authTypes.authCredentials) => {
-    dispatch({
-      type: authTypes.AUTHENTICATION_LOGIN,
-      payload: values,
-    });
+    boundAuthActions.AuthenticationLogin(values);
   };
 
   // const redirectToPanel = () => auth.isLogged && router.push("/admin/library");

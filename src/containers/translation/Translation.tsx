@@ -7,30 +7,29 @@ import AddTranslation from "../../components/addTranslation/AddTranslation";
 import AddIconButton from "../../components/shared/addIconButton/AddIconButton";
 import "./Translation.scss";
 import { IState } from "../../store/global/types";
-import * as translatorTypes from "../../store/translator/types";
-import * as libraryTypes from "../../store/library/types";
+import * as translatorActions from "../../store/translator/actions";
+import * as libraryActions from "../../store/library/actions";
+import {bindActionCreators} from "redux";
 
 const mapState = (state: IState) => (
   { translator: state.translator }
-)
+);
 
 const Translation = () => {
   const [showModal, setModal] = useState(false);
   const { translator } = useMappedState(mapState);
   const dispatch = useDispatch();
+  const boundTranslatorActions = bindActionCreators(translatorActions, dispatch);
+  const boundLibraryActions = bindActionCreators(libraryActions, dispatch);
 
   const handleSetShowModal = (isDisplayed: boolean) => {
     setModal(isDisplayed);
-    dispatch({
-      type: translatorTypes.TRANSLATOR_MESSAGE_RESET,
-    });
+    boundTranslatorActions.TranslatorMessageReset();
   };
 
   useEffect(() => {
-    dispatch({
-      type: libraryTypes.LIBRARY_FETCH,
-    });
-  }, [dispatch]);
+    boundLibraryActions.LibraryFetch();
+  }, [boundLibraryActions]);
 
   return (
     <div className="Translation">

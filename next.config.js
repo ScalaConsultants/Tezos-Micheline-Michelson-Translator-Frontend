@@ -28,8 +28,16 @@ module.exports =
              */
             config.plugins.push(new webpack.DefinePlugin(env));
             return config
-          }
+          },
+          experimental: {
+            async rewrites() {
+              return [
+                { source: '/contract/:id', destination: '/contract' },
+              ];
+            },
+          },
         }
       )
     )
   );
+
