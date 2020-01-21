@@ -1,11 +1,11 @@
 import React from "react";
 import LoginForm from "../src/containers/login/Login";
 
-const App = () => {
+const Login = () => {
 
   return (
     <LoginForm />
   );
 };
 
-export default App;
+export default Login;

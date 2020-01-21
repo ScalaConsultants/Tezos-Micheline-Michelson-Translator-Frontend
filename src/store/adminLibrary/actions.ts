@@ -23,3 +23,8 @@ export const LibrarySetStatus = (
 export const LibraryFlush = (): adminLibraryTypes.AdminLibraryActionTypes => ({
   type: adminLibraryTypes.ADMIN_LIBRARY_FLUSH,
 });
+
+export const LibraryDelete = (item: string): adminLibraryTypes.AdminLibraryActionTypes => ({
+  type: adminLibraryTypes.ADMIN_LIBRARY_DELETE,
+  item
+});
