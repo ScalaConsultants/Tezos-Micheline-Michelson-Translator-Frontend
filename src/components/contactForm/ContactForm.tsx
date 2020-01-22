@@ -36,7 +36,7 @@ const ContactForm = () => {
 
   useEffect(() => {
     boundMessageActions.MessageSetError(null);
-  }, [boundMessageActions]);
+  }, []);
 
   const saveForm = (values: FormValues) => {
     const data = removeEmptyProperties(values);
