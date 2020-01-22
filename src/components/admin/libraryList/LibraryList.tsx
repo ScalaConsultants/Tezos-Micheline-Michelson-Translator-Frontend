@@ -20,7 +20,7 @@ const LibraryList = () => {
 
   useEffect(() => {
     boundAdminLibraryActions.LibraryFetch();
-  }, [boundAdminLibraryActions]);
+  }, []);
 
   const redirectToLogin = () => !auth.isLogged && router.push("/login");
 

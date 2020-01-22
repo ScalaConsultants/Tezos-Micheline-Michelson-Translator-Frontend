@@ -29,7 +29,7 @@ const Translation = () => {
 
   useEffect(() => {
     boundLibraryActions.LibraryFetch();
-  }, [boundLibraryActions]);
+  }, []);
 
   return (
     <div className="Translation">
