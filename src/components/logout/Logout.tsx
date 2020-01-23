@@ -12,6 +12,7 @@ const Logout = () => {
 
   const doLogout = () => {
     boundAuthActions.AuthenticationLogout();
+    router.push("/");
   };
 
   useEffect(() => {
