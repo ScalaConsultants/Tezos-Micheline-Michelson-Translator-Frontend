@@ -12,18 +12,13 @@ const Logout = () => {
 
   const doLogout = () => {
     boundAuthActions.AuthenticationLogout();
-    router.push("/");
+    setTimeout(() => router.push("/"), 500);
   };
 
   useEffect(() => {
     doLogout();
   }, [doLogout]);
 
-
-  // const redirectToHome = () => doLogout() && router.push("/");
-  // const redirectToHome = () => doLogout() && router.push("/");
-
-  // return <div className="logout">{redirectToHome()}</div>;
   return <div className="logout">You are logged out.</div>;
 };
 
