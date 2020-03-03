@@ -58,21 +58,28 @@ Micheline syntax example (for Textarea on the left):
 ]
 ```
 
-## Available Scripts
+## Configuration
 
+In the root directory you need to create `.env` file with following content:
+```
+REACT_APP_API_URL=<BACKEND_API_URL>
+REACT_APP_RECAPTCHA_SITE_KEY=<YOUR_RECAPTCHA_SITE_KEY>
+```
+
+## Run the project
+To run the project please follow next steps:
+
+## Available Scripts
 In the project directory, you can run:
 
-### `yarn run dev`
+### `yarn install`
+To install dependencies
 
+### `yarn run dev`
 Runs the app in the development mode.<br>
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
 ### `yarn run build`
-
 Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### `yarn run start`
+Start your production build<br>
