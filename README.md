@@ -66,6 +66,10 @@ REACT_APP_API_URL=<BACKEND_API_URL>
 REACT_APP_RECAPTCHA_SITE_KEY=<YOUR_RECAPTCHA_SITE_KEY>
 ```
 
+## Important
+Because of ReCaptcha requirements, please remember that you need to open the app as http://localhost:3000,
+not http://127.0.0.1:3000, because siteKey has to be related to the domain, not to IP address.
+
 ## Run the project
 To run the project please follow next steps:
 
