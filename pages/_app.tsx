@@ -3,14 +3,13 @@ import { StoreContext } from "redux-react-hook";
 import configureStore from "../src/store";
 import rootSaga from "../src/store/saga";
 import * as React from "react";
+import fetchIntercept from 'fetch-intercept';
 import {GoogleReCaptchaProvider} from "react-google-recaptcha-v3";
 import MenuAppBar from "../src/components/menuAppBar/MenuAppBar";
 import "../src/scss/App.scss";
 import * as authenticationTypes from "../src/store/authentication/types";
 import "../src/components/shared/alert/Alert.scss";
 import "../src/components/shared/formButton/FormButton.scss";
-
-
 
 export default class MyApp extends App {
   static async getInitialProps({Component, ctx}) {
