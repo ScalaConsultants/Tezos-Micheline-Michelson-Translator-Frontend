@@ -39,6 +39,7 @@ export default class MyApp extends App {
       <StoreContext.Provider value={store}>
         <div className="App">
           <GoogleReCaptchaProvider reCaptchaKey={recaptchaSiteKey} language="[optional_language]">
+            <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
             <MenuAppBar />
             <div className="Component">
               <Component {...pageProps} />
