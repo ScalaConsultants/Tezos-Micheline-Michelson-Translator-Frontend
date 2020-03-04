@@ -1,5 +1,4 @@
 import React from "react";
-// import { withRouter } from "react-router-dom";
 import "./MenuAppBar.scss";
 import { useMappedState } from "redux-react-hook";
 import Title from "./Title";
@@ -27,7 +26,7 @@ const MenuAppBar = () => {
       <a tabIndex={-1} onClick={() => goScalac()} onKeyUp={() => {}}>
         <img
           className="AppBar__scalac"
-          src="/scalacLogo.png"
+          src="/scalacLogo.svg"
           alt="https://scalac.io"
         />
       </a>
@@ -41,7 +40,6 @@ const MenuAppBar = () => {
       <div className="AppBar__menu-btn-container">
         <button
           className={router.pathname === "/" && "AppBar__menu-btn--active"}
-          // className="AppBar__menu-btn--active"
           type="button"
           onClick={() => goTo("/")}
         >
