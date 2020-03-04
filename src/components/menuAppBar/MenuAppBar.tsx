@@ -4,10 +4,10 @@ import "./MenuAppBar.scss";
 import { useMappedState } from "redux-react-hook";
 import Title from "./Title";
 import { IState } from "../../store/global/types";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
 const mapState = (state: IState) => ({
-  auth: state.auth,
+  auth: state.auth
 });
 
 const MenuAppBar = () => {
@@ -24,9 +24,13 @@ const MenuAppBar = () => {
 
   return (
     <div className="AppBar">
-      <button tabIndex={-1} onClick={() => goScalac()} onKeyUp={() => {}}>
-        <img className="AppBar__scalac" src="/scalac.svg" alt="https://scalac.io" />
-      </button>
+      <a tabIndex={-1} onClick={() => goScalac()} onKeyUp={() => {}}>
+        <img
+          className="AppBar__scalac"
+          src="/scalacLogo.png"
+          alt="https://scalac.io"
+        />
+      </a>
       <Title />
       <img
         className="AppBar__scalac-transparent"
@@ -35,17 +39,42 @@ const MenuAppBar = () => {
         alt="Go to Scalac homepage"
       />
       <div className="AppBar__menu-btn-container">
-        <button type="button" onClick={() => goTo("/")}>
-          <img src="/dashboard.svg" alt="" />
+        <button
+          className={router.pathname === "/" && "AppBar__menu-btn--active"}
+          // className="AppBar__menu-btn--active"
+          type="button"
+          onClick={() => goTo("/")}
+        >
+          {router.pathname === "/" ? (
+            <img src="/dashboard.svg" alt="" />
+          ) : (
+            <img src="/dashboard-red.svg" alt="" />
+          )}
           Convert
         </button>
-        <button type="button" onClick={() => goTo("/contact")}>
-          <img src="/mail.svg" alt="" />
+        <button
+          className={
+            router.pathname === "/contact" && "AppBar__menu-btn--active"
+          }
+          type="button"
+          onClick={() => goTo("/contact")}
+        >
+          {router.pathname === "/contact" ? (
+            <img src="/mail.svg" alt="" />
+          ) : (
+            <img src="/mail-red.svg" alt="" />
+          )}
           Contact
         </button>
 
         {!auth.isLogged && (
-          <button type="button" onClick={() => goTo("/login")}>
+          <button
+            className={
+              router.pathname === "/login" && "AppBar__menu-btn--active"
+            }
+            type="button"
+            onClick={() => goTo("/login")}
+          >
             Login
           </button>
         )}
