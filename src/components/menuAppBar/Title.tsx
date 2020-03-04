@@ -7,7 +7,7 @@ const Title = () => {
     <div className="Title">
       <div className="Title__l1">Micheline</div>
       <div className="Title__l2">Michelson</div>
-      <div className="Title__l3">Converter v{packageJson.version}</div>
+      <div className="Title__l3">Translator</div>
     </div>
   );
 };
