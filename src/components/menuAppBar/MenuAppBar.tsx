@@ -78,7 +78,14 @@ const MenuAppBar = () => {
         )}
         {auth.isLogged && (
           <>
-            <button type="button" onClick={() => goTo("/admin/library")}>
+            <button
+              className={
+                router.pathname === "/admin/library" &&
+                "AppBar__menu-btn--active"
+              }
+              type="button"
+              onClick={() => goTo("/admin/library")}
+            >
               Admin
             </button>
             <button type="button" onClick={() => goTo("/logout")}>
