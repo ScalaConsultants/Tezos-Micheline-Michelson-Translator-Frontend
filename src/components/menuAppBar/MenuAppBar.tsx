@@ -39,7 +39,7 @@ const MenuAppBar = () => {
       />
       <div className="AppBar__menu-btn-container">
         <button
-          className={router.pathname === "/" && "AppBar__menu-btn--active"}
+          className={router.pathname === "/" ? "AppBar__menu-btn--active" : ""}
           type="button"
           onClick={() => goTo("/")}
         >
@@ -52,7 +52,7 @@ const MenuAppBar = () => {
         </button>
         <button
           className={
-            router.pathname === "/contact" && "AppBar__menu-btn--active"
+            router.pathname === "/contact" ? "AppBar__menu-btn--active" : ""
           }
           type="button"
           onClick={() => goTo("/contact")}
@@ -68,7 +68,7 @@ const MenuAppBar = () => {
         {!auth.isLogged && (
           <button
             className={
-              router.pathname === "/login" && "AppBar__menu-btn--active"
+              router.pathname === "/login" ? "AppBar__menu-btn--active" : ""
             }
             type="button"
             onClick={() => goTo("/login")}
@@ -80,8 +80,9 @@ const MenuAppBar = () => {
           <>
             <button
               className={
-                router.pathname === "/admin/library" &&
-                "AppBar__menu-btn--active"
+                router.pathname === "/admin/library"
+                  ? "AppBar__menu-btn--active"
+                  : ""
               }
               type="button"
               onClick={() => goTo("/admin/library")}
