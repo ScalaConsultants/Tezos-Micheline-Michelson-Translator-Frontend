@@ -21,9 +21,11 @@ const ContactForm = () => {
   const { message } = useMappedState(mapState);
   const { executeRecaptcha } = useGoogleReCaptcha();
   const boundMessageActions = bindActionCreators(MessageActions, dispatch);
-  const minPhoneNumberLength = 9;
-  const minEmailAddressLength = 6;
-  const minNameLength = 3;
+  const minInputLengths = {
+    minPhoneNumberLength: 9,
+    minEmailAddressLength: 6,
+    minNameLength: 3
+  }
 
   const submitForm = async (values: FormValues) => {
     if (!executeRecaptcha) return;
@@ -60,7 +62,7 @@ const ContactForm = () => {
 
     if (!values.name) {
       errors.name = "Required";
-    } else if (values.name.length < minNameLength) {
+    } else if (values.name.length < minInputLengths.minNameLength) {
       errors.name = "Name is too short";
     }
 
@@ -71,7 +73,7 @@ const ContactForm = () => {
       !/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/i.test(values.phone)
     ) {
       errors.phone = "It's a wrong phone number!";
-    } else if (values.phone.length < minPhoneNumberLength) {
+    } else if (values.phone.length < minInputLengths.minPhoneNumberLength) {
       errors.phone = "Phone number is to short";
     }
 
@@ -80,7 +82,7 @@ const ContactForm = () => {
     } else if (
       (values.email &&
         !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/i.test(values.email)) ||
-      values.email.length < minEmailAddressLength
+      values.email.length < minInputLengths.minEmailAddressLength
     ) {
       errors.email = "It's a wrong email address!";
     }
@@ -123,7 +125,7 @@ const ContactForm = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.name}
-                errors={errors.name || values.name.length < minNameLength}
+                errors={errors.name || values.name.length < minInputLengths.minNameLength}
                 touched={touched.name}
                 className="contact-form_name"
               />
@@ -137,7 +139,7 @@ const ContactForm = () => {
                 onBlur={handleBlur}
                 value={values.phone}
                 errors={
-                  errors.phone || values.phone.length < minPhoneNumberLength
+                  errors.phone || values.phone.length < minInputLengths.minPhoneNumberLength
                 }
                 touched={touched.phone}
               />
@@ -149,7 +151,7 @@ const ContactForm = () => {
                 onBlur={handleBlur}
                 value={values.email}
                 errors={
-                  errors.email || values.email.length < minEmailAddressLength
+                  errors.email || values.email.length < minInputLengths.minEmailAddressLength
                 }
                 touched={touched.email}
               />
