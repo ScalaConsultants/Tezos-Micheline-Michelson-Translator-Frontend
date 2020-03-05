@@ -25,7 +25,7 @@ const ContactForm = () => {
     minPhoneNumberLength: 9,
     minEmailAddressLength: 6,
     minNameLength: 3
-  }
+  };
 
   const submitForm = async (values: FormValues) => {
     if (!executeRecaptcha) return;
@@ -125,7 +125,10 @@ const ContactForm = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.name}
-                errors={errors.name || values.name.length < minInputLengths.minNameLength}
+                errors={
+                  errors.name ||
+                  values.name.length < minInputLengths.minNameLength
+                }
                 touched={touched.name}
                 className="contact-form_name"
               />
@@ -139,7 +142,8 @@ const ContactForm = () => {
                 onBlur={handleBlur}
                 value={values.phone}
                 errors={
-                  errors.phone || values.phone.length < minInputLengths.minPhoneNumberLength
+                  errors.phone ||
+                  values.phone.length < minInputLengths.minPhoneNumberLength
                 }
                 touched={touched.phone}
               />
@@ -151,7 +155,8 @@ const ContactForm = () => {
                 onBlur={handleBlur}
                 value={values.email}
                 errors={
-                  errors.email || values.email.length < minInputLengths.minEmailAddressLength
+                  errors.email ||
+                  values.email.length < minInputLengths.minEmailAddressLength
                 }
                 touched={touched.email}
               />
