@@ -4,10 +4,19 @@ import { useMappedState } from "redux-react-hook";
 import Title from "./Title";
 import { IState } from "../../store/global/types";
 import { useRouter } from "next/router";
+import NavButton from "./NavButton";
 
 const mapState = (state: IState) => ({
   auth: state.auth
 });
+
+const routes = {
+  home: "/",
+  contact: "/contact",
+  login: "/login",
+  admin: "/admin/library",
+  logout: "/logout"
+};
 
 const MenuAppBar = () => {
   const { auth } = useMappedState(mapState);
@@ -38,60 +47,39 @@ const MenuAppBar = () => {
         alt="Go to Scalac homepage"
       />
       <div className="AppBar__menu-btn-container">
-        <button
-          className={router.pathname === "/" ? "AppBar__menu-btn--active" : ""}
-          type="button"
-          onClick={() => goTo("/")}
-        >
-          {router.pathname === "/" ? (
-            <img src="/dashboard.svg" alt="" />
-          ) : (
-            <img src="/dashboard-red.svg" alt="" />
-          )}
-          Convert
-        </button>
-        <button
-          className={
-            router.pathname === "/contact" ? "AppBar__menu-btn--active" : ""
-          }
-          type="button"
-          onClick={() => goTo("/contact")}
-        >
-          {router.pathname === "/contact" ? (
-            <img src="/mail.svg" alt="" />
-          ) : (
-            <img src="/mail-red.svg" alt="" />
-          )}
-          Contact
-        </button>
-
+        <NavButton
+          name={"Convert"}
+          goTo={() => goTo(routes.home)}
+          route={routes.home}
+          activeIcon={"/dashboard.svg"}
+          inActiveIcon={"/dashboard-red.svg"}
+        />
+        <NavButton
+          name={"Contact"}
+          goTo={() => goTo(routes.contact)}
+          route={routes.contact}
+          activeIcon={"/mail.svg"}
+          inActiveIcon={"/mail-red.svg"}
+        />
         {!auth.isLogged && (
-          <button
-            className={
-              router.pathname === "/login" ? "AppBar__menu-btn--active" : ""
-            }
-            type="button"
-            onClick={() => goTo("/login")}
-          >
-            Login
-          </button>
+          <NavButton
+            name={"Login"}
+            goTo={() => goTo(routes.login)}
+            route={routes.login}
+          />
         )}
         {auth.isLogged && (
           <>
-            <button
-              className={
-                router.pathname === "/admin/library"
-                  ? "AppBar__menu-btn--active"
-                  : ""
-              }
-              type="button"
-              onClick={() => goTo("/admin/library")}
-            >
-              Admin
-            </button>
-            <button type="button" onClick={() => goTo("/logout")}>
-              Logout
-            </button>
+            <NavButton
+              name={"Admin"}
+              goTo={() => goTo(routes.admin)}
+              route={routes.admin}
+            />
+            <NavButton
+              name={"Logout"}
+              goTo={() => goTo(routes.logout)}
+              route={routes.logout}
+            />
           </>
         )}
       </div>

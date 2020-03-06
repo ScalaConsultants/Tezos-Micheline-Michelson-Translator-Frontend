@@ -125,10 +125,7 @@ const ContactForm = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.name}
-                errors={
-                  errors.name ||
-                  values.name.length < minInputLengths.minNameLength
-                }
+                errors={errors.name}
                 touched={touched.name}
                 className="contact-form_name"
               />
@@ -141,10 +138,7 @@ const ContactForm = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.phone}
-                errors={
-                  errors.phone ||
-                  values.phone.length < minInputLengths.minPhoneNumberLength
-                }
+                errors={errors.phone}
                 touched={touched.phone}
               />
               <FormInput
@@ -154,10 +148,7 @@ const ContactForm = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
-                errors={
-                  errors.email ||
-                  values.email.length < minInputLengths.minEmailAddressLength
-                }
+                errors={errors.email}
                 touched={touched.email}
               />
             </div>
@@ -180,7 +171,7 @@ const ContactForm = () => {
               type="submit"
               disabled={isSubmitting}
             />
-            {message.isError === false ? (
+            {!message.isError ? (
               <Alert type="success" message="Message sent." />
             ) : null}
           </form>

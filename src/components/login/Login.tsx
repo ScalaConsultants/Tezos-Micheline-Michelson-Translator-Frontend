@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { useMappedState, useDispatch } from "redux-react-hook";
@@ -34,19 +34,7 @@ const Login = () => {
 
   useEffect(() => {
     auth.isLogged && router.push("/admin/library");
-  }, [auth.isLogged]);
-
-  // const handleLoggingIn = () => {
-  //   if (!auth.isLogged) {
-  //     alert("Logging in failed!")
-  //   } else {
-  //     alert("Logged in!")
-  //   }
-  // }
-
-  // useEffect(() => {
-    
-  // }, [auth.isLogged])
+  }, [auth.isLogged]); 
 
   return (
     <div className="login">
@@ -94,7 +82,6 @@ const Login = () => {
                 label="Log in"
                 type="submit"
                 disabled={!!Object.keys(errors).length}
-                // onClick={handleLoggingIn}
               />
             </form>
           )}
