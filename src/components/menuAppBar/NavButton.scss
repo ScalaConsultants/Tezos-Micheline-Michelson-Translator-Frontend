@@ -1,0 +1,33 @@
+button {
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.15px;
+  text-transform: uppercase;
+  color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  color: #c90000;
+  &:hover {
+    border: 1px solid #c90000;
+    border-radius: 4px;
+  }
+  img {
+    margin-right: 5px;
+  }
+}
+.NavButton-btn--active {
+  color: #fff;
+  background-color: #c90000;
+  padding: 12px;
+  border-radius: 4px;
+}

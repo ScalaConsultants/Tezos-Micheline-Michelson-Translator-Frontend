@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./NavButton.scss";
 import { useRouter } from "next/router";
 
 const NavButton = props => {
@@ -12,7 +13,7 @@ const NavButton = props => {
 
   return (
     <button
-      className={isActive ? "AppBar__menu-btn--active" : ""}
+      className={isActive ? "NavButton-btn--active" : ""}
       type="button"
       onClick={() => goTo(route)}
     >
