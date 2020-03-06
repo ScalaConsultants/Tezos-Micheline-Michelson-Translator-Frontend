@@ -5,16 +5,12 @@ import { useRouter } from "next/router";
 
 const NavButton = props => {
   const router = useRouter();
-  const [isActive, setIsActive] = useState(false);
   const { name, route, activeIcon, inActiveIcon } = props;
+  const isActive = router.pathname === route ? true : false
 
   const goTo = (route: string) => {
     router.push(route);
   };
-
-  useEffect(() => {
-    router.pathname === route ? setIsActive(true) : setIsActive(false);
-  }, [goTo]);
 
   return (
     <button
