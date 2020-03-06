@@ -3,7 +3,6 @@ import { StoreContext } from "redux-react-hook";
 import configureStore from "../src/store";
 import rootSaga from "../src/store/saga";
 import * as React from "react";
-import fetchIntercept from 'fetch-intercept';
 import {GoogleReCaptchaProvider} from "react-google-recaptcha-v3";
 import MenuAppBar from "../src/components/menuAppBar/MenuAppBar";
 import "../src/scss/App.scss";
