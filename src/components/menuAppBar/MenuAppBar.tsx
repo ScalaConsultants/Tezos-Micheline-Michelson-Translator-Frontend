@@ -3,7 +3,6 @@ import "./MenuAppBar.scss";
 import { useMappedState } from "redux-react-hook";
 import Title from "./Title";
 import { IState } from "../../store/global/types";
-import { useRouter } from "next/router";
 import NavButton from "./NavButton";
 
 const mapState = (state: IState) => ({
@@ -20,11 +19,6 @@ const routes = {
 
 const MenuAppBar = () => {
   const { auth } = useMappedState(mapState);
-  const router = useRouter();
-
-  const goTo = (route: string) => {
-    router.push(route);
-  };
 
   const goScalac = () => {
     window.open("https://scalac.io", "_blank");
@@ -49,37 +43,21 @@ const MenuAppBar = () => {
       <div className="AppBar__menu-btn-container">
         <NavButton
           name={"Convert"}
-          goTo={() => goTo(routes.home)}
           route={routes.home}
           activeIcon={"/dashboard.svg"}
           inActiveIcon={"/dashboard-red.svg"}
         />
         <NavButton
           name={"Contact"}
-          goTo={() => goTo(routes.contact)}
           route={routes.contact}
           activeIcon={"/mail.svg"}
           inActiveIcon={"/mail-red.svg"}
         />
-        {!auth.isLogged && (
-          <NavButton
-            name={"Login"}
-            goTo={() => goTo(routes.login)}
-            route={routes.login}
-          />
-        )}
+        {!auth.isLogged && <NavButton name={"Login"} route={routes.login} />}
         {auth.isLogged && (
           <>
-            <NavButton
-              name={"Admin"}
-              goTo={() => goTo(routes.admin)}
-              route={routes.admin}
-            />
-            <NavButton
-              name={"Logout"}
-              goTo={() => goTo(routes.logout)}
-              route={routes.logout}
-            />
+            <NavButton name={"Admin"} route={routes.admin} />
+            <NavButton name={"Logout"} route={routes.logout} />
           </>
         )}
       </div>

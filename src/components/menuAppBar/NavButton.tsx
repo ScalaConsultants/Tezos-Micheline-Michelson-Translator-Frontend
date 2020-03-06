@@ -2,10 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./NavButton.scss";
 import { useRouter } from "next/router";
 
+
 const NavButton = props => {
   const router = useRouter();
   const [isActive, setIsActive] = useState(false);
-  const { name, goTo, route, activeIcon, inActiveIcon } = props;
+  const { name, route, activeIcon, inActiveIcon } = props;
+
+  const goTo = (route: string) => {
+    router.push(route);
+  };
 
   useEffect(() => {
     router.pathname === route ? setIsActive(true) : setIsActive(false);
