@@ -53,11 +53,28 @@ const MenuAppBar = () => {
           activeIcon={"/mail.svg"}
           inActiveIcon={"/mail-red.svg"}
         />
-        {!auth.isLogged && <NavButton name={"Login"} route={routes.login} />}
+        {!auth.isLogged && (
+          <NavButton
+            name={"Login"}
+            route={routes.login}
+            activeIcon={""}
+            inActiveIcon={""}
+          />
+        )}
         {auth.isLogged && (
           <>
-            <NavButton name={"Admin"} route={routes.admin} />
-            <NavButton name={"Logout"} route={routes.logout} />
+            <NavButton
+              name={"Admin"}
+              route={routes.admin}
+              activeIcon={""}
+              inActiveIcon={""}
+            />
+            <NavButton
+              name={"Logout"}
+              route={routes.logout}
+              activeIcon={""}
+              inActiveIcon={""}
+            />
           </>
         )}
       </div>
