@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { useMappedState, useDispatch } from "redux-react-hook";
+import { bindActionCreators } from "redux";
+
 import * as authTypes from "../../store/authentication/types";
 import * as authActions from "../../store/authentication/actions";
 import { IState } from "../../store/global/types";
 import FormInput from "../shared/input/FormInput";
 import FormButton from "../shared/formButton/FormButton";
 import "./Login.scss";
-import { useRouter } from "next/router";
-import { bindActionCreators } from "redux";
 
 const mapState = (state: IState) => ({
   auth: state.auth
@@ -30,11 +31,9 @@ const Login = () => {
     boundAuthActions.AuthenticationLogin(values);
   };
 
-  // const redirectToPanel = () => auth.isLogged && router.push("/admin/library");
-
   useEffect(() => {
     auth.isLogged && router.push("/admin/library");
-  }, [auth.isLogged]); 
+  }, [auth.isLogged]);
 
   return (
     <div className="login">
@@ -54,8 +53,7 @@ const Login = () => {
             handleChange,
             handleBlur,
             handleSubmit,
-            isSubmitting,
-            isValid
+            isSubmitting
           }) => (
             <form onSubmit={handleSubmit} noValidate>
               <FormInput
@@ -78,11 +76,18 @@ const Login = () => {
                 errors={errors.password}
                 touched={touched.password}
               />
-              <FormButton
-                label="Log in"
-                type="submit"
-                disabled={!!Object.keys(errors).length}
-              />
+              <div className="content__bottom-container">
+                <FormButton
+                  label="Log in"
+                  type="submit"
+                  disabled={!!Object.keys(errors).length}
+                />
+                {isSubmitting && auth.isError && (
+                  <div className="error-message">
+                    Incorrect login or password
+                  </div>
+                )}
+              </div>
             </form>
           )}
         </Formik>

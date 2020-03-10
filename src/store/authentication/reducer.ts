@@ -2,6 +2,7 @@ import * as AuthTypes from "./types";
 
 const authenticationInitialState = {
   isLogged: false,
+  isError:  false,
   token: "",
 };
 
@@ -11,12 +12,14 @@ export const authenticationReducer = (state: any = authenticationInitialState, a
       return {
         ...state,
         isLogged: true,
+        isError: false,
         token: action.token,
       };
     case AuthTypes.AUTHENTICATION_FAIL:
       return {
         ...state,
         isLogged: false,
+        isError: true,
       };
     case AuthTypes.AUTHENTICATION_LOGIN:
       return {
