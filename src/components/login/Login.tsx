@@ -25,16 +25,16 @@ const Login = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const boundAuthActions = bindActionCreators(authActions, dispatch);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const submitForm = (values: authTypes.authCredentials) => {
     boundAuthActions.AuthenticationLogin(values);
+    setIsSubmitted(true);
   };
-
-  // const redirectToPanel = () => auth.isLogged && router.push("/admin/library");
 
   useEffect(() => {
     auth.isLogged && router.push("/admin/library");
-  }, [auth.isLogged]); 
+  }, [auth.isLogged, submitForm]);
 
   return (
     <div className="login">
@@ -53,9 +53,7 @@ const Login = () => {
             touched,
             handleChange,
             handleBlur,
-            handleSubmit,
-            isSubmitting,
-            isValid
+            handleSubmit
           }) => (
             <form onSubmit={handleSubmit} noValidate>
               <FormInput
@@ -78,11 +76,18 @@ const Login = () => {
                 errors={errors.password}
                 touched={touched.password}
               />
-              <FormButton
-                label="Log in"
-                type="submit"
-                disabled={!!Object.keys(errors).length}
-              />
+              <div className="content__bottom-container">
+                <FormButton
+                  label="Log in"
+                  type="submit"
+                  disabled={!!Object.keys(errors).length}
+                />
+                {isSubmitted && !auth.isLogged && (
+                  <div className="error-message">
+                    Incorrect login or password
+                  </div>
+                )}
+              </div>
             </form>
           )}
         </Formik>
