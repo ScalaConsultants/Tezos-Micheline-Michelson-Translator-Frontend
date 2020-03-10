@@ -25,11 +25,9 @@ const Login = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const boundAuthActions = bindActionCreators(authActions, dispatch);
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const submitForm = (values: authTypes.authCredentials) => {
     boundAuthActions.AuthenticationLogin(values);
-    setIsSubmitted(true);
   };
 
   useEffect(() => {
@@ -53,7 +51,8 @@ const Login = () => {
             touched,
             handleChange,
             handleBlur,
-            handleSubmit
+            handleSubmit,
+            isSubmitting
           }) => (
             <form onSubmit={handleSubmit} noValidate>
               <FormInput
@@ -82,7 +81,7 @@ const Login = () => {
                   type="submit"
                   disabled={!!Object.keys(errors).length}
                 />
-                {isSubmitted && !auth.isLogged && (
+                {isSubmitting && !auth.isLogged && (
                   <div className="error-message">
                     Incorrect login or password
                   </div>
