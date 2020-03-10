@@ -1,6 +1,5 @@
 import React from "react";
 import "./Title.scss";
-import packageJson from "../../../package.json";
 
 const Title = () => {
   return (

@@ -12,7 +12,7 @@ type navButton = {
 const NavButton = (props: navButton) => {
   const router = useRouter();
   const { name, route, activeIcon, inActiveIcon } = props;
-  const isActive = router.pathname === route ? true : false;
+  const isActive = router.pathname === route;
 
   const goTo = (route: string) => {
     router.push(route);
