@@ -171,9 +171,9 @@ const ContactForm = () => {
               type="submit"
               disabled={isSubmitting}
             />
-            {!message.isError ? (
+            {message.isError !== null && (
               <Alert type="success" message="Message sent." />
-            ) : null}
+            )}
           </form>
         )}
       </Formik>
