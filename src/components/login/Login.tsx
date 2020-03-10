@@ -34,7 +34,7 @@ const Login = () => {
 
   useEffect(() => {
     auth.isLogged && router.push("/admin/library");
-  }, [auth.isLogged, submitForm]);
+  }, [auth.isLogged]);
 
   return (
     <div className="login">
