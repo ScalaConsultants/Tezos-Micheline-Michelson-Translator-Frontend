@@ -10,8 +10,9 @@ export type authCredentials = {
 };
 
 export type AuthenticationState = {
+  isLogged: boolean;
+  isError: boolean;
   token: string;
-  isLogged: string;
 };
 
 export interface IAuthenticationCheck {
