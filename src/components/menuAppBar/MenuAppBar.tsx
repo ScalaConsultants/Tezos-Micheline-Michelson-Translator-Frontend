@@ -1,22 +1,24 @@
 import React from "react";
-// import { withRouter } from "react-router-dom";
 import "./MenuAppBar.scss";
 import { useMappedState } from "redux-react-hook";
 import Title from "./Title";
 import { IState } from "../../store/global/types";
-import {useRouter} from "next/router";
+import NavButton from "./NavButton";
 
 const mapState = (state: IState) => ({
-  auth: state.auth,
+  auth: state.auth
 });
+
+const routes = {
+  home: "/",
+  contact: "/contact",
+  login: "/login",
+  admin: "/admin/library",
+  logout: "/logout"
+};
 
 const MenuAppBar = () => {
   const { auth } = useMappedState(mapState);
-  const router = useRouter();
-
-  const goTo = (route: string) => {
-    router.push(route);
-  };
 
   const goScalac = () => {
     window.open("https://scalac.io", "_blank");
@@ -24,9 +26,13 @@ const MenuAppBar = () => {
 
   return (
     <div className="AppBar">
-      <button tabIndex={-1} onClick={() => goScalac()} onKeyUp={() => {}}>
-        <img className="AppBar__scalac" src="/scalac.svg" alt="https://scalac.io" />
-      </button>
+      <a tabIndex={-1} onClick={() => goScalac()} onKeyUp={() => {}}>
+        <img
+          className="AppBar__scalac"
+          src="/scalacLogo.svg"
+          alt="https://scalac.io"
+        />
+      </a>
       <Title />
       <img
         className="AppBar__scalac-transparent"
@@ -35,28 +41,40 @@ const MenuAppBar = () => {
         alt="Go to Scalac homepage"
       />
       <div className="AppBar__menu-btn-container">
-        <button type="button" onClick={() => goTo("/")}>
-          <img src="/dashboard.svg" alt="" />
-          Convert
-        </button>
-        <button type="button" onClick={() => goTo("/contact")}>
-          <img src="/mail.svg" alt="" />
-          Contact
-        </button>
-
+        <NavButton
+          name={"Convert"}
+          route={routes.home}
+          activeIcon={"/dashboard.svg"}
+          inActiveIcon={"/dashboard-red.svg"}
+        />
+        <NavButton
+          name={"Contact"}
+          route={routes.contact}
+          activeIcon={"/mail.svg"}
+          inActiveIcon={"/mail-red.svg"}
+        />
         {!auth.isLogged && (
-          <button type="button" onClick={() => goTo("/login")}>
-            Login
-          </button>
+          <NavButton
+            name={"Login"}
+            route={routes.login}
+            activeIcon={""}
+            inActiveIcon={""}
+          />
         )}
         {auth.isLogged && (
           <>
-            <button type="button" onClick={() => goTo("/admin/library")}>
-              Admin
-            </button>
-            <button type="button" onClick={() => goTo("/logout")}>
-              Logout
-            </button>
+            <NavButton
+              name={"Admin"}
+              route={routes.admin}
+              activeIcon={""}
+              inActiveIcon={""}
+            />
+            <NavButton
+              name={"Logout"}
+              route={routes.logout}
+              activeIcon={""}
+              inActiveIcon={""}
+            />
           </>
         )}
       </div>

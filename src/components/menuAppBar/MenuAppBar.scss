@@ -1,56 +1,24 @@
 .AppBar {
-    background-color: #C91C00;
-    height: 60px;
-    text-align: right;
-    padding: 0px 50px;
+  background-color: #ececec;
+  height: 60px;
+  text-align: right;
+  padding: 0px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__menu-btn-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-end;
+  }
 
-    button {
-        border: 0;
-        outline: none;
-        cursor: pointer;
-        background: transparent;
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 12px;
-        line-height: 14px;
-        letter-spacing: 0.15px;
-        text-transform: uppercase;
-        color: #FFFFFF;
+  &__scalac {
+    cursor: pointer;
+    vertical-align: middle;
+  }
 
-        &:hover {
-            background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
-            box-shadow: 0px 4px 20px rgba(201, 0, 0, 0.14);
-            border-radius: 4px;
-        }
-    }
-
-    &__menu-btn-container {
-        display: flex;
-        justify-content: flex-end;
-        button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 10px;
-            img{
-                margin-right: 5px;
-            }
-        }
-    }
-
-    &__scalac {
-        cursor: pointer;
-        vertical-align: middle;
-    }
-
-    &__scalac-transparent {
-        position: absolute;
-        left: 35vw;
-        top: 0;
-    }
+  &__scalac-transparent {
+    position: absolute;
+    left: 35vw;
+    top: 0;
+  }
 }
-
