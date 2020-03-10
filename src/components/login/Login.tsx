@@ -82,7 +82,7 @@ const Login = () => {
                   type="submit"
                   disabled={!!Object.keys(errors).length}
                 />
-                {isSubmitting && !auth.isError && (
+                {isSubmitting && auth.isError && (
                   <div className="error-message">
                     Incorrect login or password
                   </div>
