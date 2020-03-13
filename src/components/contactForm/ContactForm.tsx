@@ -171,7 +171,7 @@ const ContactForm = () => {
               type="submit"
               disabled={isSubmitting}
             />
-            {message.isError !== null && (
+            {message.isError === false && (
               <Alert type="success" message="Message sent." />
             )}
           </form>
