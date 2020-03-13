@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useMappedState } from "redux-react-hook";
 import { Formik } from "formik";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
@@ -26,6 +26,7 @@ const ContactForm = () => {
     minEmailAddressLength: 6,
     minNameLength: 3
   };
+  const [status, setStatus] = useState({success: false});
 
   const submitForm = async (values: FormValues) => {
     if (!executeRecaptcha) return;
@@ -37,6 +38,7 @@ const ContactForm = () => {
 
     boundMessageActions.MessageSet(data);
     boundMessageActions.MessageSend(data, token);
+    setStatus({success: true});
   };
 
   useEffect(() => {
@@ -171,9 +173,7 @@ const ContactForm = () => {
               type="submit"
               disabled={isSubmitting}
             />
-            {message.isError === false && (
-              <Alert type="success" message="Message sent." />
-            )}
+            {status.success && <Alert type="success" message="Message sent." />}
           </form>
         )}
       </Formik>
