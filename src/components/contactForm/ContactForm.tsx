@@ -27,8 +27,12 @@ const ContactForm = () => {
     minNameLength: 3
   };
 
-  const submitForm = async (values: FormValues) => {
+  const submitForm = async (values: FormValues, { setStatus }) => {
     if (!executeRecaptcha) return;
+
+    setStatus({
+      success: true,
+    });
 
     const token = await executeRecaptcha("contact_form");
     if (!token.length) return;
@@ -114,68 +118,69 @@ const ContactForm = () => {
           handleChange,
           handleBlur,
           handleSubmit,
-          isSubmitting
+          isSubmitting,
+          status
         }) => (
-          <form onSubmit={handleSubmit} noValidate>
-            <div className="contact-form_line">
-              <FormInput
-                label="Name"
-                type="text"
-                name="name"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.name}
-                errors={errors.name}
-                touched={touched.name}
-                className="contact-form_name"
+            <form onSubmit={handleSubmit} noValidate>
+              <div className="contact-form_line">
+                <FormInput
+                  label="Name"
+                  type="text"
+                  name="name"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.name}
+                  errors={errors.name}
+                  touched={touched.name}
+                  className="contact-form_name"
+                />
+              </div>
+              <div className="contact-form_line">
+                <FormInput
+                  label="Phone"
+                  type="text"
+                  name="phone"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.phone}
+                  errors={errors.phone}
+                  touched={touched.phone}
+                />
+                <FormInput
+                  label="Email"
+                  type="email"
+                  name="email"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.email}
+                  errors={errors.email}
+                  touched={touched.email}
+                />
+              </div>
+              <div className="contact-form_line">
+                <FormInput
+                  label="How we can help you?"
+                  type="text"
+                  name="content"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.content}
+                  errors={errors.content}
+                  touched={touched.content}
+                  className="contact-form_message"
+                />
+              </div>
+              <FormButton
+                label="Submit"
+                stylingType="submit"
+                type="submit"
+                disabled={isSubmitting}
               />
-            </div>
-            <div className="contact-form_line">
-              <FormInput
-                label="Phone"
-                type="text"
-                name="phone"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.phone}
-                errors={errors.phone}
-                touched={touched.phone}
-              />
-              <FormInput
-                label="Email"
-                type="email"
-                name="email"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-                errors={errors.email}
-                touched={touched.email}
-              />
-            </div>
-            <div className="contact-form_line">
-              <FormInput
-                label="How we can help you?"
-                type="text"
-                name="content"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.content}
-                errors={errors.content}
-                touched={touched.content}
-                className="contact-form_message"
-              />
-            </div>
-            <FormButton
-              label="Submit"
-              stylingType="submit"
-              type="submit"
-              disabled={isSubmitting}
-            />
-            {!message.isError ? (
-              <Alert type="success" message="Message sent." />
-            ) : null}
-          </form>
-        )}
+              {status && status.success ? (
+                <Alert type="success" message="Message sent." />
+              ) : null}
+            </form>
+          )}
       </Formik>
     </div>
   );
