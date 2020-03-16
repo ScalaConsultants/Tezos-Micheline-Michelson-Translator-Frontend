@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useMappedState } from "redux-react-hook";
 import { Formik } from "formik";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
@@ -21,6 +21,13 @@ const ContactForm = () => {
   const { message } = useMappedState(mapState);
   const { executeRecaptcha } = useGoogleReCaptcha();
   const boundMessageActions = bindActionCreators(MessageActions, dispatch);
+  const [inputValues, setInputValues] = useState<FormValues>({
+    name: "",
+    phone: "",
+    email: "",
+    content: ""
+  });
+
   const minInputLengths = {
     minPhoneNumberLength: 9,
     minEmailAddressLength: 6,
@@ -31,7 +38,7 @@ const ContactForm = () => {
     if (!executeRecaptcha) return;
 
     setStatus({
-      success: true,
+      success: true
     });
 
     const token = await executeRecaptcha("contact_form");
@@ -121,66 +128,66 @@ const ContactForm = () => {
           isSubmitting,
           status
         }) => (
-            <form onSubmit={handleSubmit} noValidate>
-              <div className="contact-form_line">
-                <FormInput
-                  label="Name"
-                  type="text"
-                  name="name"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.name}
-                  errors={errors.name}
-                  touched={touched.name}
-                  className="contact-form_name"
-                />
-              </div>
-              <div className="contact-form_line">
-                <FormInput
-                  label="Phone"
-                  type="text"
-                  name="phone"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.phone}
-                  errors={errors.phone}
-                  touched={touched.phone}
-                />
-                <FormInput
-                  label="Email"
-                  type="email"
-                  name="email"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                  errors={errors.email}
-                  touched={touched.email}
-                />
-              </div>
-              <div className="contact-form_line">
-                <FormInput
-                  label="How we can help you?"
-                  type="text"
-                  name="content"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.content}
-                  errors={errors.content}
-                  touched={touched.content}
-                  className="contact-form_message"
-                />
-              </div>
-              <FormButton
-                label="Submit"
-                stylingType="submit"
-                type="submit"
-                disabled={isSubmitting}
+          <form onSubmit={handleSubmit} noValidate>
+            <div className="contact-form_line">
+              <FormInput
+                label="Name"
+                type="text"
+                name="name"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.name}
+                errors={errors.name}
+                touched={touched.name}
+                className="contact-form_name"
               />
-              {status && status.success ? (
-                <Alert type="success" message="Message sent." />
-              ) : null}
-            </form>
-          )}
+            </div>
+            <div className="contact-form_line">
+              <FormInput
+                label="Phone"
+                type="text"
+                name="phone"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.phone}
+                errors={errors.phone}
+                touched={touched.phone}
+              />
+              <FormInput
+                label="Email"
+                type="email"
+                name="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+                errors={errors.email}
+                touched={touched.email}
+              />
+            </div>
+            <div className="contact-form_line">
+              <FormInput
+                label="How we can help you?"
+                type="text"
+                name="content"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.content}
+                errors={errors.content}
+                touched={touched.content}
+                className="contact-form_message"
+              />
+            </div>
+            <FormButton
+              label="Submit"
+              stylingType="submit"
+              type="submit"
+              disabled={isSubmitting}
+            />
+            {status && status.success ? (
+              <Alert type="success" message="Message sent." />
+            ) : null}
+          </form>
+        )}
       </Formik>
     </div>
   );
