@@ -1,37 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useMappedState } from "redux-react-hook";
+import React, { useEffect } from "react";
+import { useDispatch } from "redux-react-hook";
 import { Formik } from "formik";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import FormInput from "../shared/input/FormInput";
-import { FormValues } from "./types";
+import { FormValues, ValidationErrors } from "./types";
 import "./ContactForm.scss";
-import * as MessageTypes from "../../store/message/types";
 import * as MessageActions from "../../store/message/actions";
 import Alert from "../shared/alert/Alert";
 import FormButton from "../shared/formButton/FormButton";
 import { removeEmptyProperties } from "../../helpers/tools";
 import { bindActionCreators } from "redux";
 
-const mapState = (state: MessageTypes.IMessageGlobalState) => ({
-  message: state.message
-});
-
 const ContactForm = () => {
   const dispatch = useDispatch();
-  const { message } = useMappedState(mapState);
   const { executeRecaptcha } = useGoogleReCaptcha();
   const boundMessageActions = bindActionCreators(MessageActions, dispatch);
-  const [inputValues, setInputValues] = useState<FormValues>({
-    name: "",
-    phone: "",
-    email: "",
-    content: ""
-  });
 
   const minInputLengths = {
+    minNameLength: 3,
     minPhoneNumberLength: 9,
     minEmailAddressLength: 6,
-    minNameLength: 3
+    minContentLength: 20
   };
 
   const submitForm = async (values: FormValues, { setStatus }) => {
@@ -54,22 +43,8 @@ const ContactForm = () => {
     boundMessageActions.MessageSetError(null);
   }, []);
 
-  const saveForm = (values: FormValues) => {
-    const data = removeEmptyProperties(values);
-    boundMessageActions.MessageSet(data);
-  };
-
-  type validationErrors = {
-    name?: string;
-    phone?: string;
-    email?: string;
-    content?: string;
-  };
-
   const validate = (values: FormValues) => {
-    saveForm(values);
-
-    const errors: validationErrors = {};
+    const errors: ValidationErrors = {};
 
     if (!values.name) {
       errors.name = "Required";
@@ -100,6 +75,8 @@ const ContactForm = () => {
 
     if (!values.content) {
       errors.content = "Required";
+    } else if (values.content.length < minInputLengths.minContentLength) {
+      errors.content = "Message is to short";
     }
 
     return errors;
@@ -110,10 +87,12 @@ const ContactForm = () => {
       <h2>Send message</h2>
       <Formik
         initialValues={{
-          name: message.name,
-          phone: message.phone,
-          email: message.email,
-          content: message.content
+          name: "",
+          phone: "",
+          email: "",
+          content: "",
+          isError: null,
+          isLoading: false
         }}
         onSubmit={submitForm}
         validate={validate}
@@ -125,6 +104,7 @@ const ContactForm = () => {
           handleChange,
           handleBlur,
           handleSubmit,
+          handleReset, //Add reset handler on submit button, or after form validation
           isSubmitting,
           status
         }) => (
