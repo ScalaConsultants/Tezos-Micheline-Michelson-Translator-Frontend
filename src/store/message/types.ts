@@ -38,10 +38,6 @@ export interface IMessageSet {
   message: MessageState;
 }
 
-export interface IMessageFlush {
-  type: typeof MESSAGE_FLUSH;
-}
-
 export interface IMessageSetLoading {
   type: typeof MESSAGE_SET_LOADING;
   isLoading: boolean;
@@ -52,4 +48,4 @@ export interface IMessageSetError {
   isError: boolean;
 }
 
-export type MessageActionTypes = IMessageSend | IMessageSet | IMessageFlush | IMessageSetLoading | IMessageSetError;
+export type MessageActionTypes = IMessageSend | IMessageSet | IMessageSetLoading | IMessageSetError;

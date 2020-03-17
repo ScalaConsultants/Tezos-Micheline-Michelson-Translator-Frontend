@@ -11,6 +11,6 @@ export function* doMessageSend(action: MessageTypes.IMessageSend) {
 
   if (response.status === 200) {
     yield put(messageActions.MessageSetError(false));
-    // yield put(messageActions.MessageFlush());
+    // yield put(messageActions.());
   }
 }

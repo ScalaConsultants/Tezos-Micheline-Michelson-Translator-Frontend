@@ -11,10 +11,6 @@ export const MessageSet = (message: MessageTypes.MessageState): MessageTypes.Mes
   message,
 });
 
-export const MessageFlush = (): MessageTypes.MessageActionTypes => ({
-  type: MessageTypes.MESSAGE_FLUSH,
-});
-
 export const MessageSetLoading = (isLoading: boolean): MessageTypes.MessageActionTypes => ({
   type: MessageTypes.MESSAGE_SET_LOADING,
   isLoading,
