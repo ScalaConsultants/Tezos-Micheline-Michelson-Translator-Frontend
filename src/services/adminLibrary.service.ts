@@ -41,7 +41,7 @@ export default class AdminLibraryService {
     };
 
     return fetch(
-      `${process.env.REACT_APP_API_URL}/v1/library/${item}?status=${status}`,
+      `${process.env.REACT_APP_API_URL}/v1/library?uid=${item}&status=${status}`,
       options,
     )
       .then(async response => {
@@ -60,7 +60,7 @@ export default class AdminLibraryService {
       },
     };
 
-    return fetch(`${process.env.REACT_APP_API_URL}/v1/library/${item}`, options)
+    return fetch(`${process.env.REACT_APP_API_URL}/v1/library?uid=${item}`, options)
       .then(async response => {
         return { status: response.status, data: await response.text() };
       })
