@@ -92,8 +92,9 @@ const LibraryListItem = ({ data, no }: Props) => {
           <div>{data.author}</div>
           <div>{data.email}</div>
           <div>{data.status}</div>
-          <div>
-            <span
+          <div className="Basic-data__button-container">
+            <button
+              className="Button-container__button--accept"
               onClick={() =>
                 setModalData(
                   data.uid,
@@ -103,8 +104,9 @@ const LibraryListItem = ({ data, no }: Props) => {
               }
             >
               Accept
-            </span>
-            <span
+            </button>
+            <button
+              className="Button-container__button--decline"
               onClick={() =>
                 setModalData(
                   data.uid,
@@ -114,8 +116,9 @@ const LibraryListItem = ({ data, no }: Props) => {
               }
             >
               Decline
-            </span>
-            <span
+            </button>
+            <button
+              className="Button-container__button--delete"
               onClick={() =>
                 setModalData(
                   data.uid,
@@ -125,7 +128,7 @@ const LibraryListItem = ({ data, no }: Props) => {
               }
             >
               Delete
-            </span>
+            </button>
           </div>
         </div>
       </div>
