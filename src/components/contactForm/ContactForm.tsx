@@ -1,20 +1,14 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "redux-react-hook";
+import React from "react";
 import { Formik } from "formik";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import FormInput from "../shared/input/FormInput";
 import { FormValues, ValidationErrors } from "./types";
 import "./ContactForm.scss";
-import * as MessageActions from "../../store/message/actions";
 import Alert from "../shared/alert/Alert";
 import FormButton from "../shared/formButton/FormButton";
-import { removeEmptyProperties } from "../../helpers/tools";
-import { bindActionCreators } from "redux";
 
 const ContactForm = () => {
-  const dispatch = useDispatch();
   const { executeRecaptcha } = useGoogleReCaptcha();
-  const boundMessageActions = bindActionCreators(MessageActions, dispatch);
 
   const minInputLengths = {
     minNameLength: 3,
@@ -32,16 +26,7 @@ const ContactForm = () => {
 
     const token = await executeRecaptcha("contact_form");
     if (!token.length) return;
-
-    const data = removeEmptyProperties(values);
-
-    boundMessageActions.MessageSet(data);
-    boundMessageActions.MessageSend(data, token);
   };
-
-  useEffect(() => {
-    boundMessageActions.MessageSetError(null);
-  }, []);
 
   const validate = (values: FormValues) => {
     const errors: ValidationErrors = {};
@@ -104,7 +89,6 @@ const ContactForm = () => {
           handleChange,
           handleBlur,
           handleSubmit,
-          handleReset, //Add reset handler on submit button, or after form validation
           isSubmitting,
           status
         }) => (
