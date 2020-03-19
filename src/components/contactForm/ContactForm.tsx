@@ -34,8 +34,6 @@ const ContactForm = () => {
     if (!token.length) return;
 
     const data = removeEmptyProperties(values);
-
-    boundMessageActions.MessageSet(data);
     boundMessageActions.MessageSend(data, token);
   };
 

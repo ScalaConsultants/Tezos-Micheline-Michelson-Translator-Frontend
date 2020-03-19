@@ -6,11 +6,6 @@ export const MessageSend = (message: MessageTypes.MessageState, captcha: string)
   captcha,
 });
 
-export const MessageSet = (message: MessageTypes.MessageState): MessageTypes.MessageActionTypes => ({
-  type: MessageTypes.MESSAGE_SET,
-  message,
-});
-
 export const MessageSetLoading = (isLoading: boolean): MessageTypes.MessageActionTypes => ({
   type: MessageTypes.MESSAGE_SET_LOADING,
   isLoading,

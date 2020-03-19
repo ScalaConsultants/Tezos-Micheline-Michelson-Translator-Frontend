@@ -9,7 +9,6 @@ export type MessageState = {
 };
 
 export const MESSAGE_SEND = "MESSAGE_SEND";
-export const MESSAGE_SET = "MESSAGE_SET";
 export const MESSAGE_FLUSH = "MESSAGE_FLUSH";
 export const MESSAGE_SET_LOADING = "MESSAGE_SET_PENDING";
 export const MESSAGE_SET_ERROR = "MESSAGE_SET_ERROR";
@@ -33,11 +32,6 @@ export interface IMessageSend {
   captcha: string;
 }
 
-export interface IMessageSet {
-  type: typeof MESSAGE_SET;
-  message: MessageState;
-}
-
 export interface IMessageSetLoading {
   type: typeof MESSAGE_SET_LOADING;
   isLoading: boolean;
@@ -48,4 +42,4 @@ export interface IMessageSetError {
   isError: boolean;
 }
 
-export type MessageActionTypes = IMessageSend | IMessageSet | IMessageSetLoading | IMessageSetError;
+export type MessageActionTypes = IMessageSend | IMessageSetLoading | IMessageSetError;
