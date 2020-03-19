@@ -1,8 +1,4 @@
 export type MessageState = {
-  name: string;
-  phone: string;
-  email: string;
-  content: string;
   captcha?: string;
   isError: boolean | null;
   isLoading: boolean;
@@ -12,8 +8,6 @@ export const MESSAGE_SEND = "MESSAGE_SEND";
 export const MESSAGE_FLUSH = "MESSAGE_FLUSH";
 export const MESSAGE_SET_LOADING = "MESSAGE_SET_PENDING";
 export const MESSAGE_SET_ERROR = "MESSAGE_SET_ERROR";
-
-// export type MessageState = Message;
 
 export type MessageAction = {
   type: string;

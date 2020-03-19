@@ -1,10 +1,6 @@
 import * as MessageTypes from "./types";
 
 const messageInitState: MessageTypes.MessageState = {
-  name: "",
-  phone: "",
-  email: "",
-  content: "",
   isError: null,
   isLoading: false,
 };
