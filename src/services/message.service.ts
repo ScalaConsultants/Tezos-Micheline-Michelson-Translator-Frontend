@@ -10,7 +10,7 @@ export default class MessageService {
     this.endpoint = "/message";
   }
 
-  send = (message: MessageTypes.MessageState, captcha: string) => {
+  send = (message, captcha: string) => {
     const body = JSON.stringify({
       name: message.name,
       phone: message.phone,

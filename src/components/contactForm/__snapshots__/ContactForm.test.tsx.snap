@@ -6,7 +6,7 @@ exports[`ContactForm matches snapshot 1`] = `
     <h2>
       Send message
     </h2>
-    <Formik initialValues={{...}} validationSchema={{...}} onSubmit={[Function: submitForm]} validate={[Function: saveForm]} validateOnChange={true} validateOnBlur={true} isInitialValid={false} enableReinitialize={false}>
+    <Formik initialValues={{...}} onSubmit={[Function: submitForm]} validate={[Function: validate]}>
       <form onSubmit={[Function]} noValidate={true}>
         <div className=\\"contact-form_line\\">
           <FormInput label=\\"Name\\" type=\\"text\\" name=\\"name\\" onChange={[Function]} onBlur={[Function]} value=\\"\\" errors={[undefined]} touched={[undefined]} className=\\"contact-form_name\\">
@@ -14,9 +14,11 @@ exports[`ContactForm matches snapshot 1`] = `
               <p className=\\"form-input_label\\">
                 Name
               </p>
-              <input name=\\"name\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Name\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" />
-              <div className=\\"form-input_validation-marker undefined\\" />
-              <div className=\\"form-input_error\\" />
+              <input name=\\"name\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Name\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" disabled={[undefined]} />
+              <div>
+                <div className=\\"form-input_validation-marker undefined\\" />
+                <div className=\\"form-input_error\\" />
+              </div>
             </div>
           </FormInput>
         </div>
@@ -26,9 +28,11 @@ exports[`ContactForm matches snapshot 1`] = `
               <p className=\\"form-input_label\\">
                 Phone
               </p>
-              <input name=\\"phone\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Phone\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" />
-              <div className=\\"form-input_validation-marker undefined\\" />
-              <div className=\\"form-input_error\\" />
+              <input name=\\"phone\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Phone\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" disabled={[undefined]} />
+              <div>
+                <div className=\\"form-input_validation-marker undefined\\" />
+                <div className=\\"form-input_error\\" />
+              </div>
             </div>
           </FormInput>
           <FormInput label=\\"Email\\" type=\\"email\\" name=\\"email\\" onChange={[Function]} onBlur={[Function]} value=\\"\\" errors={[undefined]} touched={[undefined]}>
@@ -36,9 +40,11 @@ exports[`ContactForm matches snapshot 1`] = `
               <p className=\\"form-input_label\\">
                 Email
               </p>
-              <input name=\\"email\\" type=\\"email\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Email\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" />
-              <div className=\\"form-input_validation-marker undefined\\" />
-              <div className=\\"form-input_error\\" />
+              <input name=\\"email\\" type=\\"email\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Email\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" disabled={[undefined]} />
+              <div>
+                <div className=\\"form-input_validation-marker undefined\\" />
+                <div className=\\"form-input_error\\" />
+              </div>
             </div>
           </FormInput>
         </div>
@@ -48,14 +54,16 @@ exports[`ContactForm matches snapshot 1`] = `
               <p className=\\"form-input_label\\">
                 How we can help you?
               </p>
-              <input name=\\"content\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"How we can help you?\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" />
-              <div className=\\"form-input_validation-marker undefined\\" />
-              <div className=\\"form-input_error\\" />
+              <input name=\\"content\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"How we can help you?\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" disabled={[undefined]} />
+              <div>
+                <div className=\\"form-input_validation-marker undefined\\" />
+                <div className=\\"form-input_error\\" />
+              </div>
             </div>
           </FormInput>
         </div>
-        <FormButton label=\\"Submit\\" type=\\"submit\\" disabled={false} onClick={[Function: onClick]}>
-          <button className=\\"form-button form-button_submit undefined\\" data-testid=\\"form-button\\" onClick={[Function: onClick]} disabled={false}>
+        <FormButton label=\\"Submit\\" stylingType=\\"submit\\" type=\\"submit\\" disabled={false}>
+          <button className=\\"form-button form-button_submit undefined\\" data-testid=\\"form-button\\" disabled={false} type=\\"submit\\" onClick={[undefined]}>
             Submit
           </button>
         </FormButton>

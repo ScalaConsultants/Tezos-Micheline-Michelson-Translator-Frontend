@@ -5,7 +5,7 @@ export type FormInputProps = {
   onChange: any;
   onBlur: any;
   value: string;
-  errors?: string;
+  errors?: string | boolean;
   touched?: boolean;
   className?: string;
   isValidationDisplay?: boolean;

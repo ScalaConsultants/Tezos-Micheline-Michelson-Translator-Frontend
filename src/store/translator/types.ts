@@ -15,8 +15,13 @@ export type TranslatorState = {
   mode: Modes;
   michelson: string;
   micheline: string;
-  error: string;
-  isErrorOrEmpty?: boolean
+  isErrorOrEmpty?: boolean,
+  title: string;
+  author?: string;
+  description: string;
+  error: string | null;
+  wasSend: boolean | null;
+  isTranslationSet: boolean;
 };
 
 export type TranslatorAction = {
@@ -30,17 +35,6 @@ export enum Modes {
   MICHELINEMICHELSON = "michelinemichelson",
   MICHELSONMICHELINE = "michelsonmicheline",
 }
-
-export type TranslatorMessageState = {
-  title: string;
-  author?: string;
-  description: string;
-  michelson: string;
-  micheline: string;
-  error: string | null;
-  wasSend: boolean | null;
-  isTranslationSet: boolean;
-};
 
 export interface ITranslatorSetMode {
   type: typeof TRANSLATOR_SET_MODE;
@@ -79,13 +73,11 @@ export interface ITranslatorFlushTranslation {
 }
 export interface ITranslatorSendTranslation {
   type: typeof TRANSLATOR_SEND_TRANSLATION;
-  payload: any;
-  captcha: string;
+  values: any;
+  token: string;
 }
 export interface ITranslatorSetTranslationMessage {
   type: typeof TRANSLATOR_SET_TRANSLATION_MESSAGE;
-  micheline: string;
-  michelson: string;
 }
 
 export interface ITranslatorMessageSetError {

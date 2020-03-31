@@ -5,6 +5,8 @@ import LibraryItem from "./LibraryItem";
 import { translate } from "../translator/Translator";
 import * as TranslatorTypes from "../../store/translator/types";
 import { IState } from "../../store/global/types";
+import * as TranslatorActions from "../../store/translator/actions";
+import {bindActionCreators} from "redux";
 
 const mapState = (state: IState) => ({
   library: state.library,
@@ -13,33 +15,18 @@ const mapState = (state: IState) => ({
 const Library = () => {
   const dispatch = useDispatch();
   const { library } = useMappedState(mapState);
+  const boundTranslatorActions = bindActionCreators(TranslatorActions, dispatch);
 
   const selectMicheline = (value: string) => {
-    dispatch({
-      type: TranslatorTypes.TRANSLATOR_SET_MODE,
-      mode: TranslatorTypes.Modes.MICHELINEMICHELSON,
-    });
-
-    dispatch({
-      type: TranslatorTypes.TRANSLATOR_SET_MICHELINE,
-      translation: value,
-    });
-
-    translate(TranslatorTypes.Modes.MICHELINEMICHELSON, value, dispatch);
+    boundTranslatorActions.TranslatorSetMode(TranslatorTypes.Modes.MICHELINEMICHELSON);
+    boundTranslatorActions.TranslatorSetMicheline(null, value);
+    translate(TranslatorTypes.Modes.MICHELINEMICHELSON, value, boundTranslatorActions);
   };
 
   const selectMichelson = (value: string) => {
-    dispatch({
-      type: TranslatorTypes.TRANSLATOR_SET_MODE,
-      mode: TranslatorTypes.Modes.MICHELSONMICHELINE,
-    });
-
-    dispatch({
-      type: TranslatorTypes.TRANSLATOR_SET_MICHELSON,
-      translation: value,
-    });
-
-    translate(TranslatorTypes.Modes.MICHELSONMICHELINE, value, dispatch);
+    boundTranslatorActions.TranslatorSetMode(TranslatorTypes.Modes.MICHELSONMICHELINE);
+    boundTranslatorActions.TranslatorSetMichelson(null, value);
+    translate(TranslatorTypes.Modes.MICHELSONMICHELINE, value, boundTranslatorActions);
   };
 
   return (

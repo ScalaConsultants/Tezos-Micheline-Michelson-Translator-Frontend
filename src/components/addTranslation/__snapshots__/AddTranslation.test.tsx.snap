@@ -3,31 +3,57 @@
 exports[`AddTranslation matches snapshot 1`] = `
 "<AddTranslation setShowModal={[Function: setShowModal]}>
   <div className=\\"add-translation\\">
-    <Formik initialValues={{...}} validationSchema={{...}} onSubmit={[Function: submitForm]} validateOnChange={true} validateOnBlur={true} isInitialValid={false} enableReinitialize={false}>
+    <Formik initialValues={{...}} validationSchema={{...}} onSubmit={[Function: submitForm]}>
       <form onSubmit={[Function]} noValidate={true}>
         <div className=\\"add-translation_fields-line\\">
-          <FormInput label=\\"Name\\" type=\\"text\\" name=\\"name\\" onChange={[Function]} onBlur={[Function]} value=\\"\\" errors={[undefined]} touched={[undefined]}>
+          <FormInput label=\\"Title\\" type=\\"text\\" name=\\"title\\" onChange={[Function]} onBlur={[Function]} value=\\"\\">
             <div className=\\"form-input undefined\\">
               <p className=\\"form-input_label\\">
-                Name
+                Title
               </p>
-              <input name=\\"name\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Name\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" />
-              <div className=\\"form-input_validation-marker undefined\\" />
-              <div className=\\"form-input_error\\" />
+              <input name=\\"title\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Title\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" disabled={[undefined]} />
+              <div>
+                <div className=\\"form-input_validation-marker undefined\\" />
+                <div className=\\"form-input_error\\" />
+              </div>
             </div>
           </FormInput>
-          <FormInput label=\\"Author\\" type=\\"text\\" name=\\"author\\" onChange={[Function]} onBlur={[Function]} value=\\"\\" errors={[undefined]} touched={[undefined]}>
+          <FormInput label=\\"Author\\" type=\\"text\\" name=\\"author\\" onChange={[Function]} onBlur={[Function]} value=\\"\\">
             <div className=\\"form-input undefined\\">
               <p className=\\"form-input_label\\">
                 Author
               </p>
-              <input name=\\"author\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Author\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" />
-              <div className=\\"form-input_validation-marker undefined\\" />
-              <div className=\\"form-input_error\\" />
+              <input name=\\"author\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Author\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" disabled={[undefined]} />
+              <div>
+                <div className=\\"form-input_validation-marker undefined\\" />
+                <div className=\\"form-input_error\\" />
+              </div>
             </div>
           </FormInput>
         </div>
-        <FormTextarea label=\\"Description\\" placeholder=\\"Fill in the description.\\" name=\\"description\\" onChange={[Function]} onBlur={[Function]} value=\\"\\" errors={[undefined]} touched={[undefined]}>
+        <div className=\\"add-translation_fields-line\\">
+          <FormInput label=\\"Email\\" type=\\"email\\" name=\\"email\\" onChange={[Function]} onBlur={[Function]} value=\\"\\" className=\\"blocked\\" disabled={true}>
+            <div className=\\"form-input blocked\\">
+              <p className=\\"form-input_label\\">
+                Email
+              </p>
+              <input name=\\"email\\" type=\\"email\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Email\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" disabled={true} />
+              <div>
+                <div className=\\"form-input_validation-marker undefined\\" />
+                <div className=\\"form-input_error\\" />
+              </div>
+            </div>
+          </FormInput>
+          <FormInput label=\\"Send me a notification via email\\" type=\\"checkbox\\" name=\\"isEmail\\" onChange={[Function]} onBlur={[Function]} value=\\"\\" isValidationDisplay={false}>
+            <div className=\\"form-input undefined\\">
+              <p className=\\"form-input_label\\">
+                Send me a notification via email
+              </p>
+              <input name=\\"isEmail\\" type=\\"checkbox\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Send me a notification via email\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" disabled={[undefined]} />
+            </div>
+          </FormInput>
+        </div>
+        <FormTextarea label=\\"Description\\" placeholder=\\"Fill in the description.\\" name=\\"description\\" onChange={[Function]} onBlur={[Function]} value=\\"\\">
           <div className=\\"form-textarea undefined\\">
             <div className=\\"form-textarea_label\\">
               Description
@@ -70,14 +96,14 @@ exports[`AddTranslation matches snapshot 1`] = `
           </FormCodeDisplay>
         </div>
         <div className=\\"add-translation_buttons\\">
-          <FormButton label=\\"cancel\\" type=\\"secondary\\" onClick={[Function: onClick]}>
-            <button className=\\"form-button form-button_secondary undefined\\" data-testid=\\"form-button\\" onClick={[Function: onClick]} disabled={[undefined]}>
-              cancel
+          <FormButton label=\\"close\\" type=\\"button\\" stylingType=\\"secondary\\" onClick={[Function: onClick]}>
+            <button className=\\"form-button form-button_secondary undefined\\" data-testid=\\"form-button\\" disabled={[undefined]} type=\\"button\\" onClick={[Function: onClick]}>
+              close
             </button>
           </FormButton>
-          <FormButton label=\\"save\\" type=\\"submit\\" onClick={[Function: onClick]} disabled={false}>
-            <button className=\\"form-button form-button_submit undefined\\" data-testid=\\"form-button\\" onClick={[Function: onClick]} disabled={false}>
-              save
+          <FormButton label=\\"send\\" type=\\"submit\\" disabled={true}>
+            <button className=\\"form-button form-button_submit undefined\\" data-testid=\\"form-button\\" disabled={true} type=\\"submit\\" onClick={[undefined]}>
+              send
             </button>
           </FormButton>
         </div>

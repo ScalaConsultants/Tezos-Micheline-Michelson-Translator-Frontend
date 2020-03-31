@@ -3,7 +3,9 @@ import * as adminLibraryTypes from "../store/adminLibrary/types";
 
 export default class AdminLibraryService {
   private apiUrl: string;
+
   private libraryUrl: string;
+
   private token: string;
 
   constructor() {
@@ -17,7 +19,7 @@ export default class AdminLibraryService {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`
+        Authorization: `Bearer ${this.token}`,
       },
     };
 
@@ -39,7 +41,7 @@ export default class AdminLibraryService {
     };
 
     return fetch(
-      `${process.env.REACT_APP_API_URL}/v1/library?uid=${item}&status=${status}`,
+      `${process.env.REACT_APP_API_URL}/v1/library/${item}?status=${status}`,
       options,
     )
       .then(async response => {
@@ -58,7 +60,7 @@ export default class AdminLibraryService {
       },
     };
 
-    return fetch(`${process.env.REACT_APP_API_URL}/v1/library?uid=${item}`, options)
+    return fetch(`${process.env.REACT_APP_API_URL}/v1/library/${item}`, options)
       .then(async response => {
         return { status: response.status, data: await response.text() };
       })

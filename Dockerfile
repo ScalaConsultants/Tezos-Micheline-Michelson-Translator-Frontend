@@ -1,35 +1,20 @@
-FROM node:11.13.0-alpine AS builder
-
-# create destination directory
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+FROM mhart/alpine-node:10 AS builder
 
 # update and install dependency
 RUN apk update && apk upgrade
 RUN apk add git
 
-# copy the app, note .dockerignore
-COPY . /usr/src/app/
 ARG REACT_APP_API_URL
 ARG REACT_APP_RECAPTCHA_SITE_KEY
-RUN npm install
 
-# build necessary, even if no static files are needed,
-# since it builds the server as well
-RUN npm run build
+WORKDIR /app
+COPY package.json .
+RUN yarn install
+COPY . .
+RUN yarn build && yarn --production
 
-# create runtime container
-FROM node:11.13.0-alpine
-RUN apk update && apk upgrade
-RUN mkdir -p /usr/src/app && chown node:node /usr/src/app
-WORKDIR /usr/src/app
-
-# copy files from builder (note .dockerignore in repo)
-COPY --from=builder --chown=node:node /usr/src/app/build/ .
-
-# expose 5000 on container
+FROM mhart/alpine-node:10
+WORKDIR /app
+COPY --from=builder /app .
 EXPOSE 5000
-
-# start the app
-RUN yarn global add serve
-CMD ["serve", "-s", "."]
+CMD ["node_modules/.bin/next", "start", "-p", "5000"]

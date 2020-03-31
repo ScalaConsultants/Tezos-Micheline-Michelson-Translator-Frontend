@@ -33,7 +33,7 @@ export function* doFetchMichelineToMichelsonTranslation(action: translatorTypes.
 
 export function* doSendTranslation(action: translatorTypes.ITranslatorSendTranslation) {
   const translationService = new TranslatorService();
-  const response = yield call(translationService.publish, action.payload, action.captcha);
+  const response = yield call(translationService.publish, action.values, action.token);
   response.status === 200
     ? yield put(translatorActions.TranslatorMessageSetSuccess(response.status))
     : yield put(translatorActions.TranslatorMessageSetError(response.text));

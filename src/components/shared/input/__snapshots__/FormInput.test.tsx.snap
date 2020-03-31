@@ -6,9 +6,11 @@ exports[`FormInput matches snapshot 1`] = `
     <p className=\\"form-input_label\\">
       test label
     </p>
-    <input name=\\"name\\" type=\\"text\\" onChange={[Function: onChange]} onBlur={[Function: onBlur]} placeholder=\\"test label\\" value=\\"value\\" test-id=\\"input-test\\" className=\\"form-input_input\\" />
-    <div className=\\"form-input_validation-marker false\\" />
-    <div className=\\"form-input_error\\" />
+    <input name=\\"name\\" type=\\"text\\" onChange={[Function: onChange]} onBlur={[Function: onBlur]} placeholder=\\"test label\\" value=\\"value\\" test-id=\\"input-test\\" className=\\"form-input_input\\" disabled={[undefined]} />
+    <div>
+      <div className=\\"form-input_validation-marker false\\" />
+      <div className=\\"form-input_error\\" />
+    </div>
   </div>
 </FormInput>"
 `;

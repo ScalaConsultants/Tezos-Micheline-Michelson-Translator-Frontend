@@ -14,22 +14,38 @@ const LibraryItem = ({ selectMicheline, selectMichelson, data }: Props) => {
       <div className="LibraryItem__info-area-wrapper">
         <div className="LibraryItem__detail-wrapper">
           <div className="LibraryItem__detail-wrapper--label">Title</div>
-          <div className="LibraryItem__detail-wrapper--content">{data.title}</div>
+          <div className="LibraryItem__detail-wrapper--content">
+            {data.title}
+          </div>
+        </div>
+        <div className="LibraryItem__detail-wrapper">
+          <div className="LibraryItem__detail-wrapper--label">Author</div>
+          <div className="LibraryItem__detail-wrapper--content">
+            {data.author}
+          </div>
         </div>
       </div>
       <div className="LibraryItem__info-area-wrapper">
         <div className="LibraryItem__description-wrapper">
-          <div className="LibraryItem__description-wrapper--label">Description</div>
+          <div className="LibraryItem__description-wrapper--label">
+            Description
+          </div>
           <div className="LibraryItem__description-wrapper--content">
             {data.description}
           </div>
         </div>
       </div>
-      <div className="LibraryItem__wrapper2" onClick={() => selectMicheline(data.micheline)}>
+      <div
+        className="LibraryItem__wrapper2"
+        onClick={() => selectMicheline(data.micheline)}
+      >
         <div className="LibraryItem__label">Micheline</div>
         <div className="LibraryItem__content">{data.micheline}</div>
       </div>
-      <div className="LibraryItem__wrapper2" onClick={() => selectMichelson(data.michelson)}>
+      <div
+        className="LibraryItem__wrapper2"
+        onClick={() => selectMichelson(data.michelson)}
+      >
         <div className="LibraryItem__label">Michelson</div>
         <div className="LibraryItem__content">{data.michelson}</div>
       </div>

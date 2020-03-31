@@ -4,16 +4,18 @@ exports[`Login matches snapshot 1`] = `
 "<Login>
   <div className=\\"login\\">
     <div className=\\"login-content\\">
-      <Formik initialValues={{...}} validationSchema={{...}} onSubmit={[Function: submitForm]} validateOnChange={true} validateOnBlur={true} isInitialValid={false} enableReinitialize={false}>
+      <Formik initialValues={{...}} validationSchema={{...}} onSubmit={[Function: submitForm]}>
         <form onSubmit={[Function]} noValidate={true}>
-          <FormInput label=\\"Login\\" type=\\"text\\" name=\\"login\\" onChange={[Function]} onBlur={[Function]} value=\\"\\" errors={[undefined]} touched={[undefined]}>
+          <FormInput label=\\"Login\\" type=\\"text\\" name=\\"username\\" onChange={[Function]} onBlur={[Function]} value=\\"\\" errors={[undefined]} touched={[undefined]}>
             <div className=\\"form-input undefined\\">
               <p className=\\"form-input_label\\">
                 Login
               </p>
-              <input name=\\"login\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Login\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" />
-              <div className=\\"form-input_validation-marker undefined\\" />
-              <div className=\\"form-input_error\\" />
+              <input name=\\"username\\" type=\\"text\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Login\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" disabled={[undefined]} />
+              <div>
+                <div className=\\"form-input_validation-marker undefined\\" />
+                <div className=\\"form-input_error\\" />
+              </div>
             </div>
           </FormInput>
           <FormInput label=\\"Password\\" type=\\"password\\" name=\\"password\\" onChange={[Function]} onBlur={[Function]} value=\\"\\" errors={[undefined]} touched={[undefined]}>
@@ -21,13 +23,15 @@ exports[`Login matches snapshot 1`] = `
               <p className=\\"form-input_label\\">
                 Password
               </p>
-              <input name=\\"password\\" type=\\"password\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Password\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" />
-              <div className=\\"form-input_validation-marker undefined\\" />
-              <div className=\\"form-input_error\\" />
+              <input name=\\"password\\" type=\\"password\\" onChange={[Function]} onBlur={[Function]} placeholder=\\"Password\\" value=\\"\\" test-id=\\"input-test\\" className=\\"form-input_input\\" disabled={[undefined]} />
+              <div>
+                <div className=\\"form-input_validation-marker undefined\\" />
+                <div className=\\"form-input_error\\" />
+              </div>
             </div>
           </FormInput>
-          <FormButton type=\\"submit\\" label=\\"Log in\\" onClick={[Function: onClick]}>
-            <button className=\\"form-button form-button_submit undefined\\" data-testid=\\"form-button\\" onClick={[Function: onClick]} disabled={[undefined]}>
+          <FormButton label=\\"Log in\\" type=\\"submit\\" disabled={false}>
+            <button className=\\"form-button form-button_submit undefined\\" data-testid=\\"form-button\\" disabled={false} type=\\"submit\\" onClick={[undefined]}>
               Log in
             </button>
           </FormButton>

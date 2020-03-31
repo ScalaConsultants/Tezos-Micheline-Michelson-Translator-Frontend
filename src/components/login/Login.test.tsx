@@ -4,7 +4,7 @@ import { StoreContext } from "redux-react-hook";
 import Login from "./Login";
 import Formbutton from "../shared/formButton/FormButton";
 
-import configureStore from "../../store/index";
+import configureStore from "../../store";
 import rootSaga from "../../store/saga";
 import FormButton from "../shared/formButton/FormButton";
 
@@ -28,7 +28,7 @@ describe("Login", () => {
     expect(
       item
         .at(0)
-        .find({ name: "login" })
+        .find({ name: "username" })
         .at(0)
         .text(),
     ).toEqual("Login");

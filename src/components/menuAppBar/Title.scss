@@ -1,15 +1,14 @@
 .Title {
-    position: absolute;
     top: 5px;
-    left: 20vw;
-    color: #ffffff;
     &__l1 {
         font-family: Roboto;
         font-style: normal;
         font-weight: 300;
         font-size: 16px;
+        text-transform: uppercase;
         line-height: 19px;
         letter-spacing: 0.15px;
+        color: #C90000;
     }
 
     &__l2 {
@@ -17,19 +16,22 @@
         font-style: normal;
         font-weight: 300;
         font-size: 14.8px;
+        text-transform: uppercase;
         line-height: 17px;
         letter-spacing: 0.15px;
-        color: #FF6868;
+        color: #787878;
     }
 
     &__l3 {
         font-family: Roboto;
         font-style: normal;
-        font-weight: 500;
-        font-size: 8.8px;
+        font-weight: 900;
+        font-size: 13px;
+        text-transform: uppercase;
         line-height: 18px;
         letter-spacing: 0.15px;
-        color: #FF6868;
+        color: #C90000;
+        opacity: 0.22;
     }
 
     @media screen and (max-width: 500px) {

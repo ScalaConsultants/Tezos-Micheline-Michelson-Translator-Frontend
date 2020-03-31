@@ -1,5 +1,6 @@
 import React from "react";
 import "./ContactInfo.scss";
+import packageJson from "../../../package.json";
 
 const ContactInfo = () => (
   <div className="contact-info">
@@ -9,7 +10,7 @@ const ContactInfo = () => (
       <div className="contact-info_title-container">
         <div className="contact-info_title">
           <h3>Micheline/Michelson Translator</h3>
-          <h6>v0.01</h6>
+          <h6>v{packageJson.version}</h6>
         </div>
       </div>
       <div className="contact-info_value-container">
