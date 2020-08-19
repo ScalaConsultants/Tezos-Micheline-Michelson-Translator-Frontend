@@ -87,3 +87,5 @@ Builds the app for production to the `build` folder.<br>
 
 ### `yarn run start`
 Start your production build<br>
+
+Developed by [Scalac](https://scalac.io/?utm_source=scalac_github&utm_campaign=scalac1&utm_medium=web)
