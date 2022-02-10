@@ -34,7 +34,7 @@
     "next-redux-wrapper": "^4.0.1",
     "next-seo": "^3.4.0",
     "node-localstorage": "^2.1.5",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "react-google-recaptcha-v3": "^1.5.0",
